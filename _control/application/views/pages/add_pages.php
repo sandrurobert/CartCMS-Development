@@ -2,126 +2,88 @@
 
 	<fieldset>
 	
-    	<div class="widget first">
+  	<div class="widget first">
+	
+			<div class="head">
 		
-  			<div class="head">
+			  <h5>Add a new page</h5>
 			
-				<h5>Add a new page</h5>
-				
-			</div><!-- .head -->
+		  </div><!-- .head -->
+		
+    	<div class="rowElem nobg">
+	
+      	<label>Title <span class = "req" >*</span></label>
+		
+          <div class="formRight">
+		
+          	<input type="text" name="title" id="title"/>
 			
-        	<div class="rowElem nobg">
-			
-            	<label>Title <span class = "req" >*</span></label>
-				
-                <div class="formRight">
-				
-                	<input type="text" name="title" id="title"/>
-					
-                </div><!-- .formRight -->
-				
-                <div class="fix"></div>
-				
-            </div><!-- .rowElem -->
+            </div><!-- .formRight -->
+		
+          <div class="fix"></div>
+		
+      </div><!-- .rowElem -->
 			
 			<div class="rowElem nobg">
 			
-            	<label>Content Type</label>
+        <label>Content Type</label>
 				
-            	<div class="formRight noSearch">
+          <div class="formRight noSearch">
 				
-            		<select name="modules" class = "chzn-select" id = "modules" >
+            <select name="modules" class = "chzn-select" id = "modules" >
 					
-						{MODULES}
-                    	<option value="{nickname}">{name}</option>
-						{/MODULES}
+  						{MODULES}
+                <option value="{nickname}">{name}</option>
+  						{/MODULES}
 						
-                	</select>
+            </select>
 					
-             	</div><!-- .formRight -->
+          </div><!-- .formRight -->
 				
-             	<div class="fix"></div>
+          <div class="fix"></div>
 				
-         	</div><!-- .rowElem -->
+      </div><!-- .rowElem -->
 			
-       	    <div id="normal_content">
+ 	    <div id="normal_content">
+
+      	<label id="wysiwyg-content">Content:</label><br />
+      	<textarea name="content" class="wysiwyg" id="wysiwyg" rows="5" cols=""></textarea>  
+	
+      </div><!-- #normal_content -->
 			
-            	<label id="wysiwyg-content">Content:</label><br />
-            	<textarea name="content" class="wysiwyg" id="wysiwyg" rows="5" cols=""></textarea>  
-				
-            </div><!-- #normal_content -->
-			
-    	</div><!-- .widget -->
+    </div><!-- .widget -->
 		
-        <div class="widget">
+    <div class="widget">
+
+      <div class="head">
+	
+		    <h5>Menu options</h5>
 		
-            <div class="head">
-			
-				<h5>Menu options</h5>
-				
-			</div><!-- .widget -->
-			
-        	<div class="rowElem nobg">
-			
-            	<label>Page type</label>
-				
-            	<div class="formRight noSearch">
-				
-                	<select name="page_type"  class = "chzn-select" id = "page_type" >
-					
-                    	<option value="1">Parent</option>
-                        {PAGE_TYPE}
-                    	<option value="{id_page}">{title}</option>
-                        {/PAGE_TYPE}
-						
-                	</select>
-					
-             	</div><!-- .formRight -->
-				
-            	<div class="fix"></div>
-				
-         	</div><!-- .rowElem -->
-			
-        </div><!-- .widget -->
+	    </div><!-- .widget -->
+	
+    	<div class="rowElem nobg">
+	
+      	<label>Page type</label>
 		
-        <div class="widget">  
+      	<div class="formRight noSearch">
+	
+        	<select name="page_type"  class = "chzn-select" id = "page_type" >
+	
+          	<option value="1">Parent</option>
+              {PAGE_TYPE}
+          	<option value="{id_page}">{title}</option>
+              {/PAGE_TYPE}
 		
-       		<div class="head">
-			
-				<h5>Other options (optional)</h5>
-				
-			</div><!-- .head -->
-			
-            <div class="rowElem nobg">
-			
-				<label>Meta Keywords</label>
-				
-				<div class="formRight">
-				
-					<input type="text" name="meta_key" id = "meta_key" />
-					
-				</div><!-- .formRight -->
-				
-				<div class="fix"></div>
-				
-			</div><!-- .rowElem -->
-			
-        	<div class="rowElem nobg">
-			
-				<label>Meta Description</label>
-				
-				<div class="formRight">
-				
-					<input type="text" name="meta_descr" id = "meta_descr" />
-				
-				</div><!-- .formRight -->
-				
-				<div class="fix"></div>
-				
-			</div><!-- .rowElem -->
-			
-        </div><!-- .widget -->
+        	</select>
 		
+       	</div><!-- .formRight -->
+		
+      	<div class="fix"></div>
+		
+     	</div><!-- .rowElem -->
+	
+    </div><!-- .widget -->
+				
 		<div class = "widget">
 			
 			<div class="rowElem">
@@ -140,6 +102,6 @@
 		
 		</div><!-- .widget -->
 		
-   	</fieldset>
+  </fieldset>
 	
 </form>

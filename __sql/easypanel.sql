@@ -24,9 +24,9 @@ CREATE TABLE IF NOT EXISTS `ep_admin_settings` (
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=4; 
 
 INSERT INTO `ep_admin_settings` (`id_setting`, `name`, `value`) VALUES
-(1, '', 'website_title'),
-(2, '', 'website_logo'),
-(3, '', 'website_copyright');
+(1, 'website_title', ''),
+(2, 'website_logo', ''),
+(3, 'website_copyright', '');
 
 DROP TABLE IF EXISTS `ep_modules`;
 CREATE TABLE IF NOT EXISTS `ep_modules` (

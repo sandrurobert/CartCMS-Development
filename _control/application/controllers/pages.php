@@ -17,7 +17,9 @@ class Pages extends CI_Controller {
 		
     }
 	
-	/* -------------- PAGES -------------- */
+	/**
+	 * pages
+	 */
 	function index() {
 	
 		//get filenames
@@ -46,6 +48,9 @@ class Pages extends CI_Controller {
 		
 	}
 	
+	/**
+	 * add a page
+	 */
 	function add() {
 	
 		//get filenames
@@ -64,6 +69,9 @@ class Pages extends CI_Controller {
 		
 	}
 	
+	/**
+	 * add a page process
+	 */
 	function add_process() {
 	
 		$pages[ 'title' ] = $this->input->post( 'title' );
@@ -138,6 +146,9 @@ class Pages extends CI_Controller {
 		   
 	}
 	
+	/**
+	 * edit a page
+	 */
 	function edit( $id_page ) {
 	
 		//get filenames
@@ -194,6 +205,9 @@ class Pages extends CI_Controller {
 	
 	}
 	
+	/**
+	 * edit a page process
+	 */
 	function edit_process( $id_page ) {
 	
 		$pages[ 'title' ] = $this->input->post( 'title' );

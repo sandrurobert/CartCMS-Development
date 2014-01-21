@@ -3,7 +3,9 @@
 class Dashboard_admin_model extends CI_Model {
 
 
-	/* -------------- DASHBOARD STATS -------------- */
+	/**
+	 * dashboard stats
+	 */
 	function getRecords () {
 	
 		$modules = $this->db->query("select * from ep_modules where nickname <> 'homepage' ")->result();

@@ -2,20 +2,22 @@
 
 class Settings_admin_model extends CI_Model {
 
-	/* -------------- SETTINGS -------------- */
+	/**
+	 * get all settings
+	 */
 	function getSettings() {
 	
 		//website title
-		$website_title = $this->db->query("select * from ep_admin_settings where setting_name = 'title'")->row();
-		$settings['website_title'] = $website_title->setting_descr;
+		$website_title = $this->db->query("select * from ep_admin_settings where name = 'website_title'")->row();
+		$settings['website_title'] = $website_title->value;
 		
-		//logo
-		$logo = $this->db->query("select * from ep_admin_settings where setting_name = 'logo'")->row();
-		$settings['logo'] = $logo->setting_descr;
+		//website logo
+		$website_logo = $this->db->query("select * from ep_admin_settings where name = 'website_logo'")->row();
+		$settings['logo'] = $website_logo->value;
 		
-		//copyright
-		$copyright = $this->db->query("select * from ep_admin_settings where setting_name = 'copyright'")->row();
-		$settings['copyright'] = $copyright->setting_descr;
+		//website copyright
+		$website_copyright = $this->db->query("select * from ep_admin_settings where name = 'website_copyright'")->row();
+		$settings['copyright'] = $website_copyright->value;
 		
 		return $settings;
 	
