@@ -11,23 +11,23 @@
 */
 
 $hook['post_controller'][] = array(
-                                'class'    => 'Frontend',
+                                'class'    => 'Main_hook',
                                 'function' => 'fix_base_url',
-                                'filename' => 'Frontend.php',
+                                'filename' => 'main_hook.php',
                                 'filepath' => 'hooks'
                                 );
 								
 $hook['post_controller'][] = array(
-                                'class'    => 'Frontend',
+                                'class'    => 'Main_hook',
                                 'function' => 'cleaning',
-                                'filename' => 'Frontend.php',
+                                'filename' => 'main_hook.php',
                                 'filepath' => 'hooks'
                                 );
 								
 $hook['post_controller'][] = array(
-                                'class'    => 'Frontend',
+                                'class'    => 'Main_hook',
                                 'function' => 'user_info',
-                                'filename' => 'Frontend.php',
+                                'filename' => 'main_hook.php',
                                 'filepath' => 'hooks'
                                 );
 

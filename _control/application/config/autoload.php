@@ -64,7 +64,7 @@ $autoload['libraries'] = array( 'parser', 'session', 'database' );
 |	$autoload['helper'] = array('url', 'file');
 */
 
-$autoload['helper'] = array('url');
+$autoload['helper'] = array( 'url' );
 
 
 /*
@@ -109,7 +109,7 @@ $autoload['language'] = array();
 |
 */
 
-$autoload['model'] = array();
+$autoload['model'] = array( 'main_admin_model', 'login_admin_model' );
 
 
 /* End of file autoload.php */

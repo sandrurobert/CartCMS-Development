@@ -2,7 +2,9 @@
 
 class Login_admin_model extends CI_Model {
 
-	/* -------------- FILENAMES -------------- */
+	/**
+	 * filenames
+	 */
 	function getFilenames ( $folder_name, $suffix ) {
 	
 		//top nav filename
@@ -19,7 +21,9 @@ class Login_admin_model extends CI_Model {
 	
 	}
 	
-	/* -------------- LOG IN -------------- */
+	/**
+	 * login process
+	 */
 	function getAccess( $username, $password ) {
 	
 		$user = mysql_real_escape_string( $username );
@@ -39,7 +43,9 @@ class Login_admin_model extends CI_Model {
 	
 	}
 	
-	/* -------------- CREATE THE SESSION -------------- */
+	/**
+	 * create session
+	 */
 	function createSession( $user ) {
 	
 		$session_data = array( 
@@ -56,7 +62,9 @@ class Login_admin_model extends CI_Model {
 	
 	}
 	
-	/* -------------- SESSION VERIFICATION -------------- */
+	/**
+	 * verification if logged user
+	 */
 	function sessionVerif () {
 	
 		if ( $this->session->userdata( 'inside' ) == true ) {

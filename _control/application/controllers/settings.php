@@ -4,17 +4,11 @@ class Settings extends CI_Controller {
 
 	function __construct() {
 	
-        parent::__construct();
+    parent::__construct();
 		
 		/* ===== MODELS ===== */
-        $this->load->model( 'main_admin_model' );
-		$this->load->model( 'login_admin_model' );
 		$this->load->model( 'settings_admin_model' );
-		
-		/* ===== SESSION VERIF. ===== */
-		if( ! $this->login_admin_model->sessionVerif() )
-			redirect( 'login' );
-		
+				
 		//html files folder
 		$this->folder_name = 'settings/';
 		
@@ -23,7 +17,9 @@ class Settings extends CI_Controller {
 		
     }
 	
-	/* -------------- GENERAL SETTINGS -------------- */
+	/**
+	 * general settings
+	 */
 	function index() {
 	
 		$settings = $this->settings_admin_model->getSettings();
@@ -37,7 +33,9 @@ class Settings extends CI_Controller {
 		
 	}
 	
-	/* -------------- USER SETTINGS -------------- */
+	/**
+	 * user settings
+	 */
 	function account( $id_user ) {
 	
 		$user_data = $this->settings_admin_model->getUser( $id_user );
@@ -51,19 +49,30 @@ class Settings extends CI_Controller {
 			
 	}
 	
+	/**
+	 * user settings process
+	 */
 	function account_process( $id_user ) {
 	
 		$user_data[ 'user' ] = $this->input->post( 'user' );
 		
-		if ( $this->input->post( 'pass' ) )
-			$user_data[ 'pass' ] = $this->input->post( 'pass' );
+		if ( $this->input->post( 'pass' ) ) {
+
+				$user_data[ 'pass' ] = $this->input->post( 'pass' );
+
+		}
 			
-		if( $this->db->update( 'ep_admin_users', $user_data, array( 'id_user' => $id_user ) ) )
+		if( $this->db->update( 'ep_admin_users', $user_data, array( 'id_user' => $id_user ) ) ) {
+
 			redirect( 'account/' . $id_user );
+
+		}
 	
 	}
 	
-	/* -------------- MODULES SETTINGS -------------- */
+	/**
+	 * modules settings
+	 */
 	function modules () {
 	
 		$content_filename = $this->folder_name . 'modules' . $this->files_suffix;

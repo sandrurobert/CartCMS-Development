@@ -4,11 +4,7 @@ class Login extends CI_Controller {
 
 	function __construct() {
 	
-        parent::__construct();
-		
-		/* ===== MODELS ===== */
-    $this->load->model( 'main_admin_model' );
-		$this->load->model( 'login_admin_model' );
+    parent::__construct();
 		
 		//html files folder
 		$this->folder_name = 'login/';
@@ -16,14 +12,19 @@ class Login extends CI_Controller {
 		//files suffix
 		$this->files_suffix = '_login';
 		
-    }
+  }
 	
-	/* -------------- LOGIN PAGE -------------- */
+	/**
+	 * login page
+	 */
 	function index() {
 	
 		/* ===== SESSION VERIF. ===== */
-		if( $this->login_admin_model->sessionVerif() )
+		if( $this->login_admin_model->sessionVerif() ) {
+
 			redirect( 'dashboard' );
+
+		}
 	
 		$filenames = $this->login_admin_model->getFilenames( $this->folder_name, $this->files_suffix );
 		
@@ -35,7 +36,9 @@ class Login extends CI_Controller {
 		
 	}
 	
-	/* -------------- LOGIN PROCESS -------------- */
+	/**
+	 * login process
+	 */
 	function log_in() {
 	
 			$username = $this->input->post('user');
@@ -56,7 +59,9 @@ class Login extends CI_Controller {
 			
 	}
 	
-	/* -------------- LOG OUT -------------- */
+	/**
+	 * logout process
+	 */
 	function log_out() {
 	
 		$data = array();
@@ -68,6 +73,9 @@ class Login extends CI_Controller {
 		
 	}
 	
+	/**
+	 * @todo not yet done
+	 */
 	function register() {
 		if($this->session->userdata('logged') == FALSE)
 		 redirect("auth");
@@ -75,6 +83,9 @@ class Login extends CI_Controller {
 		 $this->load->view('register');
 	}
 	
+	/**
+	 * @todo not yet done
+	 */
 	function register_process() {
 		 $user["user"] = $this->input->post("user");
 		 $user["pass"] = md5($this->input->post("pass"));

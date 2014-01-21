@@ -4,16 +4,10 @@ class Pages extends CI_Controller {
 
 	function __construct() {
 	
-        parent::__construct();
+    parent::__construct();
 		
 		/* ===== MODELS ===== */
-    $this->load->model( 'main_admin_model' );
-		$this->load->model( 'login_admin_model' );
 		$this->load->model( 'pages_model' );
-		
-		/* ===== SESSION VERIF. ===== */
-		if( ! $this->login_admin_model->sessionVerif() )
-			redirect( 'login' );
 		
 		//html files folder
 		$this->folder_name = 'pages/';

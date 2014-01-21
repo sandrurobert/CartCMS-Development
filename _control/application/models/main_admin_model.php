@@ -3,7 +3,9 @@
 class Main_admin_model extends CI_Model {
 
 
-	/* -------------- MAIN PARSER -------------- */
+	/**
+	 * main parser
+	 */
 	function getPage ( $header = 'header', $title = 'no_title', $body = 'body', $body_header = 'body_header', $top_nav = 'top_nav', $body_content = 'body_content', $content = 'no_content', $body_footer = 'body_footer' ) {
 	
 		/* ------- generate header ------- */
