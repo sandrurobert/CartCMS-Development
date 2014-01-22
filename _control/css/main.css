@@ -15,6 +15,7 @@ body { background: url(../img/body_bg.jpg) repeat; font-family: 'Cuprum', sans-s
 .add { margin-top: 10px; }
 .first { margin-top: 0px!important; }
 .post { margin-left:0px!important; }
+.nobg { background: none!important; }
 button.nobg { background: none; }
 select { overflow: auto; }
 
@@ -98,7 +99,7 @@ div.formRight label.error { color:#FF0000; }
 /* ===== Top Nav ===== */
 #topNav { 
 
-	height: 36px; 
+	height: 46px; 
 	display: block;
 	
 }
@@ -117,6 +118,8 @@ div.formRight label.error { color:#FF0000; }
 .wrapper { 
 
 	width: 980px;
+	min-height: 0px;
+	overflow: hidden;
 	margin: auto; 
 	
 }
@@ -822,7 +825,7 @@ ul.sub li ul li { padding-left: 10px; }
 
 	float: left; 
 	width: 726px;
-	padding-bottom: 30px; 
+	padding-bottom: 60px; 
 
 }
 

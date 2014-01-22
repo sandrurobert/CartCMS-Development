@@ -2,31 +2,31 @@
 
 	<fieldset>
 	
-    	<div class="widget first">
+    <div class="widget first">
 		
-  			<div class="head">
+			<div class="head">
 			
-				<h5>Edit "{title}" page</h5>
+			  <h5>Edit "{title}" page</h5>
 			
-			</div><!-- .head -->
+		  </div><!-- .head -->
 			
-        	<div class="rowElem nobg">
+    	<div class="rowElem nobg">
 			
-            	<label>Title <span class = "req" >*</span></label>
+      	<label>Title <span class = "req" >*</span></label>
 				
-                <div class="formRight">
+        <div class="formRight">
 				
-                	<input type="text" name="title" id="title" value="{title}"/>
+        	<input type="text" name="title" id="title" value="{title}"/>
 					
-                </div><!-- .formRight -->
+        </div><!-- .formRight -->
 				
-                <div class="fix"></div>
+        <div class="fix"></div>
 				
-            </div><!-- .rowElem -->
+      </div><!-- .rowElem -->
 			
 			<div class="rowElem nobg">
 			
-            	<label>Content Type</label>
+      	<label>Content Type</label>
 				
 				<div class="formRight noSearch">
 				
@@ -40,89 +40,51 @@
 					
 				</div><!-- .formRight -->
 				
-				<div class="fix"></div>
+			  <div class="fix"></div>
 				
-			</div><!-- .rowElem -->
+		  </div><!-- .rowElem -->
 			
-       	    <div id="normal_content">
+ 	    <div id="normal_content">
+
+      	<label id="wysiwyg-content">Content:</label>
+      	<textarea name="content" class="wysiwyg" id="wysiwyg" rows="5" cols="">{content}</textarea>  
+	
+      </div><!-- #normal_content -->
 			
-            	<label id="wysiwyg-content">Content:</label>
-            	<textarea name="content" class="wysiwyg" id="wysiwyg" rows="5" cols="">{content}</textarea>  
-				
-            </div><!-- #normal_content -->
-			
-    	</div><!-- .widget -->
+	  </div><!-- .widget .first -->
 		
-        <div class="widget">
+    <div class="widget">
 		
-            <div class="head">
+      <div class="head">
 			
 				<h5>Menu options</h5>
 				
-			</div>
-			
-        	<div class="rowElem nobg">
-			
-            	<label>Page type</label>
-				
-            	<div class="formRight noSearch">
-				
-                	<select name="page_type"  class = "chzn-select" id = "page_type" >
-					
-                   		<option value="1">Parent</option>
-                        {PAGE_TYPE}
-                    	<option value="{id_page}" {selected}>{title}</option>
-                        {/PAGE_TYPE}
-						
-                	</select>
-					
-             	</div><!-- .formRight -->
-				
-            	<div class="fix"></div>
-				
-         	</div><!-- .rowElem -->
-			
-        </div><!-- .widget -->
-		
-        <div class="widget">  
-		
-       		<div class="head">
-			
-				<h5>Other options (optional)</h5>
-			
 			</div><!-- .head -->
 			
-            <div class="rowElem nobg">
+    	<div class="rowElem nobg">
 			
-				<label>Meta Keywords:</label>
-			
-				<div class="formRight">
+      	<label>Page type</label>
 				
-					<input type="text" name="meta_key" id="meta_key" value="{meta_key}"/>
+      	<div class="formRight noSearch">
 				
-				</div><!-- .formRight -->
-			
-				<div class="fix"></div>
-			
-			</div><!-- .rowElem -->
-			
-        	<div class="rowElem nobg">
-			
-				<label>Meta Description:</label>
+        	<select name="page_type"  class = "chzn-select" id = "page_type" >
+					
+         		<option value="1">Parent</option>
+              {PAGE_TYPE}
+          	<option value="{id_page}" {selected}>{title}</option>
+              {/PAGE_TYPE}
+						
+        	</select>
+					
+       	</div><!-- .formRight -->
 				
-				<div class="formRight">
+      	<div class="fix"></div>
 				
-					<input type="text" name="meta_descr" id="meta_descr" value="{meta_descr}"/>
-				
-				</div><!-- .formRight -->
+     	</div><!-- .rowElem -->
 			
-				<div class="fix"></div>
-			
-			</div><!-- .rowElem -->
-			
-        </div><!-- .widget -->
-		
-        <div class = "widget">
+    </div><!-- .widget -->
+    		
+    <div class = "widget">
 			
 			<div class="rowElem">
 			
@@ -140,7 +102,7 @@
 		
 		</div><!-- .widget -->
 		
-   	</fieldset>
+ 	</fieldset>
 	
 </form>
 

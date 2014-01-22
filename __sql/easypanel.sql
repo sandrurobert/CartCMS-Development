@@ -34,11 +34,10 @@ CREATE TABLE IF NOT EXISTS `ep_modules` (
   `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
   `nickname` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
   PRIMARY KEY (`id_module`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=3; 
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=2; 
 
 INSERT INTO `ep_modules` (`id_module`, `name`, `nickname`) VALUES
-(1, 'Homepage', 'homepage'),
-(2, 'Simple page', 'simple_page');
+(1, 'Homepage', 'homepage');
 
 DROP TABLE IF EXISTS `ep_pages`;
 CREATE TABLE IF NOT EXISTS `ep_pages` (
@@ -47,5 +46,6 @@ CREATE TABLE IF NOT EXISTS `ep_pages` (
   `link_title` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
   `module` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
   `page_type` int(11) COLLATE utf8_unicode_ci NOT NULL DEFAULT 1,
+  `content` text COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
   PRIMARY KEY (`id_page`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=3;

@@ -72,7 +72,7 @@ $(document).ready(function() {
 		
 	});
 	
-	//===== Pages - Simple page =====//
+	/* ===== Pages - Simple page =====
 	
 	$("#normal_content").hide();
 	var select_value = $("select#modules option:selected").val();
@@ -90,6 +90,8 @@ $(document).ready(function() {
 			$("#normal_content").hide();
 		
 	});
+
+	*/
 	
 	//===== Pages - verification & submit =====//
 	
@@ -109,21 +111,21 @@ $(document).ready(function() {
 			
 		}
 		
+		var asd = $('.chosen-select').val();
+		alert(asd);
+
 		$.post( site_url + "/pages/add_process", { 
 													title: $('input#title').val(), 
 													content: $("#wysiwyg").val(), 
-													page_type: $('select#page_type .result-selected').val(), 
-													modules: $('select#modules .result-selected').val(),
-													meta_key: $('input#meta_key').val(), 
-													meta_descr: $('input#meta_descr').val() 
+													//page_type: $('select#page_type .result-selected').val(),
+													page_type: $( '.chosen-select' ).val(),
+													module: $('select#modules .result-selected').val()
 												},
 			function( data ) { 
 			
 				if ( data == 'success' ) {
 				
 					$('input#title').val('');
-					$('input#meta_key').val('');
-					$('input#meta_descr').val('');
 					
 					$("<div class='nNote nSuccess hideit'> <p><strong>SUCCESS: </strong>Page added successfully!</p> </div>").appendTo('#notifications');
 					$('#notifications').hide();

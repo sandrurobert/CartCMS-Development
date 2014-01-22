@@ -76,9 +76,8 @@ class Pages extends CI_Controller {
 	
 		$pages[ 'title' ] = $this->input->post( 'title' );
 		$pages[ 'page_type' ] = $this->input->post( 'page_type' );
-		$pages[ 'meta_key' ] = $this->input->post( 'meta_key' );
-		$pages[ 'meta_descr' ] = $this->input->post( 'meta_descr' );
-		$pages[ 'module' ] = $this->input->post( 'modules' );
+		$pages[ 'module' ] = $this->input->post( 'module' );
+		$pages[ 'content' ] = $this->input->post( 'content' );
 		
 		if( $pages[ 'module' ] == 'homepage' ) {
 			
@@ -90,49 +89,9 @@ class Pages extends CI_Controller {
 			$link_title_lowercase = strtolower($link_title);
 			$new_link_title = str_replace(' ', '_', $link_title_lowercase);
 			
-			if ( strpos( $new_link_title, 'ă' ) ) {
-			
-				$new_link_title = str_replace( 'ă', 'a', $new_link_title );
-			
-			} 
-			
-			if( strpos( $new_link_title, 'î' ) ) {
-			
-				$new_link_title = str_replace( 'î', 'i', $new_link_title );
-			
-			} 
-			
-			if( strpos( $new_link_title, 'â' ) ) {
-			
-				$new_link_title = str_replace( 'â', 'a', $new_link_title );
-			
-			} 
-			
-			if( strpos( $new_link_title, 'ș' ) ) {
-			
-				$new_link_title = str_replace( 'ș', 's', $new_link_title );
-			
-			} 
-			
-			if( strpos( $new_link_title, 'ț' ) ) {
-			
-				$new_link_title = str_replace( 'ț', 't', $new_link_title );
-			
-			}
-			
 		}
 		
 		$pages[ 'link_title' ] = $new_link_title;
-		
-		if( $this->input->post( 'modules' ) != 'simple_page' ) {
-		
-			$pages[ 'content' ] = ""; 
-			
-		} else {
-		
-			$pages[ 'content' ] = $this->input->post( 'content' );
-		   
-		}
 		
 		if( $this->db->insert( "ep_pages", $pages ) ) {
 		
@@ -194,8 +153,6 @@ class Pages extends CI_Controller {
 																				'MODULES' => $modules,
 																				'title' => $page_info->title,
 																				'id_page' => $page_info->id_page,
-																				'meta_key' => $page_info->meta_key, 
-																				'meta_descr' => $page_info->meta_descr,
 																				'content' => $page_info->content
 																				
 																			), true );
