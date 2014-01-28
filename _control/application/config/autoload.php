@@ -96,7 +96,7 @@ $autoload['config'] = array();
 |
 */
 
-$autoload['language'] = array();
+$autoload['language'] = array('english', 'error', 'misc');
 
 
 /*
@@ -113,4 +113,4 @@ $autoload['model'] = array( 'main_admin_model', 'login_admin_model' );
 
 
 /* End of file autoload.php */
-/* Location: ./application/config/autoload.php */
+/* Location: ./_control/application/config/autoload.php */

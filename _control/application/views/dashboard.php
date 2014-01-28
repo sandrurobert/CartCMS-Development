@@ -1,17 +1,17 @@
 <div class="title">
-	<h5>Dashboard</h5>
+	<h5>{lang_page_title}</h5>
 </div><!-- .title -->
 
 <div class = "left">
 
 	<!-- Website statistics -->
 	<div class="widget">
-		<div class="head"><h5 class="iChart8">Website records</h5></div>
+		<div class="head"><h5 class="iChart8">{lang_records}</h5></div>
 		<table cellpadding="0" cellspacing="0" width="100%" class="tableStatic">
 			<thead>
 				<tr>
-				  <td width="21%">Amount</td>
-				  <td>Records added</td>
+				  <td width="21%">{lang_amount}</td>
+				  <td>{lang_records_added}</td>
 				</tr>
 			</thead>
 			<tbody>

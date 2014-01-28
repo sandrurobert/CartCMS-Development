@@ -28,7 +28,14 @@ class Login extends CI_Controller {
 	
 		$filenames = $this->login_admin_model->getFilenames( $this->folder_name, $this->files_suffix );
 		
-		$page_title = 'Login';
+		$page_title = $this->lang->line('login_page_title');
+
+		$content_data = array(
+
+			'lang_page_title' => $this->lang->line('login_page_title')
+
+		);
+
 		$content = $this->load->view( $filenames[ 'content' ], '', true );
 		
 		$page = $this->main_admin_model->getPage( 'header', $page_title, 'body', $filenames[ 'body_header' ], $filenames[ 'top_nav' ], 'body_content', $content );

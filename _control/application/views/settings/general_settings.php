@@ -5,12 +5,12 @@
     	<div class="widget first">
 		
   			<div class="head">
-				<h5>General Settings</h5>
+				<h5>{lang_page_title}</h5>
 			</div><!-- .head -->
 			
 			<div class="rowElem">
 			
-				<label>Website title</label>
+				<label>{lang_website_title}</label>
 				
 				<div class="formRight">
 					<input type="text" name="title" value="{website_title}" />
@@ -22,7 +22,7 @@
                 
 			<div class="rowElem">
 			
-				<label>Logo</label> 
+				<label>{lang_logo}</label> 
 				
 				<div class="formRight">
 				
@@ -32,7 +32,7 @@
 					   
 							<li>
 							
-								<a href="#" title="Logo" class = "img">
+								<a href="#" title="{lang_logo}" class = "img">
 									<img src="{BASE_URL}/uploads/{logo}" alt="" />
 								</a>
 								
@@ -57,7 +57,7 @@
                 
 			<div class="rowElem">
 			
-				<label>Copyright</label>
+				<label>{lang_copyright}</label>
 				
 				<div class="formRight">
 					<input type="text" name="copyright" value="{copyright}" />
@@ -77,6 +77,6 @@
                 
 		</div><!-- .widget .first -->
 		
-   	</fieldset>
+  </fieldset>
 	
 </form>

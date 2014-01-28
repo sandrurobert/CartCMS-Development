@@ -25,7 +25,7 @@ class Settings_admin_model extends CI_Model {
 	
 	function getUser( $id_user ) {
 	
-		$user_data = $this->db->query( " select * from ep_admin_users where id_user = '" . $id_user . "' " )->row();
+		$user_data = $this->db->query( " select * from ep_admin_users where id_user = '" . $id_user . "' " )->row_array();
 		
 		return $user_data;
 	

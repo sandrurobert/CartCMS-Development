@@ -29,7 +29,7 @@ class Pages extends CI_Controller {
 		$pages = $this->db->query( "select * from ep_pages" )->result();
 		
 		//fallback message
-		$no_content = "You don`t have any pages added.";
+		$no_content = $this->lang>line('error_no_pages');
 		
 		$page_title = 'Pages';
 		
