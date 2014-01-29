@@ -12,8 +12,17 @@ class Main_admin_model extends CI_Model {
 		$main_data[ 'HEADER' ] = $this->parser->parse( $header, array( 'page_title' => $title ), true );
 		
 		/* ------- generate content ------- */
-		$top_nav_parsed = $this->load->view( $top_nav, '', true );
-		$body_header_parsed = $this->parser->parse( $body_header, array( 'TOP_NAV' => $top_nav_parsed ), true );
+		if( $top_nav != strip_tags( $top_nav ) ) {
+
+			$body_header_parsed = $this->parser->parse( $body_header, array( 'TOP_NAV' => $top_nav ), true );
+
+		} else {
+
+			$top_nav_parsed = $this->load->view( $top_nav, '', true );
+			$body_header_parsed = $this->parser->parse( $body_header, array( 'TOP_NAV' => $top_nav_parsed ), true );
+
+		}
+		
 		$body_content_parsed = $this->parser->parse( $body_content, array( 'CONTENT' => $content ), true );
 		$body_footer_parsed = $this->load->view( $body_footer, '', true );
 		

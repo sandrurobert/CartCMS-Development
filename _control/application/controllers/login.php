@@ -32,13 +32,25 @@ class Login extends CI_Controller {
 
 		$content_data = array(
 
-			'lang_page_title' => $this->lang->line('login_page_title')
+			'lang_page_title' 			=> $this->lang->line('login_page_title'),
+			'lang_user_field' 			=> $this->lang->line('login_user_field'),
+			'lang_pass_field' 			=> $this->lang->line('login_pass_field'),
+			'lang_incorrect_login' 	=> $this->lang->line('error_incorrenct_login'),
+			'lang_required_input' 	=> $this->lang->line('error_required_input'),
+			'lang_submit_login' 		=> $this->lang->line('login_submit_login')
 
 		);
 
-		$content = $this->load->view( $filenames[ 'content' ], '', true );
+		$top_nav_data = array(
+
+			'lang_main_website'	=> $this->lang->line('login_main_website'),
+
+		);
+
+		$top_nav = $this->parser->parse( $filenames[ 'top_nav' ], $top_nav_data, true );
+		$content = $this->parser->parse( $filenames[ 'content' ], $content_data, true );
 		
-		$page = $this->main_admin_model->getPage( 'header', $page_title, 'body', $filenames[ 'body_header' ], $filenames[ 'top_nav' ], 'body_content', $content );
+		$page = $this->main_admin_model->getPage( 'header', $page_title, 'body', $filenames[ 'body_header' ], $top_nav, 'body_content', $content );
 		$this->parser->parse( 'base_template', $page );
 		
 	}

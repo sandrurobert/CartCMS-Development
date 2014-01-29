@@ -6,10 +6,10 @@
 			
 				<div class="back">
 				
-					<a href="../index.php" title="Main Website">
+					<a href="../index.php" title="{lang_main_website}">
 					
 						<img src="{BASE_URL}/img/topnav/mainWebsite.png" alt="Back" />
-						<span>Main website</span>
+						<span>{lang_main_website}</span>
 						
 					</a>
 					

@@ -2,7 +2,6 @@
 <title>TODO list</title>
 
 <high_priority>
-  <action>add lang array to login controller and view</action>
 </high_priority>
 
 <models>
@@ -13,4 +12,6 @@
   <action>Rename lang indexes by category. i.e 'login_page_title', 'login_username_field'</action>
 </lang>
 
-
+<pages_module>
+  <action>add confirmation message to delete button</action>
+</pages_module>

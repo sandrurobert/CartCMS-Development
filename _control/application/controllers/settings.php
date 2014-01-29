@@ -25,14 +25,14 @@ class Settings extends CI_Controller {
 		$settings = $this->settings_admin_model->getSettings();
 		$content_filename = $this->folder_name . 'general' . $this->files_suffix;
 		
-		$page_title = $this->lang->line('general_title');
+		$page_title = $this->lang->line('general_settings_page_title');
 
 		$langs = array(
 
-			'lang_page_title' 		=> $this->lang->line('general_title'),
-			'lang_website_title'	=> $this->lang->line('website_title'),
-			'lang_logo'						=> $this->lang->line('logo'),
-			'lang_copyright'			=> $this->lang->line('copyright')
+			'lang_page_title' 		=> $this->lang->line('general_settings_page_title'),
+			'lang_website_title'	=> $this->lang->line('general_settings_website_title'),
+			'lang_logo'						=> $this->lang->line('general_settings_logo'),
+			'lang_copyright'			=> $this->lang->line('general_settings_copyright')
 
 		);
 
@@ -53,14 +53,14 @@ class Settings extends CI_Controller {
 		$user_data = $this->settings_admin_model->getUser( $id_user );
 		$content_filename = $this->folder_name . 'user' . $this->files_suffix;
 		
-		$page_title = $this->lang->line('user_title');
+		$page_title = $this->lang->line('account_settings_page_title');
 
 		$langs = array(
 
-			'lang_page_title' 			=> $this->lang->line('user_title'),
+			'lang_page_title' 			=> $this->lang->line('account_settings_page_title'),
 			'lang_required_input' 	=> $this->lang->line('error_required_input'),
-			'lang_username'					=> $this->lang->line('username_field'),
-			'lang_password'					=> $this->lang->line('password_field'),
+			'lang_username'					=> $this->lang->line('account_settings_username_field'),
+			'lang_password'					=> $this->lang->line('account_settings_password_field'),
 
 		);
 
@@ -101,11 +101,11 @@ class Settings extends CI_Controller {
 	
 		$content_filename = $this->folder_name . 'modules' . $this->files_suffix;
 		
-		$page_title = $this->lang->line('modules_title');
+		$page_title = $this->lang->line('modules_settings_page_title');
 
 		$content_data = array(
 
-			'lang_page_title' 	=> $this->lang->line('modules_title'),
+			'lang_page_title' 	=> $this->lang->line('modules_settings_page_title'),
 			'lang_contruction' 	=> $this->lang->line('misc_construction')
 
 		);

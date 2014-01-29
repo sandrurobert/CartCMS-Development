@@ -7,7 +7,7 @@
 			<div class="loginPanel">
 			
 				<div class="head">
-					<h5 class="iUser">Login</h5>
+					<h5 class="iUser">{lang_page_title}</h5>
 				</div><!-- .head -->
 				
 				<div class="form">
@@ -15,7 +15,7 @@
 						<fieldset>
 							<div class="loginRow">
 							
-								<label>Username:</label>
+								<label>{lang_user_field}</label>
 								
 								<div class="loginInput nobg">
 									<input type="text" name="user" id="user" />
@@ -23,7 +23,7 @@
 								
 								<div class="inputError" id = "username">
 								
-									<label class="error" id="required">This input is required</label>
+									<label class="error" id="required">{lang_required_input}</label>
 								
 								</div><!-- .inputError -->
 								
@@ -33,7 +33,7 @@
 
 							<div class="loginRow">
 							
-								<label>Password:</label>
+								<label>{lang_pass_field}</label>
 								
 								<div class="loginInput nobg">
 									<input type="password" name="pass" id="pass" />
@@ -41,7 +41,7 @@
 								
 								<div class="inputError" id = "password">
 								
-									<label class="error" id="required">This input is required</label>
+									<label class="error" id="required">{lang_required_input}</label>
 								
 								</div><!-- .inputError -->
 								
@@ -53,11 +53,11 @@
 								
 								<div id = "log_in_error">
 								
-									<p>Incorrect username or password</p>
+									<p>{lang_incorrect_login}</p>
 								
 								</div><!-- #log_in_error -->
 								
-								<input type="submit" value="Log in" class="basicBtn submitForm" id="log_in" />
+								<input type="submit" value="{lang_submit_login}" class="basicBtn submitForm" id="log_in" />
 								<div class="fix"></div>
 								
 							</div><!-- .loginRow -->

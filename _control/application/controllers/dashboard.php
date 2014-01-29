@@ -18,15 +18,15 @@ class Dashboard extends CI_Controller {
 		
 		$stats = $this->dashboard_admin_model->getRecords();
 
-		$page_title = $this->lang->line('dashboard_title');
+		$page_title = $this->lang->line('dashboard_page_title');
 
 		$content_data = array(
 
 			'STATS' 							=> $stats,
 			'lang_page_title' 		=> $page_title,
-			'lang_records' 				=> $this->lang->line('website_records'),
-			'lang_amount' 				=> $this->lang->line('amount'),
-			'lang_records_added' 	=> $this->lang->line('records_added')
+			'lang_records' 				=> $this->lang->line('dashboard_website_records'),
+			'lang_amount' 				=> $this->lang->line('dashboard_amount'),
+			'lang_records_added' 	=> $this->lang->line('dashboard_records_added')
 
 		);
 
