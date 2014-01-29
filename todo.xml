@@ -2,12 +2,9 @@
 <title>TODO list</title>
 
 <high_priority>
+  <action>add confirmation message to delete button</action>
 </high_priority>
 
 <models>
   <action>Organize queries in models and functions in helpers</action>
 </models>
-
-<pages_module>
-  <action>add confirmation message to delete button</action>
-</pages_module>

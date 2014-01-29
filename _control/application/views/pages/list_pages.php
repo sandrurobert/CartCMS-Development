@@ -40,7 +40,7 @@
 				
 					<a href="{SITE_URL}/pages/page_delete/{id_page}" class = "deleteBtn">
 					
-						<button class="redBtn" >{lang_delete_column}</button><!-- .redBtn -->
+						<button class="redBtn bConfirm" >{lang_delete_column}</button><!-- .redBtn -->
 					
 					</a>
 					

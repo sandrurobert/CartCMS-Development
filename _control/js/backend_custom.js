@@ -113,5 +113,19 @@ $(document).ready(function() {
 		return true;
 	
 	});
+
+	//===== Alert windows =====//
+
+	$(".bConfirm").click( function() {
+
+		jConfirm('Are you sure you want to delete this page?', 'Delete page', function(r) {
+
+			jAlert('Confirmed: ' + r, 'Confirmation Results');
+
+		});
+
+		return false;
+
+	});
 		
 });
