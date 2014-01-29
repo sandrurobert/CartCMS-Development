@@ -2,7 +2,7 @@
 
 	<div class="head">
 
-      <h5>Pages</h5>
+      <h5>{lang_page_title}</h5>
 
   </div><!-- .head -->
 
@@ -12,6 +12,10 @@
 
   {no_content}
   <br>
-  <a href="{SITE_URL}/pages/add">Add a page</a>
+  <a href="{SITE_URL}/pages/add">
 
+    <button class="blueBtn add" >{lang_add_page}</button><!-- .blueBtn -->
+    
+  </a>
 </p>
+

@@ -15,12 +15,10 @@
 				</tr>
 			</thead>
 			<tbody>
-				{STATS}
 				<tr>
-					<td align="center"><a href="#" title="" class="webStatsLink">{no}</a></td>
-					<td align="center">{module_name}</td>
+					<td align="center"><a href="#" title="" class="webStatsLink">{pages_no}</a></td>
+					<td align="center">{page_record_name}</td>
 				</tr>
-				{/STATS}
 			</tbody>
 		</table>                    
 	</div>

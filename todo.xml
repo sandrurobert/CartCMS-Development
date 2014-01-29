@@ -8,10 +8,6 @@
   <action>Organize queries in models and functions in helpers</action>
 </models>
 
-<lang>
-  <action>Rename lang indexes by category. i.e 'login_page_title', 'login_username_field'</action>
-</lang>
-
 <pages_module>
   <action>add confirmation message to delete button</action>
 </pages_module>

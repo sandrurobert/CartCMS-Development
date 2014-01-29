@@ -1,10 +1,12 @@
 <?php
 
 /* ---- DASHBOARD --- */
-$lang['dashboard_page_title']       = "Dashboard";
-$lang['dashboard_website_records']  = "Website records";
-$lang['dashboard_amount']           = "Amount";
-$lang['dashboard_records_added']    = "Records added";
+$lang['dashboard_page_title']         = "Dashboard";
+$lang['dashboard_website_records']    = "Website records";
+$lang['dashboard_amount']             = "Amount";
+$lang['dashboard_records_added']      = "Record type";
+$lang['dashboard_pages_singular']     = "Page";
+$lang['dashboard_pages_plural']       = "Pages";
 
 /* ---- SETTINGS --- */
 
@@ -30,8 +32,21 @@ $lang['login_submit_login']   = "Log in";
 $lang['login_main_website']   = "Main website";
 
 /* ---- PAGES --- */
-$lang['pages'] = "Pages";
+$lang['pages_page_title']               = "Pages";
+$lang['pages_title_column']             = "Title";
+$lang['pages_edit_column']              = "Edit";
+$lang['pages_delete_column']            = "Delete";
+$lang['pages_add_page']                 = "Add page";
+$lang['pages_add_new_page']             = "Add a new page";
+$lang['pages_edit_page']                = "Edit page - ";
+$lang['pages_title_field']              = "Title";
+$lang['pages_content_type_field']       = "Content type";
+$lang['pages_content_field']            = "Content";
+$lang['pages_menu_options']             = "Menu options";
+$lang['pages_page_type_field']          = "Page type";
+$lang['pages_default_page_type_value']  = "Parent";
+$lang['pages_submit_form']              = "Submit";
 
 
-/* End of file error_lang.php */
+/* End of file english_lang.php */
 /* Location: ./_control/application/language/english/english_lang.php */

@@ -46,7 +46,7 @@ class Settings extends CI_Controller {
 	}
 	
 	/**
-	 * user settings
+	 * account settings
 	 */
 	function account( $id_user ) {
 	
@@ -74,7 +74,7 @@ class Settings extends CI_Controller {
 	}
 	
 	/**
-	 * user settings process
+	 * account settings process
 	 */
 	function account_process( $id_user ) {
 	

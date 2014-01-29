@@ -8,7 +8,7 @@
 				<h5>{lang_page_title}</h5>
 			</div><!-- .head -->
 			
-			<div class="rowElem">
+			<div class="rowElem nobg">
 			
 				<label>{lang_website_title}</label>
 				

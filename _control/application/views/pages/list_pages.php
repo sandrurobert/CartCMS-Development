@@ -2,53 +2,54 @@
 
 	<div class="head">
 	
-		<h5 class="iFrames">Pages</h5>
+		<h5 class="iFrames">{lang_page_title}</h5>
 		
 	</div><!-- .head -->
 	
 	<table cellpadding="0" cellspacing="0" width="100%" class="tableStatic resize">
 	
-    	<thead>
+  	<thead>
 		
-        	<tr>
+    	<tr>
 			
-            	<td width="80%">Title</td>
-            	<td>Edit</td>
-            	<td>Delete</td>
+      	<td width="80%">{lang_title_column}</td>
+      	<td>{lang_edit_column}</td>
+      	<td>{lang_delete_column}</td>
 				
-        	</tr>
+    	</tr>
 			
-    	</thead>
+  	</thead>
 		
-     	<tbody>
+   	<tbody>
 		
 			{PAGES}
-        	<tr>
+
+    	<tr>
 			
-            	<td>{title}</td>
-            	<td>
+      	<td>{title}</td>
+      	<td>
 				
 					<a href="{SITE_URL}/pages/edit/{id_page}">
 					
-						<button class="blackBtn" > edit </button><!-- .blackBtn -->
+						<button class="blackBtn" >{lang_edit_column}</button><!-- .blackBtn -->
 					
 					</a>
 				
 				</td>
-            	<td>
+      	<td>
 				
 					<a href="{SITE_URL}/pages/page_delete/{id_page}" class = "deleteBtn">
 					
-						<button class="redBtn" > delete </button><!-- .redBtn -->
+						<button class="redBtn" >{lang_delete_column}</button><!-- .redBtn -->
 					
 					</a>
 					
 				</td>
 				
-        	</tr>
+    	</tr>
 			{/PAGES}
 		
-     	</tbody>
+   	</tbody>
 		
 	</table>
 	
@@ -56,6 +57,6 @@
 
 <a href="{SITE_URL}/pages/add">
 
-	<button class="blueBtn add" > Add pages </button><!-- .blueBtn -->
+	<button class="blueBtn add" >{lang_add_page}</button><!-- .blueBtn -->
 	
 </a>

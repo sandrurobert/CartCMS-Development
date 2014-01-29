@@ -1,4 +1,4 @@
-<form method="post" class="mainForm">
+<form action = "{SITE_URL}/pages/edit_process/{id_page}" method="post" class="mainForm">
 
 	<fieldset>
 	
@@ -6,13 +6,13 @@
 		
 			<div class="head">
 			
-			  <h5>Edit "{title}" page</h5>
+			  <h5>{lang_edit_page}{title}</h5>
 			
 		  </div><!-- .head -->
 			
     	<div class="rowElem nobg">
 			
-      	<label>Title <span class = "req" >*</span></label>
+      	<label>{lang_title_field}<span class = "req" >*</span></label>
 				
         <div class="formRight">
 				
@@ -26,7 +26,7 @@
 			
 			<div class="rowElem nobg">
 			
-      	<label>Content Type</label>
+      	<label>{lang_content_type_field}</label>
 				
 				<div class="formRight noSearch">
 				
@@ -46,7 +46,7 @@
 			
  	    <div id="normal_content">
 
-      	<label id="wysiwyg-content">Content:</label>
+      	<label id="wysiwyg-content">{lang_content_field}</label>
       	<textarea name="content" class="wysiwyg" id="wysiwyg" rows="5" cols="">{content}</textarea>  
 	
       </div><!-- #normal_content -->
@@ -57,19 +57,19 @@
 		
       <div class="head">
 			
-				<h5>Menu options</h5>
+				<h5>{lang_menu_options}</h5>
 				
 			</div><!-- .head -->
 			
     	<div class="rowElem nobg">
 			
-      	<label>Page type</label>
+      	<label>{lang_page_type_field}</label>
 				
       	<div class="formRight noSearch">
 				
         	<select name="page_type"  class = "chzn-select" id = "page_type" >
 					
-         		<option value="1">Parent</option>
+         		<option value="1">{lang_default_page_type_value}</option>
               {PAGE_TYPE}
           	<option value="{id_page}" {selected}>{title}</option>
               {/PAGE_TYPE}
@@ -88,11 +88,11 @@
 			
 			<div class="rowElem">
 			
-				<label class = "allRequired"> * Please fill in all the required fields.</label>
+				<label class = "allRequired"> * {lang_required_fields}</label>
 		
 				<div class="formRight submitRight">
 				
-					<input type="submit" value="Submit" class="basicBtn edit" id = "editPages" />
+					<input type="submit" value="{lang_submit_form}" class="basicBtn edit" id = "submitPages" />
 				
 				</div><!-- .formRight -->
 				
@@ -105,5 +105,3 @@
  	</fieldset>
 	
 </form>
-
-<script type = "text/javascript"> var id_page = '{id_page}'; </script>

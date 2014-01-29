@@ -16,13 +16,24 @@ class Dashboard extends CI_Controller {
 	 */
 	function index() {
 		
-		$stats = $this->dashboard_admin_model->getRecords();
+		$page_records = $this->dashboard_admin_model->get_page_records();
+		$page_records_no = count( $page_records );
+		if( $page_records_no == 1 ) {
+
+			$page_records_name = $this->lang->line('dashboard_pages_singular');
+
+		} else {
+
+			$page_records_name = $this->lang->line('dashboard_pages_plural');
+			
+		}
 
 		$page_title = $this->lang->line('dashboard_page_title');
 
 		$content_data = array(
 
-			'STATS' 							=> $stats,
+			'pages_no' 						=> $page_records_no,
+			'page_record_name' 		=> $page_records_name,
 			'lang_page_title' 		=> $page_title,
 			'lang_records' 				=> $this->lang->line('dashboard_website_records'),
 			'lang_amount' 				=> $this->lang->line('dashboard_amount'),

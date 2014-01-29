@@ -93,14 +93,13 @@ $(document).ready(function() {
 
 	*/
 	
-	//===== Pages - verification & submit =====//
+	//===== Pages - form verification =====//
 	
 	$('.allRequired').hide();
 	
 	$('#submitPages').click( function() {
 	
 		$('.allRequired').hide();
-		$('#notifications div').remove();
 		
 		var title = $("input#title").val();
 		
@@ -111,104 +110,8 @@ $(document).ready(function() {
 			
 		}
 		
-		var asd = $('.chosen-select').val();
-		alert(asd);
-
-		$.post( site_url + "/pages/add_process", { 
-													title: $('input#title').val(), 
-													content: $("#wysiwyg").val(), 
-													//page_type: $('select#page_type .result-selected').val(),
-													page_type: $( '.chosen-select' ).val(),
-													module: $('select#modules .result-selected').val()
-												},
-			function( data ) { 
-			
-				if ( data == 'success' ) {
-				
-					$('input#title').val('');
-					
-					$("<div class='nNote nSuccess hideit'> <p><strong>SUCCESS: </strong>Page added successfully!</p> </div>").appendTo('#notifications');
-					$('#notifications').hide();
-					$('#notifications').fadeIn();
-					
-					setInterval( function() {
-					
-						$('#notifications div').fadeOut();
-						$('#notifications div').remove();
-					
-					}, 2000);
-				
-				} else {
-				
-					$("<div class='nNote nFailure hideit'> <p><strong>FAILURE: </strong>Hmmm... Please try again!</p> </div>").appendTo('#notifications');
-					$('#notifications').hide();
-					$('#notifications').fadeIn();
-					
-				}
-		});
-			
-		return false;
+		return true;
 	
 	});
-	
-	//edit pages
-	$('#editPages').click( function() {
-	
-		$('.allRequired').hide();
-		$('#notifications div').remove();
 		
-		var title = $("input#title").val();
-		
-		if ( title == '' ) {
-		
-			$('.allRequired').fadeIn();
-			return false;
-			
-		}
-		
-		page_type_selected = $( '#page_type_chzn' ).find( '.result-selected' );
-		page_type_id = page_type_selected.attr( 'id' );
-		page_type_value = page_type_id.slice( 17 );
-		
-		modules_selected = $( '#modules_chzn' ).find( '.result-selected' );
-		modules_id = modules_selected.attr( 'id' );
-		modules_value = modules_id.slice( 15 );
-		
-		$.post( site_url + "/pages/edit_process/" + id_page, { 
-													title: $('input#title').val(), 
-													content: $("#wysiwyg").val(), 
-													page_type: page_type_value, 
-													modules: $('#modules > option' ).val(),
-													meta_key: $('input#meta_key').val(), 
-													meta_descr: $('input#meta_descr').val() 
-												},
-			function( data ) { 
-			
-				if ( data == 'success' ) {
-				
-					$("<div class='nNote nSuccess hideit'> <p><strong>SUCCESS: </strong>Page edited successfully!</p> </div>").appendTo('#notifications');
-					$('#notifications').hide();
-					$('#notifications').fadeIn();
-					
-					setInterval( function() {
-					
-						$('#notifications div').fadeOut();
-						$('#notifications div').remove();
-					
-					}, 2000);
-				
-				} else {
-				
-					$("<div class='nNote nFailure hideit'> <p><strong>FAILURE: </strong>Hmmm... Please try again!</p> </div>").appendTo('#notifications');
-					$('#notifications').hide();
-					$('#notifications').fadeIn();
-					
-				}
-		});
-			
-		return false;
-	
-	});
-	
-	
 });
