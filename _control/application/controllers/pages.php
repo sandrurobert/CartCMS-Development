@@ -6,27 +6,28 @@ class Pages extends CI_Controller {
 
     parent::__construct();
 
-		/* ===== MODELS ===== */
-		$this->load->model( 'pages_model' );
-
 		//html files folder
 		$this->folder_name = 'pages/';
 
 		//files suffix
 		$this->files_suffix = '_pages';
 
-    }
+		/* ===== MODELS & HELPERS ===== */
+		$this->load->model( 'pages_model' );
+		$this->load->helper( 'pages' );
+
+  }
 
 	/**
-	 * pages
+	 * Pages main page
 	 */
 	function index() {
 
 		//get filenames
-		$filenames = $this->pages_model->getFilenames( $this->folder_name, $this->files_suffix );
+		$filenames = get_filenames( $this->folder_name, $this->files_suffix );
 
 		//get content
-		$pages = $this->db->query( "select * from ep_pages" )->result();
+		$pages = $this->pages_model->get_all_pages();
 
 		//fallback message
 		$no_content = $this->lang->line('error_no_pages');
@@ -54,22 +55,22 @@ class Pages extends CI_Controller {
 
 		}
 
-		$page = $this->main_admin_model->getPage( 'header', $page_title, 'body', 'body_header', 'top_nav', 'body_content', $content );
+		$page = page_builder( 'header', $page_title, 'body', 'body_header', 'top_nav', 'body_content', $content );
 		$this->parser->parse( 'base_template', $page );
 
 	}
 
 	/**
-	 * add a page
+	 * Add page
 	 */
 	function add() {
 
 		//get filenames
-		$filenames = $this->pages_model->getFilenames( $this->folder_name, $this->files_suffix );
+		$filenames = get_filenames( $this->folder_name, $this->files_suffix );
 
 		//get content
-		$page_type = $this->db->query("select * from ep_pages where page_type='1'")->result();
-		$modules = $this->db->query("select * from ep_modules")->result();
+		$page_type = $this->pages_model->get_parents();
+		$modules = $this->pages_model->get_modules();
 
 		$page_title = $this->lang->line('pages_page_title');
 
@@ -87,7 +88,7 @@ class Pages extends CI_Controller {
 																																	'lang_submit_form' 							=> $this->lang->line('pages_submit_form')
 																																), true );
 
-		$page = $this->main_admin_model->getPage( 'header', $page_title, 'body', 'body_header', 'top_nav', 'body_content', $content );
+		$page = page_builder( 'header', $page_title, 'body', 'body_header', 'top_nav', 'body_content', $content );
 		$this->parser->parse( 'base_template', $page );
 
 	}
@@ -116,23 +117,23 @@ class Pages extends CI_Controller {
 
 		$pages[ 'link_title' ] = $link_title;
 
-		$this->db->insert( "ep_pages", $pages );
+		$this->pages_model->insert_page( $pages );
 
 		redirect( 'pages' );
 
 	}
 
 	/**
-	 * edit a page
+	 * Edit page
 	 */
 	function edit( $id_page ) {
 
 		//get filenames
-		$filenames = $this->pages_model->getFilenames( $this->folder_name, $this->files_suffix );
+		$filenames = get_filenames( $this->folder_name, $this->files_suffix );
 
-		$page_info = $this->db->query( "select * from ep_pages where id_page = '".$id_page."' " )->row();
+		$page_info = $this->pages_model->get_page_by_id( $id_page );
 
-		$page_type = $this->db->query( "select * from ep_pages where page_type = '1' and id_page <> '".$id_page."'")->result();
+		$page_type = $this->pages_model->get_parents_by_id( $id_page );
 		foreach( $page_type as $type ) {
 
 			if( $page_info->page_type == $type->id_page ) {
@@ -147,7 +148,7 @@ class Pages extends CI_Controller {
 
 		}
 
-		$modules = $this->db->query( "select * from ep_modules" )->result();
+		$modules = $this->pages_model->get_modules();
 		foreach( $modules as $mod ){
 
 			if ( $mod->nickname == $page_info->module ) {
@@ -181,7 +182,7 @@ class Pages extends CI_Controller {
 																																	'lang_submit_form' 							=> $this->lang->line('pages_submit_form'),
 																																), true );
 
-		$page = $this->main_admin_model->getPage( 'header', $page_title, 'body', 'body_header', 'top_nav', 'body_content', $content );
+		$page = page_builder( 'header', $page_title, 'body', 'body_header', 'top_nav', 'body_content', $content );
 		$this->parser->parse( 'base_template', $page );
 
 	}
@@ -210,21 +211,22 @@ class Pages extends CI_Controller {
 
 		$pages[ 'link_title' ] = $link_title;
 
-		$this->db->update( "ep_pages", $pages, array( 'id_page' => $id_page ) );
+		$this->pages_model->update_page( $pages, $id_page );
 
 		redirect( 'pages' );
 
 	}
 
 	/**
-	 * delete a page
+	 * Delete a page
 	 */
 	function page_delete() {
 
 		$id_page = $this->input->post('id_page');
 
-		$this->db->query("delete from ep_pages where id_page = '".$id_page."' ");
-		redirect("pages");
+		$this->pages_model->delete_page( $id_page );
+
+		redirect( 'pages' );
 
 	}
 

@@ -2,23 +2,76 @@
 
 class Pages_model extends CI_Model {
 
-	/* -------------- FILENAMES -------------- */
-	function getFilenames ( $folder_name, $suffix ) {
-	
-		//no-content filename
-		$filename[ 'no-content' ] = $folder_name . 'no-content' . $suffix;
-		
-		//list content filename
-		$filename[ 'list' ] = $folder_name . 'list' . $suffix;
-		
-		//add page filename
-		$filename[ 'add_page' ] = $folder_name . 'add' . $suffix;
-		
-		//edit page filename
-		$filename[ 'edit_page' ] = $folder_name . 'edit' . $suffix;
-		
-		return $filename;
-	
+	/**
+	 * Gets all pages
+	 */
+	function get_all_pages() {
+
+		return $this->db->query( "select * from ep_pages" )->result();
+
 	}
-	
+
+	/**
+	 * Get page by id
+	 */
+	function get_page_by_id( $id_page ) {
+
+		return $this->db->query( "select * from ep_pages where id_page = '".$id_page."' " )->row();
+
+	}
+
+	/**
+	 * Gets all parent pages
+	 */
+	function get_parents() {
+
+		return $this->db->query("select * from ep_pages where page_type='1'")->result();
+
+	}
+
+	/**
+	 * Get parents by id
+	 */
+	function get_parents_by_id( $id_page ) {
+
+		return $this->db->query( "select * from ep_pages where page_type = '1' and id_page <> '".$id_page."'")->result();
+
+	}
+
+	/**
+	 * Gets all modules
+	 */
+	function get_modules() {
+
+		return $this->db->query("select * from ep_modules")->result();
+
+	}
+
+	/**
+	 * Inserts a new page
+	 */
+	function insert_page( $page ) {
+
+		return $this->db->insert( "ep_pages", $page );
+
+	}
+
+	/**
+	 * Update a page
+	 */
+	function update_page( $page, $id_page ) {
+
+		return $this->db->update( "ep_pages", $page, array( 'id_page' => $id_page ) );
+
+	}
+
+	/**
+	 * Delete a page
+	 */
+	function delete_page( $id_page ) {
+
+		return $this->db->query("delete from ep_pages where id_page = '".$id_page."' ");
+
+	}
+
 }

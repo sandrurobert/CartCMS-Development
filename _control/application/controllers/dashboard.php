@@ -3,19 +3,19 @@
 class Dashboard extends CI_Controller {
 
 	function __construct() {
-	
+
     parent::__construct();
-			
+
 		/* ===== MODELS ===== */
 		$this->load->model( 'dashboard_admin_model' );
-					 
+
   }
-	
+
 	/**
 	 * dashboard page
 	 */
 	function index() {
-		
+
 		$page_records = $this->dashboard_admin_model->get_page_records();
 		$page_records_no = count( $page_records );
 		if( $page_records_no == 1 ) {
@@ -25,7 +25,7 @@ class Dashboard extends CI_Controller {
 		} else {
 
 			$page_records_name = $this->lang->line('dashboard_pages_plural');
-			
+
 		}
 
 		$page_title = $this->lang->line('dashboard_page_title');
@@ -42,10 +42,10 @@ class Dashboard extends CI_Controller {
 		);
 
 		$content = $this->parser->parse( 'dashboard', $content_data, true );
-		
-		$page = $this->main_admin_model->getPage( 'header', $page_title, 'body', 'body_header', 'top_nav', 'body_content', $content, 'body_footer' );
+
+		$page = page_builder( 'header', $page_title, 'body', 'body_header', 'top_nav', 'body_content', $content, 'body_footer' );
 		$this->parser->parse( 'base_template', $page );
-		
+
 	}
-	
+
 }

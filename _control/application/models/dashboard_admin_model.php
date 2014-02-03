@@ -4,10 +4,10 @@ class Dashboard_admin_model extends CI_Model {
 
 
 	/**
-	 * pages dashboard stats
+	 * Dashboard stats - for pages
 	 */
 	function get_page_records () {
-	
+
 		return $this->db->query("select * from ep_pages")->result();
 
 	}

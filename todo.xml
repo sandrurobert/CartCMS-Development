@@ -4,6 +4,14 @@
 <high_priority>
 </high_priority>
 
-<models>
-  <action>Organize queries in models and functions in helpers</action>
-</models>
+<users>
+  <action>Create add new user</action>
+</users>
+
+<settings>
+  <action>Add general settings process</action>
+</settings>
+
+<errors>
+  <action>add error pages</action>
+</errors>
