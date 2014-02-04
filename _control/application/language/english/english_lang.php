@@ -11,10 +11,10 @@ $lang['dashboard_pages_plural']       = "Pages";
 /* ---- SETTINGS --- */
 
 //general settings
-$lang['general_settings_page_title']          = "General Settings";
-$lang['general_settings_website_title']       = "Website title";
-$lang['general_settings_logo']                = "Logo";
-$lang['general_settings_copyright']           = "Copyright";
+$lang['general_settings_page_title']                  = "General Settings";
+$lang['general_settings_website_title']               = "Website title";
+$lang['general_settings_website_logo']                = "Website Logo";
+$lang['general_settings_website_copyright']           = "Website Copyright";
 
 //account settings
 $lang['account_settings_page_title']       = "Account Settings";
@@ -40,7 +40,7 @@ $lang['pages_add_page']                 = "Add page";
 $lang['pages_add_new_page']             = "Add a new page";
 $lang['pages_edit_page']                = "Edit page - ";
 $lang['pages_title_field']              = "Title";
-$lang['pages_content_type_field']       = "Content type";
+$lang['pages_content_type_field']       = "Module";
 $lang['pages_content_field']            = "Content";
 $lang['pages_menu_options']             = "Menu options";
 $lang['pages_page_type_field']          = "Page type";

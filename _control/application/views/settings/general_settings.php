@@ -1,4 +1,4 @@
-<form action="{SITE_URL}/settings/settings_process" method="post" class="mainForm" enctype="multipart/form-data">
+<form action="{SITE_URL}/settings/general_process" method="post" class="mainForm" enctype="multipart/form-data">
 
 	<fieldset>
 
@@ -13,7 +13,7 @@
 				<label>{lang_website_title}</label>
 
 				<div class="formRight">
-					<input type="text" name="title" value="{website_title}" />
+					<input type="text" name="website_title" value="{website_title}" />
 				</div><!-- .formRight -->
 
 				<div class="fix"></div>
@@ -22,7 +22,7 @@
 
 			<div class="rowElem">
 
-				<label>{lang_logo}</label>
+				<label>{lang_website_logo}</label>
 
 				<div class="formRight">
 
@@ -32,14 +32,14 @@
 
 							<li>
 
-								<a href="#" title="{lang_logo}" class = "img">
-									<img src="{BASE_URL}/uploads/{logo}" alt="" />
+								<a href="#" title="{lang_website_logo}" class = "img">
+									<img src="{BASE_URL}/uploads/{website_logo}" alt="" />
 								</a>
 
 								<div class="actions">
 									<a href="#" title="">
 										<img src="{BASE_URL}/img/edit.png" alt="" />
-										<input type = "file" name = "logo" class = "default" />
+										<input type = "file" name = "website_logo" class = "default" />
 									</a>
 								</div>
 
@@ -57,10 +57,10 @@
 
 			<div class="rowElem">
 
-				<label>{lang_copyright}</label>
+				<label>{lang_website_copyright}</label>
 
 				<div class="formRight">
-					<input type="text" name="copyright" value="{copyright}" />
+					<input type="text" name="website_copyright" value="{website_copyright}" />
 				</div><!-- .formRight -->
 
 				<div class="fix"></div>

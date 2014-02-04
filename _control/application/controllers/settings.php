@@ -22,17 +22,20 @@ class Settings extends CI_Controller {
 	 */
 	function index() {
 
-		$settings = $this->settings_admin_model->getSettings();
+		$settings['website_title'] = $this->settings_admin_model->get_setting_by_name( 'website_title' );
+		$settings['website_logo'] = $this->settings_admin_model->get_setting_by_name( 'website_logo' );
+		$settings['website_copyright'] = $this->settings_admin_model->get_setting_by_name( 'website_copyright' );
+
 		$content_filename = $this->folder_name . 'general' . $this->files_suffix;
 
 		$page_title = $this->lang->line('general_settings_page_title');
 
 		$langs = array(
 
-			'lang_page_title' 		=> $this->lang->line('general_settings_page_title'),
-			'lang_website_title'	=> $this->lang->line('general_settings_website_title'),
-			'lang_logo'						=> $this->lang->line('general_settings_logo'),
-			'lang_copyright'			=> $this->lang->line('general_settings_copyright')
+			'lang_page_title' 						=> $this->lang->line('general_settings_page_title'),
+			'lang_website_title'					=> $this->lang->line('general_settings_website_title'),
+			'lang_website_logo'						=> $this->lang->line('general_settings_website_logo'),
+			'lang_website_copyright'			=> $this->lang->line('general_settings_website_copyright')
 
 		);
 
@@ -42,6 +45,35 @@ class Settings extends CI_Controller {
 
 		$page = page_builder( 'header', $page_title, 'body', 'body_header', 'top_nav', 'body_content', $content );
 		$this->parser->parse( 'base_template', $page );
+
+	}
+
+	/**
+	 * general settings process
+	 */
+	function general_process( $id_user ) {
+
+		$website_title[ 'value' ] = $this->input->post( 'website_title' );
+		$this->settings_admin_model->update_setting( $website_title, 'website_copyright' );
+
+		$website_logo[ 'value' ] = $this->input->post( 'website_logo' );
+		if( isset( $website_logo["info"] ) ) {
+
+				$path = './uploads/';
+				$random = basename($_FILES['picture']['name']);
+				$path = $path . $random;
+
+				move_uploaded_file($_FILES['picture']['tmp_name'], $path);
+
+				$website_logo[ 'name' ] = $random;
+
+				$this->settings_admin_model->update_setting( $website_logo, 'website_copyright' );
+		}
+
+		$website_copyright[ 'value' ] = $this->input->post( 'website_copyright' );
+		$this->settings_admin_model->update_setting( $website_copyright, 'website_copyright' );
+
+		redirect("settings");
 
 	}
 

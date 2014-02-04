@@ -2,6 +2,7 @@
 <title>TODO list</title>
 
 <high_priority>
+  <action>Fix account settings</action>
 </high_priority>
 
 <users>
@@ -9,7 +10,6 @@
 </users>
 
 <settings>
-  <action>Add general settings process</action>
 </settings>
 
 <errors>
