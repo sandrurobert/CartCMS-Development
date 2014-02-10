@@ -7,11 +7,34 @@
 
 <users>
   <action>Create add new user</action>
+  <action>change to ion-auth</action>
 </users>
-
-<settings>
-</settings>
 
 <errors>
   <action>add error pages</action>
 </errors>
+
+<session>
+  <action>change cookies settings</action>
+</session>
+
+<htaccess>
+  <action>for /index.php/</action>
+</htaccess>
+
+<helpers>
+  <action>functions for dumb</action>
+</helpers>
+
+<modules>
+  <action>install modularity & use it</action>
+</modules>
+
+<migrations>
+  <action>set up migrations</action>
+  <action>create migrations for base structure</action>
+</migrations>
+
+<inputs>
+  <action>second parameter, true</action>
+</inputs>
