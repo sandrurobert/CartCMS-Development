@@ -83,7 +83,7 @@ class Settings extends CI_Controller {
 	function account( $id_user ) {
 
 		$user_data = get_logged_user_by_id( $id_user );
-		$content_filename = $this->folder_name . 'user' . $this->files_suffix;
+		$content_filename = $this->folder_name . 'account' . $this->files_suffix;
 
 		$page_title = $this->lang->line('account_settings_page_title');
 
@@ -114,13 +114,14 @@ class Settings extends CI_Controller {
 
 		if ( $this->input->post( 'pass' ) ) {
 
-				$user_data[ 'pass' ] = $this->input->post( 'pass' );
+				$pass = $this->input->post( 'pass' );
+				$user_data[ 'pass' ] = md5($pass);
 
 		}
 
 		if( $this->settings_admin_model->update_user_by_id( $user_data, $id_user ) ) {
 
-			redirect( 'account/' . $id_user );
+			redirect( 'settings/account/' . $id_user );
 
 		}
 

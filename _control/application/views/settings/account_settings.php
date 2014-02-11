@@ -13,7 +13,7 @@
 				<label>{lang_username}</label>
 
 				<div class="formRight">
-					<input type="text" name="user" value="{user}" />
+					<input type="text" name="user" value="{user}" id="user" />
 				</div><!-- .formRight -->
 
 				<div class="inputError" id = "username">

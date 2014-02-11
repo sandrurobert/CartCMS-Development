@@ -62,7 +62,7 @@ $(document).ready(function() {
 
 		var user = $("input#user").val();
 
-		if ( user == '' ) {
+		if ( ! user.length ) {
 
 			$("#username").fadeIn();
 			$("#username").children('label#required').fadeIn();
