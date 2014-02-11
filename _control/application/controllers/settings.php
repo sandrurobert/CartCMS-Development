@@ -53,7 +53,7 @@ class Settings extends CI_Controller {
 	 */
 	function general_process( $id_user ) {
 
-		$website_title[ 'value' ] = $this->input->post( 'website_title' );
+		$website_title[ 'value' ] = $this->input->post( 'website_title', true );
 		$this->settings_admin_model->update_setting( $website_title, 'website_copyright' );
 
 		$website_logo[ 'value' ] = $this->input->post( 'website_logo' );
@@ -70,7 +70,7 @@ class Settings extends CI_Controller {
 				$this->settings_admin_model->update_setting( $website_logo, 'website_copyright' );
 		}
 
-		$website_copyright[ 'value' ] = $this->input->post( 'website_copyright' );
+		$website_copyright[ 'value' ] = $this->input->post( 'website_copyright', true );
 		$this->settings_admin_model->update_setting( $website_copyright, 'website_copyright' );
 
 		redirect("settings");
@@ -110,11 +110,11 @@ class Settings extends CI_Controller {
 	 */
 	function account_process( $id_user ) {
 
-		$user_data[ 'user' ] = $this->input->post( 'user' );
+		$user_data[ 'user' ] = $this->input->post( 'user', true );
 
 		if ( $this->input->post( 'pass' ) ) {
 
-				$pass = $this->input->post( 'pass' );
+				$pass = $this->input->post( 'pass', true );
 				$user_data[ 'pass' ] = md5($pass);
 
 		}

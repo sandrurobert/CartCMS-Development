@@ -64,8 +64,8 @@ class Login extends CI_Controller {
 	 */
 	function log_in() {
 
-			$username = mysql_real_escape_string( $this->input->post('user') );
-			$password = md5( $this->input->post('pass') );
+			$username = mysql_real_escape_string( $this->input->post('user', true) );
+			$password = md5( $this->input->post('pass', true) );
 
 			$access = $this->login_admin_model->get_access( $username, $password );
 

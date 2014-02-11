@@ -25,7 +25,3 @@
   <action>set up migrations</action>
   <action>create migrations for base structure</action>
 </migrations>
-
-<inputs>
-  <action>second parameter, true</action>
-</inputs>
