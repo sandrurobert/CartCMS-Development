@@ -3,6 +3,7 @@
 
 <high_priority>
   <action>application frontend fixes</action>
+  <action>create template structure for frontend</action>
 </high_priority>
 
 <users>
@@ -21,6 +22,10 @@
 <modules>
   <action>install modularity & use it</action>
 </modules>
+
+<queries>
+  <action>changes queries by CI actions</action>
+</queries>
 
 <migrations>
   <action>set up migrations</action>

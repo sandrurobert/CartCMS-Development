@@ -14,11 +14,16 @@
 | path to your installation.
 |
 */
-if (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS']=='on')
+if (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS']=='on') {
+
   $config['base_url'] = "https://".$_SERVER['HTTP_HOST'];
-else
+
+} else {
+
   $config['base_url'] = "http://".$_SERVER['HTTP_HOST'];
-  
+
+}
+
 $config['base_url'] .= str_replace(basename($_SERVER['SCRIPT_NAME']),"",$_SERVER['SCRIPT_NAME']);
 /*
 |--------------------------------------------------------------------------
@@ -248,15 +253,15 @@ $config['encryption_key'] = '';
 | 'sess_time_to_update'		= how many seconds between CI refreshing Session Information
 |
 */
-$config['sess_cookie_name']		= 'ci_session';
-$config['sess_expiration']		= 7200;
-$config['sess_expire_on_close']	= FALSE;
-$config['sess_encrypt_cookie']	= FALSE;
-$config['sess_use_database']	= FALSE;
-$config['sess_table_name']		= 'ci_sessions';
-$config['sess_match_ip']		= FALSE;
-$config['sess_match_useragent']	= TRUE;
-$config['sess_time_to_update']	= 300;
+$config['sess_cookie_name']		   = 'cisession';
+$config['sess_expiration']		   = 7200;
+$config['sess_expire_on_close']	 = TRUE;
+$config['sess_encrypt_cookie']	 = TRUE;
+$config['sess_use_database']	   = FALSE;
+$config['sess_table_name']		   = 'ci_sessions';
+$config['sess_match_ip']		     = TRUE;
+$config['sess_match_useragent']	 = TRUE;
+$config['sess_time_to_update']	 = 300;
 
 /*
 |--------------------------------------------------------------------------

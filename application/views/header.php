@@ -1,30 +1,30 @@
 <header id="header">
-	
+
 	<div class="container">
-		
-		<!-- - - - - - - - - - - - Logo - - - - - - - - - - - - - -->	
-		
+
+		<!-- - - - - - - - - - - - Logo - - - - - - - - - - - - - -->
+
 		<div id="logo">
-		
+
 			<div id = "logo-img">
-			
+
 				<img src="{BASE_URL}/_control/uploads/{logo}" alt="Logo" title="Logo" />
-			
+
 			</div><!--/ #logo-img-->
-		
+
 			<div id = "logo-text">
-			
+
 				<h1>{websiteTitle}</h1>
-			
+
 			</div><!--/ #logo-text-->
-		
-		</div><!--/ #logo-->	
-		
+
+		</div><!--/ #logo-->
+
 		<!-- - - - - - - - - - - end Logo - - - - - - - - - - - - -->
-		
+
 		<div class="clear"></div>
-		
-		<!-- - - - - - - - - - - - - Navigation - - - - - - - - - - - - - - -->	
+
+		<!-- - - - - - - - - - - - - Navigation - - - - - - - - - - - - - - -->
 
 		<nav id="navigation" class="navigation clearfix">
 
@@ -39,12 +39,11 @@
 				</li>
 				{/NAV}
 			</ul>
-			
+
 		</nav><!--/ #navigation-->
 
-		<!-- - - - - - - - - - - - end Navigation - - - - - - - - - - - - - -->	
-		
+		<!-- - - - - - - - - - - - end Navigation - - - - - - - - - - - - - -->
+
 	</div><!--/ .container-->
-	
+
 </header><!--/ #header-->
-	
