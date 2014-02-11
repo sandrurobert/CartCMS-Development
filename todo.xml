@@ -13,17 +13,9 @@
   <action>add error pages</action>
 </errors>
 
-<session>
-  <action>change cookies settings</action>
-</session>
-
 <htaccess>
   <action>for /index.php/</action>
 </htaccess>
-
-<helpers>
-  <action>functions for dumb</action>
-</helpers>
 
 <modules>
   <action>install modularity & use it</action>
