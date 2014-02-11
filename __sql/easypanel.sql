@@ -28,6 +28,16 @@ INSERT INTO `ep_admin_settings` (`id_setting`, `name`, `value`) VALUES
 (2, 'website_logo', ''),
 (3, 'website_copyright', '');
 
+CREATE TABLE IF NOT EXISTS  `ci_sessions` (
+	session_id varchar(40) DEFAULT '0' NOT NULL,
+	ip_address varchar(45) DEFAULT '0' NOT NULL,
+	user_agent varchar(120) NOT NULL,
+	last_activity int(10) unsigned DEFAULT 0 NOT NULL,
+	user_data text NOT NULL,
+	PRIMARY KEY (session_id),
+	KEY `last_activity_idx` (`last_activity`)
+);
+
 DROP TABLE IF EXISTS `ep_modules`;
 CREATE TABLE IF NOT EXISTS `ep_modules` (
   `id_module` int(11) NOT NULL AUTO_INCREMENT,
