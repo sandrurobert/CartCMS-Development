@@ -36,29 +36,188 @@ if (!function_exists('dump_exit')) {
 }
 
 /**
- * Builds the page using all template parts
+ * Builds the template using all parts, the template directory and additional data
+ * @return array with parsed data
  */
-if ( ! function_exists('page_builder')) {
+if ( ! function_exists('template_builder')) {
 
-  function page_builder(
-                          $title = '',
-                          $header = '',
-                          $content = '',
-                          $footer = '',
-                          $meta_descr = '',
-                          $meta_key = ''
-                        ) {
+  function template_builder($directory, $parts, $data) {
 
     $CI =& get_instance();
 
-    $data['TITLE'] = $title;
-    $data['HEADER'] = $CI->parser->parse( 'header', array( 'NAV' => $header ), true );
-    $data['MAIN'] = $content;
-    $data['TOP_FOOTER'] = $CI->parser->parse( 'footer', array( 'RECENT_POSTS' => $footer ), true );
-    $data['meta_descr'] = $meta_descr;
-    $data['meta_key'] = $meta_key;
+    /* --- building HEAD --- */
+    $head_data = array(
+      'page_title' => $data['page_title']
+    );
+    $view['HEAD'] = $CI->parser->parse( $directory . '/' . $parts['head'], $head_data, true );
 
-    return $data;
+    /* --- building HEADER --- */
+    $header_data = array(
+      'page_title' => $data['page_title']
+    );
+    $view['HEADER'] = $CI->parser->parse( $directory . '/' . $parts['header'], $header_data, true );
+
+    /* --- building NAV --- */
+    $nav_data = array(
+      'NAV' => get_nav()
+    );
+    $view['NAV'] = $CI->parser->parse( $directory . '/' . $parts['nav'], $nav_data, true );
+
+    /* --- building MAIN --- */
+    if( in_array('sidebar_left', $parts) && in_array('sidebar_right', $parts) ) {
+
+      $sidebar_left = $CI->parser->parse( $directory . '/' . $parts['sidebar_left'], get_sidebar_left(), true );
+      $sidebar_right = $CI->parser->parse( $directory . '/' . $parts['sidebar_right'], get_sidebar_right(), true );
+
+      $sidebars = array(
+        'sidebar_left'  => $sidebar_left,
+        'sidebar_right' => $sidebar_right,
+        'content' => $data['page_content']
+      );
+
+      $view['MAIN'] = $CI->parser->parse( $directory . '/' . $parts['simple_page_sidebars'], $sidebars, true );
+
+    } elseif( in_array('sidebar_left', $parts) && ! in_array('sidebar_right', $parts) ) {
+
+      $sidebar_left = $CI->parser->parse( $directory . '/' . $parts['sidebar_left'], get_sidebar_left(), true );
+
+      $sidebars = array(
+        'sidebar_left'  => $sidebar_left,
+        'sidebar_right' => '',
+        'content' => $data['page_content']
+      );
+
+      $view['MAIN'] = $CI->parser->parse( $directory . '/' . $parts['simple_page_sidebar_left'], $sidebars, true );
+
+    } elseif( ! in_array('sidebar_left', $parts) && in_array('sidebar_right', $parts) ) {
+
+      $sidebar_right = $CI->parser->parse( $directory . '/' . $parts['sidebar_right'], get_sidebar_right(), true );
+
+      $sidebars = array(
+        'sidebar_left'  => '',
+        'sidebar_right' => $sidebar_right,
+        'content' => $data['page_content']
+      );
+
+      $view['MAIN'] = $CI->parser->parse( $directory . '/' . $parts['simple_page_sidebar_right'], $sidebars, true );
+
+    } elseif( ! in_array('sidebar_left', $parts) && ! in_array('sidebar_right', $parts) ) {
+
+      $main_data = array(
+        'content' => $data['page_content']
+      );
+
+      $view['MAIN'] = $CI->parser->parse( $directory . '/' . $parts['simple_page_full'], $main_data, true );
+
+    }
+
+    /* --- building FOOTER --- */
+    $view['FOOTER'] = $CI->parser->parse( $directory . '/' . $parts['footer'], get_footer(), true );
+
+    return $view;
+
+  }
+
+}
+
+/**
+ * Builds the main navigation
+ * @return array of objects
+ */
+if ( ! function_exists('get_nav')) {
+
+  function get_nav() {
+
+    $CI =& get_instance();
+
+    $nav = $CI->main_model->get_parents();
+
+    foreach($nav as $menu) {
+
+      $chs = $CI->main_model->get_children($menu->id_page);
+
+      if ( ! empty( $chs ) ) {
+
+        foreach ( $chs as $kid ) {
+
+          $kid->s_page_link = site_url() . '/' . 'page' . '/' . $kid->link_title;
+          $kid->s_title = $kid->title;
+
+        }
+
+        $menu->S_NAV = $chs;
+
+      } else {
+
+        $menu->S_NAV = array();
+
+      }
+
+      if ( $menu->module == 'homepage' ) {
+
+        $menu->page_link = site_url();
+
+      } elseif( $menu->page_type == 0 ) {
+
+        $menu->page_link = '#';
+
+      } else {
+
+        $menu->page_link = site_url() . '/' . 'page' . '/' . $menu->link_title;
+
+      }
+
+    }
+
+    return $nav;
+
+  }
+
+}
+
+/**
+ * Builds the footer
+ * @return array of objects
+ */
+if ( ! function_exists('get_footer')) {
+
+  function get_footer() {
+
+    $footer['current_year'] = date('Y');
+
+    return $footer;
+
+  }
+
+}
+
+/**
+ * Builds the right sidebar
+ * @return array of objects
+ */
+if ( ! function_exists('get_sidebar_right')) {
+
+  function get_sidebar_right() {
+
+    $sidebar_right['info'] = 'Hello from sidebar right!';
+
+    return $sidebar_right;
+
+  }
+
+}
+
+/**
+ * Builds the left sidebar
+ * @return array of objects
+ */
+if ( ! function_exists('get_sidebar_left')) {
+
+  function get_sidebar_left() {
+
+    $sidebar_left['info'] = 'Hello from sidebar left!';
+
+    return $sidebar_left;
 
   }
 

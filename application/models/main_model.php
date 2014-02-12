@@ -25,51 +25,25 @@ class Main_model extends CI_Model {
 
   }
 
-	/* -------------- NAVIGATION -------------- */
-	function getHeader () {
+  /**
+    * Get parent pages
+    * @return array of objects
+    */
+  function get_parents () {
 
-		$nav = $this->db->query(" select * from ep_pages where page_type = '1' ")->result();
+  	return $this->db->query("select * from ep_pages where page_type = '1'")->result();
 
-		foreach($nav as $menu) {
+  }
 
-			$chs = $this->db->query("select * from ep_pages where page_type = '" . $menu->id_page . "' ")->result();
+  /**
+    * Get children pages
+    * @return array of objects
+    */
+  function get_children ( $id_page ) {
 
-			if ( ! empty( $chs ) ) {
+  	return $this->db->query("select * from ep_pages where page_type = '" . $id_page . "'")->result();
 
-				foreach ( $chs as $kid ) {
-
-					$kid->s_page_link = site_url() . "/page/" . $kid->link_title;
-					$kid->s_title = $kid->title;
-
-				}
-
-				$menu->S_NAV = $chs;
-
-			} else {
-
-				$menu->S_NAV = array();
-
-			}
-
-			if ( $menu->module == 'homepage' ) {
-
-				$menu->page_link = site_url();
-
-			} elseif( $menu->module == 'empty' ) {
-
-				$menu->page_link = '#';
-
-			} else {
-
-				$menu->page_link = site_url() . "/page/" . $menu->link_title;
-
-			}
-
-		}
-
-		return $nav;
-
-	}
+  }
 
 	/* -------------- FOOTER -------------- */
 	function getFooter () {

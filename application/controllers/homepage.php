@@ -17,13 +17,21 @@ class Homepage extends CI_Controller {
 
 		$page_info = $this->main_model->get_page_by_module('homepage');
 
-		$title = $page_info->title;
-		$header = $this->main_model->getHeader();
-		$content = $this->getContent($page_info);
-		$footer = $this->main_model->getFooter();
+    $parts = array(
+      'head'              => $page_info->title,
+      'header'            => $page_info->title,
+      'nav'               => 'nav',
+      'simple_page_full'  => 'simple_page_full',
+      'footer'            => 'footer'
+    );
 
-		$main_data = $this->main_model->getParse( $title, $header, $content, $footer, $meta_descr, $meta_key );
-    $this->parser->parse( 'base_template', $main_data );
+    $data = array(
+      'page_title'    => $page_info->title,
+      'page_content'  => $page_info->content
+    );
+
+		$template = template_builder( 'default', $parts, $data );
+    $this->parser->parse( 'default/base', $template );
 
 	}
 

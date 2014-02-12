@@ -6,8 +6,10 @@ class MY_Controller extends CI_Controller {
 
     parent::__construct();
 
+    $this->load->helper('general_helper');
+
     /* ===== SESSION VERIF. ===== */
-    if( ! $this->login_admin_model->sessionVerif() ) {
+    if( ! session_verif() ) {
 
       redirect( 'login' );
 

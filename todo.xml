@@ -3,43 +3,70 @@
 
 <high_priority>
   <action>application frontend fixes</action>
-  <action>create template structure for frontend</action>
+  <action>FIX template structure for frontend</action>
 </high_priority>
 
-<users>
-  <action>Create add new user</action>
-  <action>change to ion-auth</action>
-</users>
 
-<errors>
-  <action>add error pages</action>
-</errors>
+<backend>
 
-<htaccess>
-  <action>for /index.php/</action>
-</htaccess>
+  <pages>
+    <action>add empty page type, value to 0</action>
+  </pages>
 
-<modules>
-  <action>install modularity & use it</action>
-</modules>
+  <config>
+    <action>create config file for cms</action>
+  </config>
 
-<queries>
-  <action>changes queries by CI actions</action>
-</queries>
+  <errors>
+    <action>add error pages</action>
+  </errors>
 
-<migrations>
-  <action>set up migrations</action>
-  <action>create migrations for base structure</action>
-</migrations>
+  <users>
+    <action>Create add new user</action>
+    <action>change to ion-auth</action>
+  </users>
 
-<enviroment>
-  <action>set development and production enviroments</action>
-</enviroment>
+</backend>
 
-<database>
-  <action>set better settings</action>
-</database>
 
-<config>
-  <action>create config file for cms</action>
-</config>
+<frontend>
+
+  <lang>
+    <action>lang to frontend</action>
+  </lang>
+
+  <templates>
+    <action>add fallback template parts</action>
+  </templates>
+
+</frontend>
+
+
+<both>
+
+  <database>
+    <action>set better settings</action>
+  </database>
+
+  <enviroment>
+    <action>set development and production enviroments</action>
+  </enviroment>
+
+  <migrations>
+    <action>set up migrations</action>
+    <action>create migrations for base structure</action>
+  </migrations>
+
+  <queries>
+    <action>changes queries by CI actions</action>
+  </queries>
+
+  <modules>
+    <action>install modularity & use it</action>
+  </modules>
+
+  <htaccess>
+    <action>for /index.php/</action>
+  </htaccess>
+
+</both>

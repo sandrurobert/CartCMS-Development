@@ -59,7 +59,7 @@ if ( ! function_exists('session_verif')) {
 
     if ( $CI->session->userdata( 'inside' ) == true ) {
 
-      return true;
+      return true; dumb('dsfsdf');
 
     } else {
 
