@@ -31,3 +31,15 @@
   <action>set up migrations</action>
   <action>create migrations for base structure</action>
 </migrations>
+
+<enviroment>
+  <action>set development and production enviroments</action>
+</enviroment>
+
+<database>
+  <action>set better settings</action>
+</database>
+
+<config>
+  <action>create config file for cms</action>
+</config>
