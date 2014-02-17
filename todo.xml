@@ -2,8 +2,6 @@
 <title>TODO list</title>
 
 <high_priority>
-  <action>application frontend fixes</action>
-  <action>FIX template structure for frontend</action>
 </high_priority>
 
 
@@ -66,8 +64,8 @@
     <action>install modularity & use it</action>
   </modules>
 
-  <folders>
-    <action>move css, js, img folders to application and rename img folder</action>
-  </folders>
+  <upload>
+    <action>add upload location</action>
+  </upload>
 
 </both>

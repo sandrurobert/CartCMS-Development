@@ -12,7 +12,7 @@
 
 $hook['post_controller'][] = array(
                                 'class'    => 'Main_hook',
-                                'function' => 'fix_base_url',
+                                'function' => 'urls',
                                 'filename' => 'main_hook.php',
                                 'filepath' => 'hooks'
                                 );

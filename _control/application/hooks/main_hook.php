@@ -3,17 +3,19 @@
 class Main_hook {
 
 	/**
-	 * fixing the base url and site url
+	 * making parsed urls
 	 */
-	public function fix_base_url() {
+	public function urls() {
 
 		$CI =& get_instance();
  	  $this->output = & $CI->output;
   	$output = $this->output->get_output();
 
     $base_url = rtrim(base_url(),'/');
+    $app_url = base_url() . 'application';
 
-    $output = str_replace('{BASE_URL}', $base_url,$output);
+    $output = str_replace('{BASE_URL}', $base_url, $output);
+    $output = str_replace('{APP_URL}', $app_url, $output);
 
 		$this->output->set_output($output);
 

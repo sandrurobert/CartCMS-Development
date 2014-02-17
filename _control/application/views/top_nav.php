@@ -16,7 +16,7 @@
 
 						<a href="{BASE_URL}/login/log_out" title="Log out">
 
-							<img src="{BASE_URL}/img/topnav/logout.png" alt="" />
+							<img src="{APP_URL}/images/topnav/logout.png" alt="" />
 							<span>Log Out</span>
 
 						</a>

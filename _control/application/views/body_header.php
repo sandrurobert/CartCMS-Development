@@ -4,8 +4,8 @@
 
 	<div class="logo">
 
-		<a href="{BASE_URL}/admin_panel" title="">
-			<img src="{BASE_URL}/img/loginLogo.png" alt="logo" />
+		<a href="{BASE_URL}/dashboard" title="">
+			<img src="{APP_URL}/images/loginLogo.png" alt="logo" />
 		</a>
 
 	</div><!-- .logo -->

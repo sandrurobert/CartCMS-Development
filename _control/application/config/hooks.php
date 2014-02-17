@@ -12,18 +12,18 @@
 
 $hook['post_controller'][] = array(
                                 'class'    => 'Main_hook',
-                                'function' => 'fix_base_url',
+                                'function' => 'urls',
                                 'filename' => 'main_hook.php',
                                 'filepath' => 'hooks'
                                 );
-								
+
 $hook['post_controller'][] = array(
                                 'class'    => 'Main_hook',
                                 'function' => 'cleaning',
                                 'filename' => 'main_hook.php',
                                 'filepath' => 'hooks'
                                 );
-								
+
 $hook['post_controller'][] = array(
                                 'class'    => 'Main_hook',
                                 'function' => 'user_info',
@@ -32,4 +32,4 @@ $hook['post_controller'][] = array(
                                 );
 
 /* End of file hooks.php */
-/* Location: ./application/config/hooks.php */
+/* Location: ./_control/application/config/hooks.php */
