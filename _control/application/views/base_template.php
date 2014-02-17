@@ -7,7 +7,7 @@
 	</head>
 
 	<body>
-	
+
 {BODY}
 
 	</body>

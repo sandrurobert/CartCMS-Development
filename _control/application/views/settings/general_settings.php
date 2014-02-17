@@ -1,4 +1,4 @@
-<form action="{SITE_URL}/settings/general_process" method="post" class="mainForm" enctype="multipart/form-data">
+<form action="{BASE_URL}/settings/general_process" method="post" class="mainForm" enctype="multipart/form-data">
 
 	<fieldset>
 

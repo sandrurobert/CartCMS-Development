@@ -11,12 +11,9 @@ class Main_hook {
  	  $this->output = & $CI->output;
   	$output = $this->output->get_output();
 
-		$site_url = site_url();
-  	$base_url = base_url();
+		$base_url = rtrim(base_url(),'/');
 
-		$output = str_replace('{BASE_URL}/',$base_url,$output);
- 	  $output = str_replace('{BASE_URL}',$base_url,$output);
-  	$output = str_replace('{SITE_URL}',$site_url,$output);
+    $output = str_replace('{BASE_URL}', $base_url,$output);
 
 		$this->output->set_output($output);
 

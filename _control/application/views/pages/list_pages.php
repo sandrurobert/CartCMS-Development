@@ -29,7 +29,7 @@
       	<td>{title}</td>
       	<td>
 
-					<a href="{SITE_URL}/pages/edit/{id_page}">
+					<a href="{BASE_URL}/pages/edit/{id_page}">
 
 						<button class="blackBtn" >{lang_edit_column}</button><!-- .blackBtn -->
 
@@ -51,7 +51,7 @@
 
 </div><!-- .widget .first -->
 
-<a href="{SITE_URL}/pages/add">
+<a href="{BASE_URL}/pages/add">
 
 	<button class="blueBtn add" >{lang_add_page}</button><!-- .blueBtn -->
 

@@ -150,7 +150,7 @@ if ( ! function_exists('get_nav')) {
 
         foreach ( $chs as $kid ) {
 
-          $kid->s_page_link = site_url() . '/' . 'page' . '/' . $kid->link_title;
+          $kid->s_page_link = site_url() . 'page' . '/' . $kid->link_title;
           $kid->s_title = $kid->title;
 
         }
@@ -173,7 +173,7 @@ if ( ! function_exists('get_nav')) {
 
       } else {
 
-        $menu->page_link = site_url() . '/' . 'page' . '/' . $menu->link_title;
+        $menu->page_link = site_url() . 'page' . '/' . $menu->link_title;
 
       }
 

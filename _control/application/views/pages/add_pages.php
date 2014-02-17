@@ -1,4 +1,4 @@
-<form action = "{SITE_URL}/pages/add_process" method = "post" class = "mainForm" >
+<form action = "{BASE_URL}/pages/add_process" method = "post" class = "mainForm" >
 
 	<fieldset>
 

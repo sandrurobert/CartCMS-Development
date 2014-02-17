@@ -53,14 +53,6 @@
 
 <both>
 
-  <database>
-    <action>set better settings</action>
-  </database>
-
-  <enviroment>
-    <action>set development and production enviroments</action>
-  </enviroment>
-
   <migrations>
     <action>set up migrations</action>
     <action>create migrations for base structure</action>
@@ -74,8 +66,8 @@
     <action>install modularity & use it</action>
   </modules>
 
-  <htaccess>
-    <action>for /index.php/</action>
-  </htaccess>
+  <folders>
+    <action>move css, js, img folders to application and rename img folder</action>
+  </folders>
 
 </both>

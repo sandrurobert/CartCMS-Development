@@ -31,7 +31,7 @@ $(document).ready(function() {
 
 		}
 
-		$.post( site_url + "/login/log_in", {
+		$.post( base_url + "/login/log_in", {
 												user: $('input#user').val(),
 												pass: $('input#pass').val()
 											},
@@ -39,7 +39,7 @@ $(document).ready(function() {
 
 				if ( data == 1 ){
 
-					document.location = site_url + '/dashboard';
+					document.location = base_url + '/dashboard';
 
 				} else {
 
@@ -114,7 +114,7 @@ $(document).ready(function() {
 	function delete_page( id_page ) {
 
 		$.ajax({
-			url: site_url + '/pages/page_delete',
+			url: base_url + '/pages/page_delete',
 			type: 'POST',
 			data: { id_page: id_page },
 			success: function(data) {

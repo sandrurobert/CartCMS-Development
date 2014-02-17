@@ -20,7 +20,7 @@
 					<td align="center">{page_record_name}</td>
 				</tr>
 			</tbody>
-		</table>                    
+		</table>
 	</div>
 
 </div>

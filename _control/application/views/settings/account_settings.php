@@ -1,4 +1,4 @@
-<form action="{SITE_URL}/settings/account_process/{id_loggedUser}" method="post" class="mainForm" enctype="multipart/form-data">
+<form action="{BASE_URL}/settings/account_process/{id_loggedUser}" method="post" class="mainForm" enctype="multipart/form-data">
 
 	<fieldset>
 
