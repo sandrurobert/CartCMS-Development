@@ -1,5 +1,6 @@
+
 <?php
-class Frontend {
+class Main_hook {
 
 	/**
 	 * fixing the base url and site url
