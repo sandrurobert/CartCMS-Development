@@ -11,6 +11,7 @@
 
   <pages>
     <action>add empty page type, value to 0</action>
+    <action>add template parts</action>
   </pages>
 
   <config>
@@ -25,6 +26,14 @@
     <action>Create add new user</action>
     <action>change to ion-auth</action>
   </users>
+
+  <sidebars>
+    <action>edit sidebars content</action>
+  </sidebars>
+
+  <modules>
+    <action>if homepage exist, don't show in options menu</action>
+  </modules>
 
 </backend>
 

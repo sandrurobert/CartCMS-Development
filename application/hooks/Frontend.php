@@ -45,14 +45,14 @@ class Frontend {
  	  $this->output = & $CI->output;
   	$output = $this->output->get_output();
 
-		$title = $CI->db->query("select * from ep_admin_settings where name = 'website_title'")->row();
-		$output = str_replace('{website_title}',$title->value,$output);
+		$website_title = $CI->db->get_where('ep_admin_settings', array('name' => 'website_title'))->row()->value;
+		$output = str_replace('{website_title}', $website_title, $output);
 
-		$logo = $CI->db->query("select * from ep_admin_settings where name = 'website_logo'")->row();
-		$output = str_replace('{website_logo}',$logo->value,$output);
+		$website_logo = $CI->db->get_where('ep_admin_settings', array('name' => 'website_logo'))->row()->value;
+		$output = str_replace('{website_logo}', $website_logo, $output);
 
-		$copyright = $CI->db->query("select * from ep_admin_settings where name = 'website_copyright'")->row();
-		$output = str_replace('{website_copyright}',$copyright->value,$output);
+		$website_copyright = $CI->db->get_where('ep_admin_settings', array('name' => 'website_copyright'))->row()->value;
+		$output = str_replace('{website_copyright}', $website_copyright, $output);
 
 		$this->output->set_output($output);
 

@@ -17,20 +17,12 @@ class Homepage extends CI_Controller {
 
 		$page_info = $this->main_model->get_page_by_module('homepage');
 
-    $parts = array(
-      'head'              => $page_info->title,
-      'header'            => $page_info->title,
-      'nav'               => 'nav',
-      'simple_page_full'  => 'simple_page_full',
-      'footer'            => 'footer'
-    );
-
     $data = array(
       'page_title'    => $page_info->title,
-      'page_content'  => $page_info->content
+      'page_content'  => $this->getContent($page_info)
     );
 
-		$template = template_builder( 'default', $parts, $data );
+		$template = template_builder( 'default', page_sidebars(), $data );
     $this->parser->parse( 'default/base', $template );
 
 	}
@@ -38,9 +30,9 @@ class Homepage extends CI_Controller {
 	/**
 		* Content for homepage
 		*/
-	public function getContent ( $content_type, $content, $page_title ) {
+	public function getContent ( $page ) {
 
-		return $page_info->content;
+		return $page->content;
 
   }
 }

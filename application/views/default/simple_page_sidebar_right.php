@@ -1,4 +1,4 @@
-<div class="two-thirds columns">
+<div class="two-thirds column">
 
 	<p>{content}</p>
 

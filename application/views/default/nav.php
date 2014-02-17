@@ -4,7 +4,7 @@
 
 		<ul class="sixteen columns">
 			{NAV}
-			<li class="one column"><a href="{page_link}">{title}</a>
+			<li class="two columns"><a href="{page_link}">{title}</a>
 
 				<ul class="sixteen columns">
 					{S_NAV}
