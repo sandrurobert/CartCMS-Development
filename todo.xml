@@ -29,10 +29,6 @@
     <action>edit sidebars content</action>
   </sidebars>
 
-  <modules>
-    <action>if homepage exist, don't show in options menu</action>
-  </modules>
-
   <settings>
     <action>fix upload website logo</action>
   </settings>

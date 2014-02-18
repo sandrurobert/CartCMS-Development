@@ -68,11 +68,10 @@ class Pages extends MY_Controller {
 		//get filenames
 		$filenames = get_filenames( $this->folder_name, $this->files_suffix );
 
-		//get content
+		$page_title = $this->lang->line('pages_page_title');
+
 		$page_type = $this->pages_model->get_parents();
 		$modules = $this->pages_model->get_modules();
-
-		$page_title = $this->lang->line('pages_page_title');
 
 		$content = $this->parser->parse( $filenames[ 'add_page' ], array(
 																																	'PAGE_TYPE' 										=> $page_type,
@@ -148,7 +147,7 @@ class Pages extends MY_Controller {
 
 		}
 
-		$modules = $this->pages_model->get_modules();
+		$modules = $this->pages_model->get_modules($page_info->module);
 		foreach( $modules as $mod ){
 
 			if ( $mod->nickname == $page_info->module ) {
