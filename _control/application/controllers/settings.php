@@ -54,7 +54,7 @@ class Settings extends MY_Controller {
 	function general_process( $id_user ) {
 
 		$website_title[ 'value' ] = $this->input->post( 'website_title', true );
-		$this->settings_admin_model->update_setting( $website_title, 'website_copyright' );
+		$this->settings_admin_model->update_setting( $website_title, 'website_title' );
 
 		$website_logo[ 'value' ] = $this->input->post( 'website_logo' );
 		if( isset( $website_logo["info"] ) ) {
@@ -67,7 +67,7 @@ class Settings extends MY_Controller {
 
 				$website_logo[ 'name' ] = $random;
 
-				$this->settings_admin_model->update_setting( $website_logo, 'website_copyright' );
+				$this->settings_admin_model->update_setting( $website_logo, 'website_logo' );
 		}
 
 		$website_copyright[ 'value' ] = $this->input->post( 'website_copyright', true );
