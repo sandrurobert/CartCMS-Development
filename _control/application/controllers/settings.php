@@ -59,7 +59,8 @@ class Settings extends MY_Controller {
 		$website_logo[ 'value' ] = $this->input->post( 'website_logo' );
 		if( isset( $website_logo["info"] ) ) {
 
-				$path = './uploads/';
+				$basepath = rtrim(BASEPATH, 'system/');
+				$path = $basepath . 'uploads/';
 				$random = basename($_FILES['picture']['name']);
 				$path = $path . $random;
 

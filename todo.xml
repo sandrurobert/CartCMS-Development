@@ -33,6 +33,10 @@
     <action>if homepage exist, don't show in options menu</action>
   </modules>
 
+  <settings>
+    <action>fix upload website logo</action>
+  </settings>
+
 </backend>
 
 
@@ -63,9 +67,5 @@
   <modules>
     <action>install modularity & use it</action>
   </modules>
-
-  <upload>
-    <action>add upload location</action>
-  </upload>
 
 </both>
