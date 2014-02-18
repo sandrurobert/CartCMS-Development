@@ -10,6 +10,7 @@
   <pages>
     <action>add empty page type, value to 0</action>
     <action>add template parts</action>
+    <action>add page ordering</action>
   </pages>
 
   <config>
@@ -32,6 +33,10 @@
   <settings>
     <action>fix upload website logo</action>
   </settings>
+
+  <themes>
+    <action>add themes</action>
+  </themes>
 
 </backend>
 
