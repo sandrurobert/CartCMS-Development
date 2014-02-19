@@ -8,7 +8,7 @@ class Dashboard_admin_model extends CI_Model {
 	 */
 	function get_page_records () {
 
-		return $this->db->query("select * from ep_pages")->result();
+		return $this->db->get('ep_pages')->result();
 
 	}
 

@@ -13,7 +13,7 @@ class Main_model extends CI_Model {
     */
   function get_page_by_module ( $module ) {
 
-  	return $this->db->query("select * from ep_pages where module = '" . $module . "'")->row();
+    return $this->db->get_where('ep_pages', array('module' => $module))->row();
 
   }
 
@@ -22,7 +22,7 @@ class Main_model extends CI_Model {
     */
   function get_page_by_link_title ( $link_title ) {
 
-    return $this->db->query("select * from ep_pages where link_title = '" . $link_title . "'")->row();
+    return $this->db->get_where('ep_pages', array('link_title' => $link_title))->row();
 
   }
 
@@ -32,7 +32,7 @@ class Main_model extends CI_Model {
     */
   function get_parents () {
 
-  	return $this->db->query("select * from ep_pages where page_type = '1'")->result();
+  	return $this->db->get_where('ep_pages', array('page_type' => '1'))->result();
 
   }
 
@@ -42,7 +42,7 @@ class Main_model extends CI_Model {
     */
   function get_children ( $id_page ) {
 
-  	return $this->db->query("select * from ep_pages where page_type = '" . $id_page . "'")->result();
+    return $this->db->get_where('ep_pages', array('page_type' => $id_page))->result();
 
   }
 

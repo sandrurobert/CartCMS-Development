@@ -7,7 +7,7 @@ class General_admin_model extends CI_Model {
 	 */
 	function logged_user( $id_user ) {
 
-		return $this->db->query( " select * from ep_admin_users where id_user = '" . $id_user . "' " )->row_array();
+		return $this->db->get_where('ep_admin_users', array('id_user' => $id_user))->row_array();
 
 	}
 

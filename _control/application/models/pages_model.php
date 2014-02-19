@@ -7,7 +7,7 @@ class Pages_model extends CI_Model {
 	 */
 	function get_all_pages() {
 
-		return $this->db->query( "select * from ep_pages" )->result();
+		return $this->db->get('ep_pages')->result();
 
 	}
 
@@ -16,7 +16,7 @@ class Pages_model extends CI_Model {
 	 */
 	function get_page_by_id( $id_page ) {
 
-		return $this->db->query( "select * from ep_pages where id_page = '".$id_page."' " )->row();
+		return $this->db->get_where('ep_pages', array('id_page' => $id_page))->row();
 
 	}
 
@@ -25,7 +25,7 @@ class Pages_model extends CI_Model {
 	 */
 	function get_parents() {
 
-		return $this->db->query("select * from ep_pages where page_type='1'")->result();
+		return $this->db->get_where('ep_pages', array('page_type' => '1'))->result();
 
 	}
 
@@ -34,7 +34,7 @@ class Pages_model extends CI_Model {
 	 */
 	function get_parents_by_id( $id_page ) {
 
-		return $this->db->query( "select * from ep_pages where page_type = '1' and id_page <> '".$id_page."'")->result();
+		return $this->db->get('ep_pages')->where('page_type', '1')->where('id_page !=', $id_page)->result();
 
 	}
 
@@ -53,9 +53,9 @@ class Pages_model extends CI_Model {
 		}
 
 		if ($homepage_exists) {
-			return $this->db->query("select * from ep_modules where nickname <> 'homepage'")->result();
+			return $this->db->get('ep_modules')->where('nickname !=', 'homepage')->result();
 		} else {
-			return $this->db->query("select * from ep_modules")->result();
+			return $this->db->get('ep_modules')->result();
 		}
 
 	}
@@ -83,7 +83,7 @@ class Pages_model extends CI_Model {
 	 */
 	function delete_page( $id_page ) {
 
-		return $this->db->query("delete from ep_pages where id_page = '".$id_page."' ");
+		return $this->db->delete('ep_pages', array('id_page' => $id_page));
 
 	}
 

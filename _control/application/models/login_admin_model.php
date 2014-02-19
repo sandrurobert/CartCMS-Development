@@ -7,7 +7,7 @@ class Login_admin_model extends CI_Model {
 	 */
 	function get_access( $username, $password ) {
 
-		return $this->db->query("select * from ep_admin_users where user = '" . $username . "' and pass = '" . $password . "'")->row();
+		return $this->db->get_where('ep_admin_users', array('user' => $username, 'pass' => $password))->row();
 
 	}
 

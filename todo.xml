@@ -61,10 +61,6 @@
     <action>create migrations for base structure</action>
   </migrations>
 
-  <queries>
-    <action>changes queries by CI actions</action>
-  </queries>
-
   <modules>
     <action>install modularity & use it</action>
   </modules>
