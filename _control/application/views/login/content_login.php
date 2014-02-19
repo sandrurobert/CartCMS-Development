@@ -1,7 +1,7 @@
 		<div class="loginWrapper">
 
 			<div class="loginLogo">
-				<img src="{BASE_URL}/img/loginLogo.png" alt="Logo" />
+				<img src="{APP_URL}/images/loginLogo.png" alt="Logo" />
 			</div><!-- .loginLogo -->
 
 			<div class="loginPanel">
