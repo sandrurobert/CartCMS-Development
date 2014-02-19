@@ -60,7 +60,7 @@ class Settings extends MY_Controller {
 		if( isset( $website_logo["info"] ) ) {
 
 				$basepath = rtrim(BASEPATH, 'system/');
-				$path = $basepath . 'uploads/';
+				$path = $basepath . 'uploads/general/';
 				$random = basename($_FILES['picture']['name']);
 				$path = $path . $random;
 

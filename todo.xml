@@ -65,4 +65,8 @@
     <action>install modularity & use it</action>
   </modules>
 
+  <applications>
+    <action>reorder applications</action>
+  </applications>
+
 </both>
