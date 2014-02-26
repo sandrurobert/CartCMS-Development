@@ -69,4 +69,12 @@
     <action>reorder applications</action>
   </applications>
 
+  <models>
+    <action>create general model</action>
+  </models>
+
+  <file_links>
+    <action>Update end of file links</action>
+  </file_links>
+
 </both>

@@ -72,7 +72,7 @@ if (defined('ENVIRONMENT'))
  * NO TRAILING SLASH!
  *
  */
-	$application_folder = 'applications/client';
+	$application_folder = 'applications/_control';
 
 /*
  * --------------------------------------------------------------------
