@@ -83,6 +83,7 @@ class Pages extends MY_Controller {
 																																	'lang_menu_options' 						=> $this->lang->line('pages_menu_options'),
 																																	'lang_page_type_field' 					=> $this->lang->line('pages_page_type_field'),
 																																	'lang_default_page_type_value' 	=> $this->lang->line('pages_default_page_type_value'),
+																																	'lang_empty_page_type_value' 		=> $this->lang->line('pages_empty_page_type_value'),
 																																	'lang_required_fields' 					=> $this->lang->line('error_required_fields'),
 																																	'lang_submit_form' 							=> $this->lang->line('pages_submit_form')
 																																), true );
@@ -177,6 +178,7 @@ class Pages extends MY_Controller {
 																																	'lang_menu_options' 						=> $this->lang->line('pages_menu_options'),
 																																	'lang_page_type_field' 					=> $this->lang->line('pages_page_type_field'),
 																																	'lang_default_page_type_value' 	=> $this->lang->line('pages_default_page_type_value'),
+																																	'lang_empty_page_type_value' 		=> $this->lang->line('pages_empty_page_type_value'),
 																																	'lang_required_fields' 					=> $this->lang->line('error_required_fields'),
 																																	'lang_submit_form' 							=> $this->lang->line('pages_submit_form'),
 																																), true );

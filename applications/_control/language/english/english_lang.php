@@ -45,6 +45,7 @@ $lang['pages_content_field']            = "Content";
 $lang['pages_menu_options']             = "Menu options";
 $lang['pages_page_type_field']          = "Page type";
 $lang['pages_default_page_type_value']  = "Parent";
+$lang['pages_empty_page_type_value']    = "Parent (no-link)";
 $lang['pages_submit_form']              = "Submit";
 
 

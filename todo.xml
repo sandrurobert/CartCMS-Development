@@ -8,14 +8,9 @@
 <backend>
 
   <pages>
-    <action>add empty page type, value to 0</action>
     <action>add template parts</action>
     <action>add page ordering</action>
   </pages>
-
-  <config>
-    <action>create config file for cms</action>
-  </config>
 
   <errors>
     <action>add error pages</action>
@@ -42,10 +37,6 @@
 
 
 <frontend>
-
-  <lang>
-    <action>lang to frontend</action>
-  </lang>
 
   <templates>
     <action>add fallback template parts</action>

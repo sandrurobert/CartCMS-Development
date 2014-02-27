@@ -69,7 +69,8 @@
 
         	<select name="page_type"  class = "chzn-select" id = "page_type" >
 
-          	<option value="1">{lang_default_page_type_value}</option>
+            <option value="1">{lang_default_page_type_value}</option>
+          	<option value="0">{lang_empty_page_type_value}</option>
               {PAGE_TYPE}
           	<option value="{id_page}">{title}</option>
               {/PAGE_TYPE}

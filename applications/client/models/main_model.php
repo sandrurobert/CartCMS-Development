@@ -32,7 +32,11 @@ class Main_model extends CI_Model {
     */
   function get_parents () {
 
-    return $this->db->get_where('ep_pages', array('page_type' => '1'))->result();
+    $parents_with_link = $this->db->get_where('ep_pages', array('page_type' => '1'))->result();
+    $parents_no_link = $this->db->get_where('ep_pages', array('page_type' => '0'))->result();
+    $parents = array_merge($parents_with_link, $parents_no_link);
+
+    return $parents;
 
   }
 

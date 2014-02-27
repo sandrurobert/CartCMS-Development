@@ -25,7 +25,7 @@ class Pages_model extends CI_Model {
 	 */
 	function get_parents() {
 
-		return $this->db->get_where('ep_pages', array('page_type' => '1'))->result();
+		return $this->db->get_where('ep_pages', array('page_type' => '1','page_type' => '0'))->result();
 
 	}
 
@@ -34,7 +34,7 @@ class Pages_model extends CI_Model {
 	 */
 	function get_parents_by_id( $id_page ) {
 
-		return $this->db->get_where('ep_pages', array('page_type' => '1', 'id_page !=' => $id_page))->result();
+		return $this->db->get_where('ep_pages', array('page_type' => '1', 'page_type' => '0', 'id_page !=' => $id_page))->result();
 
 	}
 
