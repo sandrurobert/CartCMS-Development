@@ -42,4 +42,4 @@ $route['default_controller'] = "homepage";
 
 
 /* End of file routes.php */
-/* Location: ./application/config/routes.php */
+/* Location: ./applications/client/config/routes.php */

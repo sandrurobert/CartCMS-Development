@@ -10,4 +10,4 @@ $lang['error_no_pages'] = "You don't have any pages added.";
 
 
 /* End of file error_lang.php */
-/* Location: ./_control/application/language/english/error_lang.php */
+/* Location: ./applications/_control/language/english/error_lang.php */

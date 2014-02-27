@@ -88,3 +88,6 @@ class Pages_model extends CI_Model {
 	}
 
 }
+
+/* End of file pages_model.php */
+/* Location: ./applications/_control/models/pages_model.php */

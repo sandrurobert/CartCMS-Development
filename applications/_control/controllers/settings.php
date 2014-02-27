@@ -152,3 +152,6 @@ class Settings extends MY_Controller {
 	}
 
 }
+
+/* End of file settings.php */
+/* Location: ./applications/_control/controllers/settings.php */

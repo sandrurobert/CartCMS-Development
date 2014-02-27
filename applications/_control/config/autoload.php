@@ -113,4 +113,4 @@ $autoload['model'] = array();
 
 
 /* End of file autoload.php */
-/* Location: ./_control/application/config/autoload.php */
+/* Location: ./applications/_control/config/config.php */

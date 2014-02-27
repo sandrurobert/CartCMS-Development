@@ -24,3 +24,6 @@ if ( ! function_exists('get_filenames')) {
   }
 
 }
+
+/* End of file pages_helper.php */
+/* Location: ./applications/_control/helpers/pages_helper.php */

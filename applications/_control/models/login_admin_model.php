@@ -12,3 +12,6 @@ class Login_admin_model extends CI_Model {
 	}
 
 }
+
+/* End of file login_admin_model.php */
+/* Location: ./applications/_control/models/login_admin_model.php */

@@ -13,3 +13,6 @@ class Dashboard_admin_model extends CI_Model {
 	}
 
 }
+
+/* End of file dashboard_admin_model.php */
+/* Location: ./applications/_control/models/dashboard_admin_model.php */

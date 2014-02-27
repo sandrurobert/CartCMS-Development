@@ -113,4 +113,4 @@ $autoload['model'] = array('main_model');
 
 
 /* End of file autoload.php */
-/* Location: ./application/config/autoload.php */
+/* Location: ./applications/client/config/autoload.php */

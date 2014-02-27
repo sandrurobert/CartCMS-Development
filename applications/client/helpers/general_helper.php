@@ -295,3 +295,6 @@ if ( ! function_exists('page_sidebars')) {
   }
 
 }
+
+/* End of file general_helper.php */
+/* Location: ./applications/client/helpers/general_helper.php */

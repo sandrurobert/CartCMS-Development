@@ -49,4 +49,4 @@ $lang['pages_submit_form']              = "Submit";
 
 
 /* End of file english_lang.php */
-/* Location: ./_control/application/language/english/english_lang.php */
+/* Location: ./applications/_control/language/english/english_lang.php */

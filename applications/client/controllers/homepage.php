@@ -36,3 +36,6 @@ class Homepage extends CI_Controller {
 
   }
 }
+
+/* End of file homepage.php */
+/* Location: ./applications/client/controllers/homepage.php */

@@ -9,7 +9,7 @@
 
       'one'   => 'one',
       'two'   => 'two',
-      'three' => 'three', 
+      'three' => 'three',
       'four'  => 'four'
 
     );
@@ -38,3 +38,11 @@
     example: 'login_page_title', 'general_settings_page_title', etc.
   </rule>
 </lang>
+
+<files>
+  <rule>add filename and location
+    i.e.
+    /* End of file file.php */
+    /* Location: ./applications/_control/controllers/file.php */
+  </rule>
+</files>

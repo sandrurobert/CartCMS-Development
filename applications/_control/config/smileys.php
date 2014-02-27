@@ -63,4 +63,4 @@ $smileys = array(
 		);
 
 /* End of file smileys.php */
-/* Location: ./application/config/smileys.php */
+/* Location: ./applications/_control/config/smileys.php */

@@ -12,3 +12,6 @@ class General_admin_model extends CI_Model {
 	}
 
 }
+
+/* End of file general_admin_model.php */
+/* Location: ./applications/_control/models/general_admin_model.php */

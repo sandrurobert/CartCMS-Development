@@ -30,3 +30,6 @@ class Settings_admin_model extends CI_Model {
 	}
 
 }
+
+/* End of file settings_admin_model.php */
+/* Location: ./applications/_control/models/settings_admin_model.php */

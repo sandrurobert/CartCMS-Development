@@ -46,3 +46,6 @@ if ( ! function_exists('create_session')) {
   }
 
 }
+
+/* End of file login_helper.php */
+/* Location: ./applications/_control/helpers/login_helper.php */

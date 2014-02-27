@@ -32,3 +32,6 @@ class Page extends CI_Controller {
 	}
 
 }
+
+/* End of file page.php */
+/* Location: ./applications/client/controllers/page.php */

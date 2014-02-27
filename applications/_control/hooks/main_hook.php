@@ -54,3 +54,6 @@ class Main_hook {
 	}
 
 }
+
+/* End of file main_hook.php */
+/* Location: ./applications/_control/hooks/main_hook.php */
