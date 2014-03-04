@@ -51,22 +51,23 @@ class Settings extends MY_Controller {
 	/**
 	 * general settings process
 	 */
-	function general_process( $id_user ) {
+	function general_process() {
 
 		$website_title[ 'value' ] = $this->input->post( 'website_title', true );
 		$this->settings_admin_model->update_setting( $website_title, 'website_title' );
 
 		$website_logo[ 'value' ] = $this->input->post( 'website_logo' );
-		if( isset( $website_logo["info"] ) ) {
+		if( $_FILES['website_logo']['name'] != '' ) {
 
 				$basepath = rtrim(BASEPATH, 'system/');
-				$path = $basepath . 'uploads/general/';
-				$random = basename($_FILES['picture']['name']);
+				$path = $basepath . '/uploads/general/';
+				echo $path;
+				$random = basename($_FILES['website_logo']['name']);
 				$path = $path . $random;
 
-				move_uploaded_file($_FILES['picture']['tmp_name'], $path);
+				move_uploaded_file($_FILES['website_logo']['tmp_name'], $path);
 
-				$website_logo[ 'name' ] = $random;
+				$website_logo[ 'value' ] = $random;
 
 				$this->settings_admin_model->update_setting( $website_logo, 'website_logo' );
 		}

@@ -33,12 +33,12 @@
 							<li>
 
 								<a href="#" title="{lang_website_logo}" class = "img">
-									<img src="{BASE_URL}/uploads/{website_logo}" alt="" />
+									<img src="{UP_URL}/general/{website_logo}" alt="" />
 								</a>
 
 								<div class="actions">
 									<a href="#" title="">
-										<img src="{BASE_URL}/img/edit.png" alt="" />
+										<img src="{APP_URL}/images/edit.png" alt="" />
 										<input type = "file" name = "website_logo" class = "default" />
 									</a>
 								</div>

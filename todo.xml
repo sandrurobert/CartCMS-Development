@@ -25,10 +25,6 @@
     <action>edit sidebars content</action>
   </sidebars>
 
-  <settings>
-    <action>fix upload website logo</action>
-  </settings>
-
   <themes>
     <action>add themes</action>
   </themes>

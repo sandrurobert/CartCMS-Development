@@ -11,12 +11,13 @@ class Main_hook {
  	  $this->output = & $CI->output;
   	$output = $this->output->get_output();
 
-    //$base_url = rtrim(base_url(),'/');
     $base_url = base_url() . '_control.php';
     $app_url = base_url() . 'applications/_control';
+    $up_url = base_url() . 'uploads';
 
     $output = str_replace('{BASE_URL}', $base_url, $output);
     $output = str_replace('{APP_URL}', $app_url, $output);
+    $output = str_replace('{UP_URL}', $up_url, $output);
 
 		$this->output->set_output($output);
 
