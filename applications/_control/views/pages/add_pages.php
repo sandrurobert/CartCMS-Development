@@ -47,7 +47,7 @@
  	    <div id="normal_content">
 
       	<label id="wysiwyg-content">{lang_content_field}</label><br />
-      	<textarea name="content" class="wysiwyg" id="wysiwyg" rows="5" cols=""></textarea>
+          <textarea class="ckeditor" cols="80" id="editor1" name="editor1" rows="10">  </textarea>
 
       </div><!-- #normal_content -->
 
