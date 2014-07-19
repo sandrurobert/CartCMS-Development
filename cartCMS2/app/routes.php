@@ -11,7 +11,9 @@
 |
 */
 
-Route::get('/', function()
+Route::get('login', function()
 {
-	return View::make('hello');
+	return View::make('login');
 });
+
+Route::post('user/login', array('uses' => 'UserController@login', 'as' => 'user.login'));
