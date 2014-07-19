@@ -1,4 +1,4 @@
-$(document).ready(function(){
+/*$(document).ready(function(){
 
     $('.submit').click(function(){
         var id = $(this).attr('id');
@@ -30,3 +30,4 @@ $(document).ready(function(){
         });
     }
 });
+*/

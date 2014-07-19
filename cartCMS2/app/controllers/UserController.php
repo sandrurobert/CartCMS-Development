@@ -91,8 +91,14 @@ class UserController extends \BaseController {
 	 * @return Response
 	 */
 	public function login()
-	{	$data[0] = 'done';
-		return Response::json($data);
+	{	$input = Input::all();
+		if(!Auth::attempt(array('email' => $input['username'], 'password' => $input['password'])))
+		{	
+			$notification['danger'] = 'Bad';
+			return View::make('login')->with('notification', $notification);
+		} 
+			$notification['success'] = 'Good';
+			return View::make('login')->with('notification', $notification);
 	}
 
 }
