@@ -21,7 +21,7 @@ class UserController extends \BaseController {
 	 */
 	public function create()
 	{
-		//
+		return View::make('user.create');
 	}
 
 	/**
@@ -32,7 +32,21 @@ class UserController extends \BaseController {
 	 */
 	public function store()
 	{
-		//
+		$input = Input::all();
+		$pass1 = $input['password'];
+		$pass2 = $input['password2'];
+		$email = $input['email'];
+
+		if( $pass1 != $pass2){
+			return Redirect::route('user.create');
+		} 
+
+		$user = new User;
+		$user->email = $email;
+		$user->password = Hash::make($pass1);
+		$user->first_name = $input['first_name'];
+		$user->last_name = $input['last_name'];
+		$user->save();
 	}
 
 	/**
@@ -56,7 +70,8 @@ class UserController extends \BaseController {
 	 */
 	public function edit($id)
 	{
-		//
+		$user = User::find($id);
+        return View::make('user.edit')->with('user', $user);
 	}
 
 	/**
@@ -84,8 +99,8 @@ class UserController extends \BaseController {
 	}
 
 	/**
-	 * Remove the specified resource from storage.
-	 * DELETE /user/{id}
+	 * Login procces
+	 * Check email and password 
 	 *
 	 * @param  int  $id
 	 * @return Response
@@ -99,6 +114,37 @@ class UserController extends \BaseController {
 		} 
 			$notification['success'] = 'Good';
 			return View::make('login')->with('notification', $notification);
+	}
+
+	/**
+	 * Logout Function
+	 * @return Logout
+	 */
+	public function doLogout()
+	{
+		Auth::logout();
+		return Redirect::to('/');
+	}
+
+	/**
+	 * Update the specified resource in storage.
+	 *
+	 * @param  int  $id
+	 * @return Response
+	 */
+	public function updatePassword($id)
+	{		
+			$input = Input::all();
+			if($input['new_password'] != $input['new_password_2'])
+			{
+					return Redirect::route('user.edit');
+			}
+			$user = User::find($id);
+			$user->password = Hash::make($input['new_password']);
+			$user->update();
+
+			
+
 	}
 
 }
