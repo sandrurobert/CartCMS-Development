@@ -41,6 +41,7 @@
 	              {{ Form::submit('Sign In', array('class' => 'redBtn width-90', 'id' => 'submit-login'))}}
 	            </div><!--  boxButtons  -->
 	          {{Form::close()}}<!--  boxContainer  -->
+	          @include('notifications')
 	        </div><!-- blueBox -->
 	        <div class="col-md-6 col-md-offset-6 no-padding">
 	          <a href="#" id="lostPassword">Lost Password?</a>
