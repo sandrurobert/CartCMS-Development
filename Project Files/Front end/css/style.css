@@ -1,4 +1,54 @@
-@import 'reset.css';
-@import 'buttons.css';
+/**
+ *
+ *	=================================================
+ *
+ *				The main stylesheet
+ *				    22 July 2014
+ *
+ *	=================================================
+ *
+ */
 
-body{background: #293a4b;}
+
+/**
+ * Importing other css files
+ * for file size reduction
+ * and efficiency
+ */
+@import 'reset.css';
+@import 'ui-elements.css';
+@import 'bootstrap.css';
+/**
+ * ---------------
+ * Global elements
+ * ---------------
+ */
+body{background: #fff;}
+	/**
+	 * Exceptions:
+	 * 	- Login page (background: #293a4b)
+	 */
+.centerize{margin: 0 auto;}
+.row{margin: 0!important;}
+.no-padding{padding: 0!important;}
+
+
+
+
+/**
+ * ----------
+ * Login Page
+ * ----------
+ */
+#login-row{
+	padding: 10% 0% 3% 0%;
+}
+#lostPassword{
+	padding: 1% 0% 1% 0%;
+	text-decoration: none;
+	font-family: arial;
+	font-size: 14px;
+	font-weight: normal;
+	color: #fff;
+	float: right;
+}
