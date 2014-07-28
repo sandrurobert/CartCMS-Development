@@ -19,32 +19,32 @@
 	          <div class="boxHeader">
 	            <h4 class="boxHeaderTitle">
 	              <img class="boxHeaderImgLeft" src="{{asset('img/icons/login.png')}}" />
-	                Login Box
+	                {{ Lang::Get('login.login'); }}
 	            </h4>
 	          </div><!-- boxHeader -->
 
 	          <div class="info yellowInfo">
 	            <h4 class="infoTitle">
 	              <img class="infoTitleImgLeft" src="{{asset('img/icons/info.png')}}" />
-	                You're about to login into CartCMS!
+	                {{ Lang::get('login.infoLogin'); }}
 	            </h4>
 	          </div><!-- information box -->
 
 	          {{ Form::open(array('route' => 'user.login', 'method' => 'post', 'class' => 'boxContainer')) }}
 	            <div class="boxInputs">
-	              {{Form::text('username', null, array('class' => 'basicInput importantInput', 'title' => 'username', 'placeholder' => 'E-mail'))}}
+	              {{Form::text('username', null, array('class' => 'basicInput importantInput', 'title' => 'username', 'placeholder' => Lang::get('login.email')))}}
 	            </div>
 	            <div class="boxInputs">
-	              {{Form::password('password', array('id' => 'password', 'class' => 'basicInput importantInput', 'title' => 'password', 'placeholder' => 'Password'))}}
+	              {{Form::password('password', array('id' => 'password', 'class' => 'basicInput importantInput', 'title' => 'password', 'placeholder' => Lang::get('login.password')))}}
 	            </div>
 	            <div class="boxButtons">
-	              {{ Form::submit('Sign In', array('class' => 'redBtn width-90', 'id' => 'submit-login'))}}
+	              {{ Form::submit(Lang::get('login.signIn'), array('class' => 'redBtn width-90', 'id' => 'submit-login'))}}
 	            </div><!--  boxButtons  -->
 	          {{Form::close()}}<!--  boxContainer  -->
 	          @include('notifications')
 	        </div><!-- blueBox -->
 	        <div class="col-md-6 col-md-offset-6 no-padding">
-	          {{ HTML::linkRoute('user.recover', 'Lost Password?', array(), array('id' => 'lostPassword')); }}
+	          {{ HTML::linkRoute('user.recover', Lang::get('login.lostPassword'), array(), array('id' => 'lostPassword')); }}
 	        </div>
 	      </div><!--  col-md-4  -->
 	    </div>

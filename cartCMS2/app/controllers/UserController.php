@@ -109,10 +109,12 @@ class UserController extends \BaseController {
 	{	$input = Input::all();
 		if(!Auth::attempt(array('email' => $input['username'], 'password' => $input['password'])))
 		{
-			$notification['red'] = 'Something went wrong! Please check your credentials!';
+			$lang_resource = Lang::get('notifications.login.danger');
+			$notification['red'] = $lang_resource;
 			return View::make('login')->with('notification', $notification);
 		}
-			$notification['green'] = 'Welcome! You will be redirected in a few seconds...!';
+			$lang_resource = Lang::get('notifications.login.success', array('name' => Auth::user()->first_name) );
+			$notification['green'] = $lang_resource;
 			return View::make('login')->with('notification', $notification);
 	}
 

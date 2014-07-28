@@ -11,7 +11,7 @@ if(!empty($notification)):
   <div class="info {{$type}}Info">
     <h4 class="infoTitle">
       <img class="infoTitleImgLeft" src="{{asset('img/icons/info.png')}}" />
-        {{ $message }}
+        {{$message}}
     </h4>
   </div><!-- information box -->
 
