@@ -8,18 +8,14 @@ if(!empty($notification)):
   foreach($notification as $type => $message): ?>
 
   <!-- Flash Notification -->
-    <div class="row">
-      <div class="col-md-12">
-          
-          <div class="alert alert-dismissable alert-{{$type}}">
-            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-            {{ $message }}
-          </div>
-          
-      </div>
-    </div>
-  
-  <?php 
-  endforeach; 
-endif; 
+  <div class="info {{$type}}Info">
+    <h4 class="infoTitle">
+      <img class="infoTitleImgLeft" src="{{asset('img/icons/info.png')}}" />
+        {{ $message }}
+    </h4>
+  </div><!-- information box -->
+
+  <?php
+  endforeach;
+endif;
 ?>

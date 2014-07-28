@@ -8,14 +8,14 @@
 	</head>
 	<body style="background: #293a4b;" >
 
-	    <div id="login-row" class="row" >
+	    <div id="login-row" class="row fadeIn" >
 	      <div class="col-md-2 col-md-offset-5" >
 	        <img src="{{asset('img/base/logo.png')}}" class="img-responsive centerize" alt="Logo" />
 	      </div>
 	    </div>  <!-- login-row-->
-			<div class="row">
+		<div class="row fadeIn">
 	      <div class="col-md-4 col-md-offset-4">
-	        <div class="blueBox">
+	        <div class="box blueBox">
 	          <div class="boxHeader">
 	            <h4 class="boxHeaderTitle">
 	              <img class="boxHeaderImgLeft" src="{{asset('img/icons/login.png')}}" />
@@ -23,7 +23,7 @@
 	            </h4>
 	          </div><!-- boxHeader -->
 
-	          <div class="yellowInfo">
+	          <div class="info yellowInfo">
 	            <h4 class="infoTitle">
 	              <img class="infoTitleImgLeft" src="{{asset('img/icons/info.png')}}" />
 	                You're about to login into CartCMS!
@@ -32,10 +32,10 @@
 
 	          {{ Form::open(array('route' => 'user.login', 'method' => 'post', 'class' => 'boxContainer')) }}
 	            <div class="boxInputs">
-	              {{Form::text('username', null, array('placeholder' => 'E-mail', 'class' => 'basicInput', 'title' => 'username'))}}
+	              {{Form::text('username', null, array('class' => 'basicInput importantInput', 'title' => 'username', 'placeholder' => 'E-mail'))}}
 	            </div>
 	            <div class="boxInputs">
-	              {{Form::password('password', array('id' => 'password', 'class' => 'basicInput', 'title' => 'password', 'placeholder' => '*********'))}}
+	              {{Form::password('password', array('id' => 'password', 'class' => 'basicInput importantInput', 'title' => 'password', 'placeholder' => 'Password'))}}
 	            </div>
 	            <div class="boxButtons">
 	              {{ Form::submit('Sign In', array('class' => 'redBtn width-90', 'id' => 'submit-login'))}}
@@ -44,10 +44,10 @@
 	          @include('notifications')
 	        </div><!-- blueBox -->
 	        <div class="col-md-6 col-md-offset-6 no-padding">
-	          <a href="#" id="lostPassword">Lost Password?</a>
+	          {{ HTML::linkRoute('user.recover', 'Lost Password?', array(), array('id' => 'lostPassword')); }}
 	        </div>
 	      </div><!--  col-md-4  -->
 	    </div>
-					
+
 	</body>
 </html>

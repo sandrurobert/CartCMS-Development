@@ -1,33 +1,90 @@
-/*$(document).ready(function(){
+/**
+ *
+ *	=================================================
+ *
+ *				  The main js file
+ *				    23 July 2014
+ *
+ *	=================================================
+ *
+ */
 
-    $('.submit').click(function(){
-        var id = $(this).attr('id');
-
-        if(id == 'submit-login'){
-            var username = $('.username-login').val();
-            var password = $('.password-login').val();
-
-            sendLoginData(username, password);
-
-        }
-
-    });
+$(document).ready(function(){
+	/**
+	 * If an element has .fadeIn class,
+	 * it will fade in with a delay of
+	 * 100 ms and show with a delay of
+	 * 1000 ms.
+	 */
+	$(".fadeIn").hide(0).delay(100).fadeIn(1000);
 
 
-    function sendLoginData(username, password){
-        var base_url = 'http://127.1.0.0/cartCMS2/public/';
-        $.ajax({
-            url: base_url+'user/login',
-            type: 'POST',
-            data: {username: username, password: password},
-            dataType: 'json',
-            success: function(data){
-                alert(data[0]);
-            },
-            error: function(data){
-                alert('error');
-            }
-        });
-    }
+
+	/**
+	 * Every input with class .importantInput
+	 * will change it's own border color
+	 * if it's not completed. After all, if
+	 * it's completed, his "style" attribute
+	 * will be removed and the border will
+	 * be restored to the default settings.
+	 */
+	$(".importantInput").change(function(){
+		/**
+		 * We get the input's value
+		 */
+		var value = $(this).val();
+		/**
+		 * We test if the value is empty. So,
+		 * if this happens, we change it's
+		 * border color in "Promegranate" color.
+		 * (#c0392b)
+		 */
+		if( value == "" ){
+			$(this).css({"border-color":"#c0392b"});
+		}
+		/**
+		 * If the value isn't empty, we
+		 * restore the input to it's
+		 * default settings
+		 */
+		else{
+			$(this).removeAttr("style");
+		}
+	});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/**
+ * End of custom.js
+ */
 });
-*/

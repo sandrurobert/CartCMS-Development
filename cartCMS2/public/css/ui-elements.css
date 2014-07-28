@@ -182,13 +182,22 @@ button{
  * -----
  */
 
-.blueBox{
+.box{
 	width: 100%;
 	float: left;
 
 	background: #fff;
 	border-radius: 5px;
 }
+
+/**
+ * Box Colors
+ * Best usage: <div class="box blueBox"> ... </div>
+ */
+.blueBox .boxHeader{background: #2b4a6a;}
+.redBox .boxHeader{background: #c0392b;}
+.greenBox .boxHeader{background: #2ecc71;}
+.yellowBox .boxHeader{background: #f1c40f;}
 
 /**
  * Box Header, Container, Inputs & Title
@@ -199,7 +208,6 @@ button{
 	min-height: 5px;
 	float: left;
 
-	background: #2b4a6a;
 	border-top-left-radius: 3px;
 	border-top-right-radius: 3px;
 }
@@ -292,21 +300,32 @@ button{
  * INFO BARS
  * ---------
  */
-
+.info{
+	width: 100%;
+	float: left;
+}
 /**
  * Yellow Info
  * -----------
- * Usage: <div class="yellowInfo"></div>
+ * Usage: <div class="info yellowInfo"></div>
  */
+.yellowInfo{background: #f8f0d0;border-top: 1px solid #b8b091;border-bottom: 1px solid #b8b091;}
+.yellowInfo .infoTitle{color: #8a6d3b;}
+/**
+ * Green Info
+ * -----------
+ * Usage: <div class="info GreenInfo"></div>
+ */
+.greenInfo{background: #27ae60;border-top: 1px solid #2ecc71;border-bottom: 1px solid #2ecc71;}
+.greenInfo .infoTitle{color: #fff;}
+/**
+ * Red Info
+ * -----------
+ * Usage: <div class="info redInfo"></div>
+ */
+.redInfo{background: #c0392b;border-top: 1px solid #e74c3c;border-bottom: 1px solid #e74c3c;}
+.redInfo .infoTitle{color: #fff;}
 
-.yellowInfo{
-	width: 100%;
-	float: left;
-
-	background: #f8f0d0;
-	border-top: 1px solid #b8b091;
-	border-bottom: 1px solid #b8b091;
-}
 
 /**
  * Info Title
@@ -325,7 +344,6 @@ button{
 	font-family: arial;
 	font-size: 14px;
 	font-weight: lighter;
-	color: #8a6d3b;
  }
 
  .infoTitleImgLeft{

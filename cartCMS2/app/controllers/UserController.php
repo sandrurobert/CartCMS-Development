@@ -100,7 +100,7 @@ class UserController extends \BaseController {
 
 	/**
 	 * Login procces
-	 * Check email and password 
+	 * Check email and password
 	 *
 	 * @param  int  $id
 	 * @return Response
@@ -108,11 +108,11 @@ class UserController extends \BaseController {
 	public function login()
 	{	$input = Input::all();
 		if(!Auth::attempt(array('email' => $input['username'], 'password' => $input['password'])))
-		{	
-			$notification['danger'] = 'Bad';
+		{
+			$notification['red'] = 'Something went wrong! Please check your credentials!';
 			return View::make('login')->with('notification', $notification);
-		} 
-			$notification['success'] = 'Good';
+		}
+			$notification['green'] = 'Welcome! You will be redirected in a few seconds...!';
 			return View::make('login')->with('notification', $notification);
 	}
 
@@ -133,7 +133,7 @@ class UserController extends \BaseController {
 	 * @return Response
 	 */
 	public function updatePassword($id)
-	{		
+	{
 			$input = Input::all();
 			if($input['new_password'] != $input['new_password_2'])
 			{
@@ -142,9 +142,12 @@ class UserController extends \BaseController {
 			$user = User::find($id);
 			$user->password = Hash::make($input['new_password']);
 			$user->update();
-
-			
-
 	}
 
+	/**
+	 * Password recover function
+	 */
+	public function recoverPassword(){
+		return View::make('login');
+	}
 }

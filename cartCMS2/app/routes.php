@@ -17,3 +17,4 @@ Route::get('login', function()
 });
 
 Route::post('user/login', array('uses' => 'UserController@login', 'as' => 'user.login'));
+Route::get('user/recover', array('uses' => 'UserController@recoverPassword', 'as' => 'user.recover'));
