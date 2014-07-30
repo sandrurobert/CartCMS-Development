@@ -115,7 +115,7 @@ class UserController extends \BaseController {
 		}
 			$lang_resource = Lang::get('notifications.login.success', array('name' => Auth::user()->first_name) );
 			$notification['green'] = $lang_resource;
-			return View::make('login')->with('notification', $notification);
+			return View::make('dashboard')->with('notification', $notification);
 	}
 
 	/**
@@ -151,5 +151,12 @@ class UserController extends \BaseController {
 	 */
 	public function recoverPassword(){
 		return View::make('login');
+	}
+
+	/**
+	 * User Dashboard
+	 */
+	public function dashboard(){
+		return View::make('dashboard');
 	}
 }

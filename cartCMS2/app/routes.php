@@ -17,4 +17,4 @@ Route::post('user/login', array('uses' => 'UserController@login', 'as' => 'user.
 Route::get('user/recover', array('uses' => 'UserController@recoverPassword', 'as' => 'user.recover'));
 
 
-Route::get('dashboard', function(){return View::make('dashboard');});
+Route::get('dashboard', array('uses' => 'UserController@dashboard', 'as' => 'user.dashboard'));
