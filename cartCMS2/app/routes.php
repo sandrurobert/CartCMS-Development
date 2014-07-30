@@ -11,10 +11,10 @@
 |
 */
 
-Route::get('login', function()
-{
-	return View::make('login');
-});
+Route::get('login', function(){return View::make('login');});
 
 Route::post('user/login', array('uses' => 'UserController@login', 'as' => 'user.login'));
 Route::get('user/recover', array('uses' => 'UserController@recoverPassword', 'as' => 'user.recover'));
+
+
+Route::get('dashboard', function(){return View::make('dashboard');});

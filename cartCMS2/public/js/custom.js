@@ -57,13 +57,38 @@ $(document).ready(function(){
 
 
 
+	$(".parentLi a").click(function(){
+
+		var parent = $(this).parent();
+		var display = $("ul", parent).css("display");
+
+		if(display == "none"){
+			$(parent).css({"background":"#2c3e50"});
+			$("ul",parent).slideDown("fast");
+		}
+		else{
+			$(parent).removeAttr("style");
+			$("ul",parent).slideUp("fast");
+		}
+	});
 
 
 
 
+	$(".parentLi img").click(function(){
 
+		var parent = $(this).parent();
+		var display = $("ul", parent).css("display");
 
-
+		if(display == "none"){
+			$(parent).css({"background":"#2c3e50"});
+			$("ul",parent).slideDown("fast");
+		}
+		else{
+			$(parent).removeAttr("style");
+			$("ul",parent).slideUp("fast");
+		}
+	});
 
 
 
