@@ -115,7 +115,7 @@ class UserController extends \BaseController {
 		}
 			$lang_resource = Lang::get('notifications.login.success', array('name' => Auth::user()->first_name) );
 			$notification['green'] = $lang_resource;
-			return View::make('dashboard')->with('notification', $notification);
+			return Redirect::route('user.dashboard')->with('notification', $notification);
 	}
 
 	/**
