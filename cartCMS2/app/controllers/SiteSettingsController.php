@@ -61,14 +61,20 @@ class SiteSettingsController extends \BaseController {
 
 	/**
 	 * Update the specified resource in storage.
-	 * PUT /sitesettings/{id}
+	 * PUT /sitesettings/
 	 *
-	 * @param  int  $id
+	 * @param  
 	 * @return Response
 	 */
-	public function update($id)
+	public function update()
 	{
-		//
+		$input = Input::all();
+		$settings = SiteSettings::find(1);
+		$settings['title'] = $input['title'];
+		$settings['keywords'] = $input['keywords'];
+		$settings['description'] = $input['description'];
+
+		$settings->update();
 	}
 
 	/**
