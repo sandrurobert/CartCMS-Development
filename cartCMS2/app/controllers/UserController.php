@@ -2,6 +2,12 @@
 
 class UserController extends \BaseController {
 
+
+	public function __construct()
+	{
+		$this->beforeFilter('auth', array("except" => array("loginPage", "recoverPassword")));
+	}
+
 	/**
 	 * Display a listing of the resource.
 	 * GET /user
