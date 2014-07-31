@@ -4,6 +4,7 @@ use Zizaco\Entrust\EntrustRole;
 
 class Role extends EntrustRole
 {
+
   /**
    * Find By Name
    * @param  [type] $query [description]
