@@ -14,6 +14,17 @@ class UserController extends \BaseController {
 	}
 
 	/**
+	 * Display a listing of the resource.
+	 * GET /user
+	 *
+	 * @return Response
+	 */
+	public function loginPage()
+	{
+		return View::make('login');
+	}
+
+	/**
 	 * Show the form for creating a new resource.
 	 * GET /user/create
 	 *
@@ -122,7 +133,7 @@ class UserController extends \BaseController {
 	 * Logout Function
 	 * @return Logout
 	 */
-	public function doLogout()
+	public function logout()
 	{
 		Auth::logout();
 		return Redirect::to('/');
