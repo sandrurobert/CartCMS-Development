@@ -5,7 +5,7 @@ class UserController extends \BaseController {
 
 	public function __construct()
 	{
-		$this->beforeFilter('auth', array("except" => array("loginPage", "recoverPassword")));
+		$this->beforeFilter('auth', array("except" => array("loginPage", "recoverPassword", "login")));
 	}
 
 	/**
