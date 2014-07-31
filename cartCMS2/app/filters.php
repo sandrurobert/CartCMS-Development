@@ -88,3 +88,12 @@ Route::filter('csrf', function()
 		throw new Illuminate\Session\TokenMismatchException;
 	}
 });
+
+
+
+Route::filter('role.owner', function()
+{
+	if(!Auth::user()->hasRole('Owner') && !Auth::user()->hasRole('Admin')){
+		return Redirect::route('user.dashboard');
+	}
+});

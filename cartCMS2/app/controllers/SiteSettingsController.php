@@ -4,64 +4,21 @@ class SiteSettingsController extends \BaseController {
 
 	public function __construct()
 	{
-		$this->beforeFilter('auth');
+		$this->beforeFilter('role.owner');
 	}
 
-	/**
-	 * Display a listing of the resource.
-	 * GET /sitesettings
-	 *
-	 * @return Response
-	 */
-	public function index()
-	{
-		//
-	}
-
-	/**
-	 * Show the form for creating a new resource.
-	 * GET /sitesettings/create
-	 *
-	 * @return Response
-	 */
-	public function create()
-	{
-		//
-	}
-
-	/**
-	 * Store a newly created resource in storage.
-	 * POST /sitesettings
-	 *
-	 * @return Response
-	 */
-	public function store()
-	{
-		//
-	}
-
-	/**
-	 * Display the specified resource.
-	 * GET /sitesettings/{id}
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function show($id)
-	{
-		//
-	}
 
 	/**
 	 * Show the form for editing the specified resource.
-	 * GET /sitesettings/{id}/edit
+	 * GET site/settings
 	 *
-	 * @param  int  $id
+	 * @param 
 	 * @return Response
 	 */
-	public function edit($id)
+	public function edit()
 	{
-		//
+		$settings = SiteSettings::find(1);
+		return View::make('site_settings.site_settings')->with('settings', $settings);
 	}
 
 	/**
@@ -80,18 +37,9 @@ class SiteSettingsController extends \BaseController {
 		$settings['description'] = $input['description'];
 
 		$settings->update();
+
+		return Redirect::route('site.settings');
 	}
 
-	/**
-	 * Remove the specified resource from storage.
-	 * DELETE /sitesettings/{id}
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function destroy($id)
-	{
-		//
-	}
 
 }

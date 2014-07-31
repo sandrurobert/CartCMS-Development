@@ -22,3 +22,5 @@ Route::get('user/logout', array('uses' => 'UserController@logout', 'as' => 'user
 
 
 Route::get('dashboard', array('uses' => 'UserController@dashboard', 'as' => 'user.dashboard'));
+Route::get('site/settings', array('uses' => 'SiteSettingsController@edit', 'as' => 'site.settings'));
+Route::post('site/settings', array('uses' => 'SiteSettingsController@update', 'as' => 'site.settings'));
