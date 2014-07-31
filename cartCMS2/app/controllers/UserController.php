@@ -176,4 +176,26 @@ class UserController extends \BaseController {
 	public function dashboard(){
 		return View::make('dashboard');
 	}
+
+	/**
+	 * Pending user function
+	 */
+	public function storePendingUser() {
+		if(Auth::user()->hasRole('Owner') || Auth::user()->hasRole('Admin')){
+
+			$user = new PendingUser;
+			$user['email'] = Input::get('email');
+			$user['account_rank'] = Input::get('rank');
+			$user['register_token'] = str_random(56);
+			$user['creator_user_id'] = Auth::user()->id;
+
+			$user->save();
+
+			return Redirect::route('user.dashboard');
+		}
+
+		return Redirect::route('user.dashboard');
+	}
+
+
 }
