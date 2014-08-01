@@ -3,8 +3,6 @@
 
 
 	<h1>You are now on dashboard. Welcome {{Auth::user()->first_name}}. You are 
-	@foreach(Auth::user()->roles as $role)
-		{{$role->name}}
-	@endforeach
+	{{Auth::user()->roles->first()->name}}
 	</h1>
 @stop

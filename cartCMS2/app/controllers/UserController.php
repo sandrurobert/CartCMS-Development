@@ -198,4 +198,18 @@ class UserController extends \BaseController {
 	}
 
 
+	/**
+	 * Change user rank
+	 */
+	public function changeUserRank($id){
+
+		$rank_id = Input::get('rank_id');
+		$user = User::find($id);
+		$user->roles->first()->role_id = $rank_id;
+
+		$user->update();
+
+	}
+
+
 }
