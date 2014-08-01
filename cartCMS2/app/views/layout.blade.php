@@ -13,7 +13,7 @@
 			<div id="dashNavLeft" class="col-md-2">
 				<div id="dashNavLeftLogo" class="col-md-12">
 					<div class="col-md-8 col-md-offset-2">
-						<img src="img/base/logo.png" class="img-responsive centerize" alt="logo" />
+						<img src="{{asset('img/base/logo.png')}}" class="img-responsive centerize" alt="logo" />
 					</div>
 				</div>
 				<ul class="col-md-12">
@@ -59,7 +59,7 @@
 				<div class="col-md-3 col-md-offset-9">
 					<div class="col-md-6">
 						<ul id="notificationsButton">
-							<li class="parentLi"><img src="img/icons/bell.png" alt="Notifications"/>
+							<li class="parentLi"><img src="{{asset('img/icons/bell.png')}}" alt="Notifications"/>
 								<ul>
 									<li><a href="#">Notification 1</a></li>
 									<li><a href="#">Notification 2</a></li>
@@ -67,7 +67,7 @@
 									<li><a href="#">Notification 4</a></li>
 								</ul>
 							</li>
-							<li class="parentLi"><img src="img/icons/flag.png" alt="Task" alt="Tasks"/>
+							<li class="parentLi"><img src="{{asset('img/icons/flag.png')}}" alt="Task" alt="Tasks"/>
 								<ul>
 									<li><a href="#">Task 1</a></li>
 									<li><a href="#">Task 2</a></li>
