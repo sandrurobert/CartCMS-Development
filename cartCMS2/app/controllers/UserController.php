@@ -210,6 +210,17 @@ class UserController extends \BaseController {
 		$user->update();
 
 	}
+	/**
+	 * View for Change user rank
+	 */
+	public function changeUserRankView() {
+
+		$users = User::all();
+		$ranks = Role::all();
+		$ranks = $ranks->lists('name', 'id');
+
+		return View::make('user_settings.change_rank')->with('users', $users)->with('ranks', $ranks);
+	}
 
 
 }

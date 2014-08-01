@@ -5,6 +5,8 @@ use Zizaco\Entrust\EntrustRole;
 class Role extends EntrustRole
 {
 
+  protected $table = 'roles';
+
   /**
    * Find By Name
    * @param  [type] $query [description]

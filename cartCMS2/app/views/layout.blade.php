@@ -17,13 +17,14 @@
 					</div>
 				</div>
 				<ul class="col-md-12">
-					<li><a href="#">Dashboard</a></li>
+					<li><a href="{{route('user.dashboard')}}">Dashboard</a></li>
+					<li><a href="{{route('site.settings')}}">Site Settings</a></li>
 					<li class="parentLi"><a href="#">User Settings</a>
 						<ul>
 							<li><a href="#">Create a new user</a></li>
 							<li><a href="#">Edit an user</a></li>
 							<li><a href="#">User global settings</a></li>
-							<li><a href="#">User permissions</a></li>
+							<li><a href="{{route('change.rank')}}">User permissions</a></li>
 						</ul>
 					</li>
 					<li class="parentLi"><a href="#">Products</a>
