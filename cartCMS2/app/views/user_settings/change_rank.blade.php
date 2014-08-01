@@ -9,10 +9,10 @@
 				{{$user->email}} - {{$user->roles->first()->name}}
 			</div>
 			<div class="col-md-6">
-				{{ Form::open(array('route' => array('change.rank', $user->id), 'method' => 'put', 'class' => 'form')) }}
+				{{ Form::open(array('route' => array('update.rank', $user->id), 'method' => 'put', 'class' => 'form')) }}
 					{{ Form::select('rank_id', $ranks, $user->roles->first()->id, array('class' => 'form-control category-dropdown')) }}
 					{{ Form::submit('Submit')}}
-				{{Form::close()}}
+				{{ Form::close()}}
 			</div>
 		</div>
 	@endforeach

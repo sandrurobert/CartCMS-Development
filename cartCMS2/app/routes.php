@@ -26,3 +26,4 @@ Route::get('site/settings', array('uses' => 'SiteSettingsController@edit', 'as' 
 Route::post('site/settings', array('uses' => 'SiteSettingsController@update', 'as' => 'site.settings'));
 
 Route::get('change/user/rank', array('uses' => 'UserController@changeUserRankView', 'as' => 'change.rank'));
+Route::put('change/rank/user/id/{id}', array('uses' => 'UserController@changeUserRank', 'as' => 'update.rank'));

@@ -207,7 +207,11 @@ class UserController extends \BaseController {
 		$user = User::find($id);
 		$user->roles->first()->role_id = $rank_id;
 
-		$user->update();
+		DB::table('assigned_roles')
+            ->where('user_id', $id)
+            ->update(array('role_id' => $rank_id));
+            
+		return Redirect::route('change.rank');
 
 	}
 	/**
