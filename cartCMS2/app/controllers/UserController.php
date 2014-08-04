@@ -146,24 +146,6 @@ class UserController extends \BaseController {
 	}
 
 	/**
-	 * Update the specified resource in storage.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function updatePassword($id)
-	{
-			$input = Input::all();
-			if($input['new_password'] != $input['new_password_2'])
-			{
-					return Redirect::route('user.edit');
-			}
-			$user = User::find($id);
-			$user->password = Hash::make($input['new_password']);
-			$user->update();
-	}
-
-	/**
 	 * Password recover function
 	 */
 	public function recoverPassword(){
@@ -214,6 +196,7 @@ class UserController extends \BaseController {
 		return Redirect::route('change.rank');
 
 	}
+
 	/**
 	 * View for Change user rank
 	 */
@@ -226,11 +209,36 @@ class UserController extends \BaseController {
 		return View::make('user_settings.change_rank')->with('users', $users)->with('ranks', $ranks);
 	}
 
+	/**
+	 * View for User global settings
+	 */
 	public function globalSettings($id) {
 
 		$user = User::find($id);
 		return View::make('user_settings.global_settings')->with('user', $user);
 
+	}
+
+
+	/**
+	 * Update the specified resource in storage.
+	 *
+	 * @param  int  $id
+	 * @return Response
+	 */
+	public function updatePassword($id) {
+
+		$user = User::find($id);
+		$input = Input::all();
+		if (Hash::check($input['old_pass'], $user->password) && $input['new'] == $input['new2'])
+		{		     
+		    $user->password = Hash::make($input['new']);
+		    $user->update();
+
+		    return Redirect::route('global.settings', Auth::user()->id);
+		}
+
+		return Redirect::route('user.dashboard');
 	}
 
 
