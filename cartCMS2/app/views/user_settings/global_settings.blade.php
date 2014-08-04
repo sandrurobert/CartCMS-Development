@@ -5,7 +5,7 @@
 	<h1>User global settings</h1>
 		<div class="col-md-12">
 			<div class="col-md-6">
-				{{ Form::open(array('route' => array('update.password', $user->id), 'method' => 'put', 'class' => 'form-control')) }}
+				{{ Form::open(array('route' => array('update.password'), 'method' => 'put', 'class' => 'form-control')) }}
 					{{ Form::label('old_pass', 'Old Password')}}
 					{{ Form::password('old_pass', null, array('class' => 'form-group'))}}
 

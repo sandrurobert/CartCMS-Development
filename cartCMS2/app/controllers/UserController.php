@@ -212,8 +212,8 @@ class UserController extends \BaseController {
 	/**
 	 * View for User global settings
 	 */
-	public function globalSettings($id) {
-
+	public function globalSettings() {
+		$id = Auth::user()->id;
 		$user = User::find($id);
 		return View::make('user_settings.global_settings')->with('user', $user);
 
@@ -223,11 +223,10 @@ class UserController extends \BaseController {
 	/**
 	 * Update the specified resource in storage.
 	 *
-	 * @param  int  $id
-	 * @return Response
 	 */
-	public function updatePassword($id) {
+	public function updatePassword() {
 
+		$id = Auth::user()->id;
 		$user = User::find($id);
 		$input = Input::all();
 		if (Hash::check($input['old_pass'], $user->password) && $input['new'] == $input['new2'])

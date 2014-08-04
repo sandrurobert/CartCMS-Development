@@ -23,7 +23,7 @@
 						<ul>
 							<li><a href="#">Create a new user</a></li>
 							<li><a href="#">Edit an user</a></li>
-							<li><a href="{{route('global.settings', Auth::user()->id)}}">User global settings</a></li>
+							<li><a href="{{route('global.settings')}}">User global settings</a></li>
 							<li><a href="{{route('change.rank')}}">User permissions</a></li>
 						</ul>
 					</li>
