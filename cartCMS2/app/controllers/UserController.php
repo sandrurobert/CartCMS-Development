@@ -210,7 +210,7 @@ class UserController extends \BaseController {
 		DB::table('assigned_roles')
             ->where('user_id', $id)
             ->update(array('role_id' => $rank_id));
-            
+
 		return Redirect::route('change.rank');
 
 	}
@@ -224,6 +224,13 @@ class UserController extends \BaseController {
 		$ranks = $ranks->lists('name', 'id');
 
 		return View::make('user_settings.change_rank')->with('users', $users)->with('ranks', $ranks);
+	}
+
+	public function globalSettings($id) {
+
+		$user = User::find($id);
+		return View::make('user_settings.global_settings')->with('user', $user);
+
 	}
 
 
