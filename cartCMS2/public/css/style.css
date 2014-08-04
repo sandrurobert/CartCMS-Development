@@ -1,0 +1,162 @@
+/**
+ *
+ *	=================================================
+ *
+ *				The main stylesheet
+ *				    22 July 2014
+ *
+ *	=================================================
+ *
+ */
+
+
+/**
+ * Importing other css files
+ * for file size reduction
+ * and efficiency
+ */
+@import 'reset.css';
+@import 'ui-elements.css';
+@import 'bootstrap.css';
+/**
+ * ---------------
+ * Global elements
+ * ---------------
+ */
+body{background: #ecf0f1;}
+	/**
+	 * Exceptions:
+	 * 	- Login page (background: #293a4b)
+	 */
+.centerize{margin: 0 auto;}
+.row{margin: 0!important;}
+.no-padding{padding: 0!important;}
+
+
+
+
+/**
+ * ----------
+ * Login Page
+ * ----------
+ */
+#login-row{
+	padding: 10% 0% 3% 0%;
+}
+#lostPassword{
+	padding: 1% 0% 1% 0%;
+	text-decoration: none;
+	font-family: arial;
+	font-size: 14px;
+	font-weight: normal;
+	color: #fff;
+	float: right;
+}
+
+
+
+
+/**
+ * ---------
+ * Dashboard
+ * ---------
+ */
+
+/**
+ * Left Bar Navigation
+ *
+*/
+#dashNavLeft{
+	background: #34495e;
+}
+#dashNavLeftLogo{padding: 5% 0% 5% 0%;}
+
+/**
+ * ---
+ * First Level
+ * ---
+ */
+#dashNavLeft ul{padding: 0% 0% 5% 0%;}
+#dashNavLeft ul li{
+	text-align: left;
+	transition: 0.2s;
+}
+#dashNavLeft ul li a{
+	display: block;
+
+	padding: 1% 0% 1% 5%;
+	text-decoration: none;
+	font-family: arial;
+	font-size: 14px;
+	font-weight: normal;
+	color: #fff;
+	transition: 0.2s;
+}
+#dashNavLeft ul li:hover{background: #2c3e50;}
+#dashNavLeft ul li a:hover{background: #2c3e50;}
+/**
+ * ---
+ * Second Level
+ * ---
+ */
+#dashNavLeft ul li ul{
+	padding: 5% 0% 5% 0%;
+	display: none;
+}
+#dashNavLeft ul li ul li a{
+	display: block;
+
+	padding: 1% 0% 1% 10%;
+	text-decoration: none;
+	font-family: arial;
+	font-size: 12px;
+	font-weight: normal;
+	color: #fff;
+	transition: 0.2s;
+}
+#dashNavLeft ul li ul li a:hover{
+	background: #7f8c8d;
+}
+
+/**
+ * Top Bar Navigation
+ */
+#dashNavTop{background: #34495e;}
+#notificationsButton{}
+#notificationsButton li{
+	display: inline-block;
+	position: relative;
+	cursor: pointer;
+}
+#notificationsButton li img{width: 25px;}
+#notificationsButton li:hover ul{}
+#notificationsButton li ul{
+	display: none;
+	width: 200px;
+	position: absolute;
+	padding: 5% 0% 5% 0%;
+	right: 0;
+	background: #ecf0f1;
+
+	border-bottom-left-radius: 5px;
+	border-bottom-right-radius: 5px;
+	border: 1px solid #D9DBDB;
+}
+#notificationsButton li ul li{
+	display: block;
+	border-bottom: 1px solid #e0e0e0;
+}
+#notificationsButton li ul li:last-child{border-bottom: none;}
+#notificationsButton li ul li a{
+	display: block;
+	padding: 3% 0% 3% 5%;
+	text-decoration: none;
+	font-family: arial;
+	font-size: 12px;
+	font-weight: normal;
+	color: #262626;
+	transition: 0.2s;
+}
+#notificationsButton li ul li a:hover{
+	background: #e3e3e3;
+}
