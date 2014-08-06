@@ -234,7 +234,24 @@ class UserController extends \BaseController {
 		    $user->password = Hash::make($input['new']);
 		    $user->update();
 
-		    return Redirect::route('global.settings', Auth::user()->id);
+		    return Redirect::route('user.settings');
+		}
+
+		return Redirect::route('user.dashboard');
+	}
+
+	public function updateName() {
+
+		$id = Auth::user()->id;
+		$user = User::find($id);
+		$input = Input::all();
+
+		if($input['first_name'] != '' && $input['last_name'] != '') {
+			$user->first_name = $input['first_name'];
+			$user->last_name = $input['last_name'];
+			$user->update();
+
+			return Redirect::route('user.settings');
 		}
 
 		return Redirect::route('user.dashboard');
