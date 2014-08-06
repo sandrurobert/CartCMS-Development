@@ -30,5 +30,14 @@
 					{{ Form::submit('Submit')}}
 				{{ Form::close()}}
 			</div>
+			<div class="col-md-8">
+				{{ Form::open(array('route' => 'update.icon', 'method' => 'post', 'class' => 'form', 'files' => 'true')) }}
+		        {{ Form::file('icon', array('class' => 'form-control-upload btn btn-primary' )) }}
+		        {{ Form::submit('Update icon', array('class'=>'btn btn-primary')) }}
+		        {{ Form::close() }}
+
+		         {{link_to_route('default.icon', 'Get default icon instead')}}
+
+		        {{ HTML::image(Auth::user()->icon->icon_url, '', array('class' =>'img-rounded img-responsive' )) }}
 		</div>
 @stop

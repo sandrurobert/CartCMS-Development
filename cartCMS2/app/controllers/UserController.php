@@ -257,5 +257,37 @@ class UserController extends \BaseController {
 		return Redirect::route('user.dashboard');
 	}
 
+	public function defaultIcon() {
+
+		$user = User::find(Auth::user()->id);
+		$icon = Input::file('icon');
+		$icon_id = $user->icon->id;
+
+		$avatar = Icon::find($icon_id);
+		$avatar->icon_url = 'avt/default.jpg';
+		$avatar->update();
+
+		return Redirect::route('user.settings');
+
+	}
+
+	public function changeIcon() {
+
+		$user = User::find(Auth::user()->id);
+		$icon = Input::file('icon');
+		$icon_id = $user->icon->id;
+
+		if($user->isImage($icon)){
+			$path = $user->uploadIcon($icon);
+
+			$avatar = Icon::find($icon_id);
+			$old_avatar = $avatar;
+			$avatar->icon_url = $path;
+			$avatar->update();
+		}
+
+		return Redirect::route('user.settings');
+	}
+
 
 }
