@@ -212,8 +212,8 @@ class UserController extends \BaseController {
 	/**
 	 * View for User global settings
 	 */
-	public function globalSettings($id) {
-
+	public function globalSettings() {
+		$id = Auth::user()->id;
 		$user = User::find($id);
 		return View::make('user_settings.global_settings')->with('user', $user);
 
@@ -223,11 +223,10 @@ class UserController extends \BaseController {
 	/**
 	 * Update the specified resource in storage.
 	 *
-	 * @param  int  $id
-	 * @return Response
 	 */
-	public function updatePassword($id) {
+	public function updatePassword() {
 
+		$id = Auth::user()->id;
 		$user = User::find($id);
 		$input = Input::all();
 		if (Hash::check($input['old_pass'], $user->password) && $input['new'] == $input['new2'])
@@ -235,10 +234,59 @@ class UserController extends \BaseController {
 		    $user->password = Hash::make($input['new']);
 		    $user->update();
 
-		    return Redirect::route('global.settings', Auth::user()->id);
+		    return Redirect::route('user.settings');
 		}
 
 		return Redirect::route('user.dashboard');
+	}
+
+	public function updateName() {
+
+		$id = Auth::user()->id;
+		$user = User::find($id);
+		$input = Input::all();
+
+		if($input['first_name'] != '' && $input['last_name'] != '') {
+			$user->first_name = $input['first_name'];
+			$user->last_name = $input['last_name'];
+			$user->update();
+
+			return Redirect::route('user.settings');
+		}
+
+		return Redirect::route('user.dashboard');
+	}
+
+	public function defaultIcon() {
+
+		$user = User::find(Auth::user()->id);
+		$icon = Input::file('icon');
+		$icon_id = $user->icon->id;
+
+		$avatar = Icon::find($icon_id);
+		$avatar->icon_url = 'avt/default.jpg';
+		$avatar->update();
+
+		return Redirect::route('user.settings');
+
+	}
+
+	public function changeIcon() {
+
+		$user = User::find(Auth::user()->id);
+		$icon = Input::file('icon');
+		$icon_id = $user->icon->id;
+
+		if($user->isImage($icon)){
+			$path = $user->uploadIcon($icon);
+
+			$avatar = Icon::find($icon_id);
+			$old_avatar = $avatar;
+			$avatar->icon_url = $path;
+			$avatar->update();
+		}
+
+		return Redirect::route('user.settings');
 	}
 
 
