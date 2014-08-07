@@ -12,6 +12,8 @@ return array(
 
 	'dashboard' => 'Dashboard',
 
-	'site_settings' => 'Site Settings'
+	'site_settings' => 'Site Settings',
+
+	'your_profile' => 'Your Profile, :name!'
 
 );
