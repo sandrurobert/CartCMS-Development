@@ -2,18 +2,33 @@
 	@section('content')
 
 
-	<h1>You are now on site settings</h1>
-	{{ Form::open(array('route' => 'site.settings', 'method' => 'post', 'class' => 'form')) }}
-		{{Form::label('title', 'Title')}}
-		{{Form::text('title', $settings['title'], array('class' => 'form-control'))}}
+	<div class="col-md-12">
+		<h1 id="dashPageTitle">{{Lang::get('pages.site_settings')}}</h2>
+	</div>
 
-		{{Form::label('keywords', 'Keywords')}}
-		{{Form::text('keywords', $settings['keywords'], array('class' => 'form-control'))}}
+	<div class="col-md-12">
+		@include('notifications')
+		{{ Form::open(array('route' => 'site.settings', 'method' => 'post', 'class' => 'form-inline')) }}
 
-		{{Form::label('description', 'description')}}
-		{{Form::text('description', $settings['description'], array('class' => 'form-control'))}}
+		<div id="boxInputs_Inline">
+			{{Form::label('title', Lang::get('dashboard_general.title'))}}
+			{{Form::text('title', $settings['title'], array('class' => 'basicInput form-control importantInput', 'placeholder' => Lang::get('dashboard_general.title')))}}
+		</div>
 
-		{{Form::submit('Update', array('class' => 'btn btn-primary'))}}
-	{{ Form::close()}}
+		<div id="boxInputs_Inline">
+			{{Form::label('keywords', Lang::get('dashboard_general.keywords'))}}
+			{{Form::text('keywords', $settings['keywords'], array('class' => 'basicInput form-control importantInput', 'placeholder' => Lang::get('dashboard_general.keywords')))}}
+		</div>
 
+		<div id="boxInputs_Inline">
+			{{Form::label('description', Lang::get('dashboard_general.description'))}}
+			{{Form::text('description', $settings['description'], array('class' => 'basicInput form-control importantInput', 'placeholder' => Lang::get('dashboard_general.description')))}}
+		</div>
+
+		<div id="boxInputs_Inline" class="no-padding">
+			{{Form::submit(Lang::get('dashboard_general.update'), array('class' => 'redBtn width-20 right'))}}
+		</div>
+		{{ Form::close()}}
+
+	</div>
 @stop

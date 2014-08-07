@@ -19,6 +19,7 @@ class CreateSiteSettingsTable extends Migration {
 			$table->string('keywords')->nullable();
 			$table->string('description')->nullable();
 			$table->timestamps();
+			$table->integer('updated_by')->unsigned();
 		});
 	}
 

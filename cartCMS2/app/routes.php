@@ -28,9 +28,10 @@ Route::post('site/settings', array('uses' => 'SiteSettingsController@update', 'a
 Route::get('change/user/rank', array('uses' => 'UserController@changeUserRankView', 'as' => 'change.rank'));
 Route::put('change/rank/user/id/{id}', array('uses' => 'UserController@changeUserRank', 'as' => 'update.rank'));
 
-Route::get('user/global/settings', array('uses' => 'UserController@globalSettings', 'as' => 'user.settings'));
+Route::get('user/global/settings', array('uses' => 'UserController@userSettings', 'as' => 'user.settings'));
 Route::put('update/password', array('uses' => 'UserController@updatePassword', 'as' => 'update.password'));
 Route::put('update/name', array('uses' => 'UserController@updateName', 'as' => 'update.name'));
 
 Route::post('change/icon', ['uses' => 'UserController@changeIcon', 'as' => 'update.icon']);
 Route::get('get/default/icon', ['uses' => 'UserController@defaultIcon', 'as' => 'default.icon']);
+

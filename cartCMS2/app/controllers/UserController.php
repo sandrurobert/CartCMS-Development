@@ -56,7 +56,7 @@ class UserController extends \BaseController {
 
 		if( $pass1 != $pass2){
 			return Redirect::route('user.create');
-		} 
+		}
 
 		$user = new User;
 		$user->email = $email;
@@ -212,10 +212,12 @@ class UserController extends \BaseController {
 	/**
 	 * View for User global settings
 	 */
-	public function globalSettings() {
+
+	public function userSettings() {
+		
 		$id = Auth::user()->id;
 		$user = User::find($id);
-		return View::make('user_settings.global_settings')->with('user', $user);
+		return View::make('user_settings.user_settings')->with('user', $user);
 
 	}
 
@@ -230,7 +232,7 @@ class UserController extends \BaseController {
 		$user = User::find($id);
 		$input = Input::all();
 		if (Hash::check($input['old_pass'], $user->password) && $input['new'] == $input['new2'])
-		{		     
+		{
 		    $user->password = Hash::make($input['new']);
 		    $user->update();
 
@@ -252,9 +254,16 @@ class UserController extends \BaseController {
 			$user->update();
 
 			return Redirect::route('user.settings');
+
+		    $lang_resource = Lang::get('notifications.changePass.success', array('name' => Auth::user()->first_name));
+		    $notification['green'] = $lang_resource;
+		    return Redirect::route('user.settings', Auth::user()->id)->with('notification', $notification);
+
 		}
 
-		return Redirect::route('user.dashboard');
+		$lang_resource = Lang::get('notifications.changePass.danger', array('name' => Auth::user()->first_name));
+		$notification['red'] = $lang_resource;
+		return Redirect::route('user.settings', Auth::user()->id)->with('notification', $notification);
 	}
 
 	public function defaultIcon() {

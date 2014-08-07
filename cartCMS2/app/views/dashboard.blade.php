@@ -1,8 +1,12 @@
 @extends('layout')
 	@section('content')
 
+	<div class="col-md-12">
+		<h1 id="dashPageTitle">{{Lang::get('pages.dashboard')}}</h2>
+	</div>
 
-	<h1>You are now on dashboard. Welcome {{Auth::user()->first_name}}. You are 
-	{{Auth::user()->roles->first()->name}}
-	</h1>
+
+	<div class="col-md-12">
+		<p>{{Auth::user()->first_name;}}, you are now on dashboard page!</p>
+	</div>
 @stop
