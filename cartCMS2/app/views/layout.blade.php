@@ -10,9 +10,7 @@
 
 	<body>
 		<div class="row">
-			<div id="dashNavTop" class="col-md-12">
-			{{Auth::user()->email}}
-			</div><!--topNav-->
+
 		</div><!-- top bar navigation row -->
 
 		<div id="dashLogoHolder" class="row">
@@ -31,7 +29,7 @@
 							<ul>
 								<li><a href="#">Create a new user</a></li>
 								<li><a href="#">Edit an user</a></li>
-								<li><a href="{{route('user.settings', Auth::user()->id)}}">Your Profile, {{Auth::user()->first_name;}}</a></li>
+								<li><a href="{{route('user.settings')}}">Your Profile, {{Auth::user()->first_name;}}</a></li>
 								<li><a href="{{route('change.rank')}}">User permissions</a></li>
 							</ul>
 						</li>
