@@ -354,3 +354,31 @@ button{
 	margin-left: 5px;
 	margin-right: 5px;
  }
+
+
+ /**
+  * Forms
+  */
+
+ .form-inline{
+ 	width: 100%;
+ 	padding: 1% 0% 1% 0%;
+ 	float: left;
+ }
+
+ #boxInputs_Inline{
+ 	width: 100%;
+ 	padding: 0% 0% 1% 0%;
+ 	float: left;
+ }
+
+ .form-inline #boxInputs_Inline label{
+ 	float: left;
+ 	line-height: 40px;
+ 	width: 50%;
+ }
+
+ .form-inline #boxInputs_Inline input{
+ 	float: left;
+ 	width: 50%;
+ }

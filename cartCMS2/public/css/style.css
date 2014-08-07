@@ -23,7 +23,7 @@
  * Global elements
  * ---------------
  */
-body{background: #ecf0f1;}
+body{background: #f5f5f5;}
 	/**
 	 * Exceptions:
 	 * 	- Login page (background: #293a4b)
@@ -31,7 +31,8 @@ body{background: #ecf0f1;}
 .centerize{margin: 0 auto;}
 .row{margin: 0!important;}
 .no-padding{padding: 0!important;}
-
+.no-margin{margin: 0!important;}
+.right{float: right!important;}
 
 
 
@@ -67,16 +68,16 @@ body{background: #ecf0f1;}
  *
 */
 #dashNavLeft{
-	background: #34495e;
+	background: #2a2a2a;
+	min-height: 500px;
 }
-#dashNavLeftLogo{padding: 5% 0% 5% 0%;}
 
 /**
  * ---
  * First Level
  * ---
  */
-#dashNavLeft ul{padding: 0% 0% 5% 0%;}
+#dashNavLeft ul{padding: 5% 0% 5% 0%;}
 #dashNavLeft ul li{
 	text-align: left;
 	transition: 0.2s;
@@ -84,6 +85,7 @@ body{background: #ecf0f1;}
 #dashNavLeft ul li a{
 	display: block;
 
+	line-height: 25px;
 	padding: 1% 0% 1% 5%;
 	text-decoration: none;
 	font-family: arial;
@@ -92,8 +94,8 @@ body{background: #ecf0f1;}
 	color: #fff;
 	transition: 0.2s;
 }
-#dashNavLeft ul li:hover{background: #2c3e50;}
-#dashNavLeft ul li a:hover{background: #2c3e50;}
+#dashNavLeft ul li:hover{background: #171717;}
+#dashNavLeft ul li a:hover{background: #171717;}
 /**
  * ---
  * Second Level
@@ -115,48 +117,42 @@ body{background: #ecf0f1;}
 	transition: 0.2s;
 }
 #dashNavLeft ul li ul li a:hover{
-	background: #7f8c8d;
+	background: #000;
 }
 
 /**
  * Top Bar Navigation
  */
-#dashNavTop{background: #34495e;}
-#notificationsButton{}
-#notificationsButton li{
-	display: inline-block;
-	position: relative;
-	cursor: pointer;
+#dashNavTop{
+	background: #FFF;
+	border-bottom: 1px solid #ecf0f1;
+	box-shadow: 0px 0px 15px #bdc3c7;
 }
-#notificationsButton li img{width: 25px;}
-#notificationsButton li:hover ul{}
-#notificationsButton li ul{
-	display: none;
-	width: 200px;
-	position: absolute;
-	padding: 5% 0% 5% 0%;
-	right: 0;
-	background: #ecf0f1;
 
-	border-bottom-left-radius: 5px;
-	border-bottom-right-radius: 5px;
-	border: 1px solid #D9DBDB;
+/**
+ * Dashboard Content
+ */
+#dashContentHolder{padding-top: 5%;}
+#dashLogoHolder{padding-top: 5%;}
+
+#dashContent{
+	background: #FFF;
+	border: 1px solid #F0F0F0;
+	box-shadow: 0px 0px 1px #bdc3c7;
+	border-top-left-radius: 3px;
+	border-top-right-radius: 3px;
 }
-#notificationsButton li ul li{
-	display: block;
-	border-bottom: 1px solid #e0e0e0;
-}
-#notificationsButton li ul li:last-child{border-bottom: none;}
-#notificationsButton li ul li a{
-	display: block;
-	padding: 3% 0% 3% 5%;
-	text-decoration: none;
+
+/**
+ * Dashboard Title
+ */
+#dashPageTitle{
+	margin: 1% 0% 1% 0%;
 	font-family: arial;
-	font-size: 12px;
+	font-size: 24px;
 	font-weight: normal;
-	color: #262626;
+	color: #171717;
+
 	transition: 0.2s;
-}
-#notificationsButton li ul li a:hover{
-	background: #e3e3e3;
+	border-bottom: 1px dotted #bdc3c7;
 }

@@ -9,11 +9,14 @@ return array(
 	| The following language lines are used by the notification system
 	|
 	*/
+	'title' => 'Title',
 
-	'login.success' => 'Thank you :name! You were logged in!',
+	'keywords' => 'Keywords',
 
-	'login.danger' => 'There is a problem with your credentials! Please try again!',
+	'description' => 'Description',
 
-	'siteSettingsChange.success' => 'Your settings we&#39;re saved :name! For security reasons, your unique code will be saved alongside changes!'
+	'update' => 'Update',
+
+	'login.danger' => 'There is a problem with your credentials! Please try again!'
 
 );

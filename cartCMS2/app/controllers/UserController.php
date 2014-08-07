@@ -56,7 +56,7 @@ class UserController extends \BaseController {
 
 		if( $pass1 != $pass2){
 			return Redirect::route('user.create');
-		} 
+		}
 
 		$user = new User;
 		$user->email = $email;

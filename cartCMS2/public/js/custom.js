@@ -63,25 +63,7 @@ $(document).ready(function(){
 		var display = $("ul", parent).css("display");
 
 		if(display == "none"){
-			$(parent).css({"background":"#2c3e50"});
-			$("ul",parent).slideDown("fast");
-		}
-		else{
-			$(parent).removeAttr("style");
-			$("ul",parent).slideUp("fast");
-		}
-	});
-
-
-
-
-	$(".parentLi img").click(function(){
-
-		var parent = $(this).parent();
-		var display = $("ul", parent).css("display");
-
-		if(display == "none"){
-			$(parent).css({"background":"#2c3e50"});
+			$(parent).css({"background":"#171717"});
 			$("ul",parent).slideDown("fast");
 		}
 		else{
