@@ -27,6 +27,13 @@
 					<ul class="col-md-12">
 						<li><a href="{{route('user.dashboard')}}">Dashboard</a></li>
 						<li><a href="{{route('site.settings')}}">Site Settings</a></li>
+						<li class="parentLi"><a href="#">Security Settings</a>
+							<ul>
+								<li><a href="#">General settings</a></li>
+								<li><a href="#">Website trackers</a></li>
+								<li><a href="#">Captcha & antispam</a></li>
+							</ul>
+						</li>
 						<li class="parentLi"><a href="#">User Settings</a>
 							<ul>
 								<li><a href="#">Create a new user</a></li>
