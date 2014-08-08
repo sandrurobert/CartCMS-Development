@@ -18,8 +18,11 @@ class CreateSiteSettingsTable extends Migration {
 			$table->string('title')->nullable();
 			$table->string('keywords')->nullable();
 			$table->string('description')->nullable();
-			$table->timestamps();
 			$table->integer('updated_by')->unsigned();
+			$table->timestamps();
+
+			$table->foreign('updated_by')->references('id')->on('users')->onDelete('cascade');
+			
 		});
 	}
 
