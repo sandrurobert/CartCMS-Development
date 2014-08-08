@@ -18,5 +18,7 @@ return array(
 
 	'changePass.success' => ':name, thank you for using password update service! Your new password has been stored!',
 
-	'changePass.danger' => ':name, something went wrong! Maybe the passwords did not match! Try again or ask for support at contact center!'
+	'changePass.danger' => ':name, something went wrong! Maybe the passwords did not match! Try again or ask for support at contact center!',
+
+	'changeUserRank.success' => 'Rank change for :email to :rank'
 );
