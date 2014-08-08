@@ -222,7 +222,7 @@ class UserController extends \BaseController {
 	 */
 
 	public function userSettings() {
-		
+
 		$id = Auth::user()->id;
 		$user = User::find($id);
 		return View::make('user_settings.user_settings')->with('user', $user);

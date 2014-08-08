@@ -10,7 +10,9 @@
 
 	<body>
 		<div class="row">
-
+			<div id="dashNavTop" class="col-md-12">
+				{{Auth::user()->email}}
+			</div>
 		</div><!-- top bar navigation row -->
 
 		<div id="dashLogoHolder" class="row">
