@@ -239,7 +239,7 @@ class UserController extends \BaseController {
 		$id = Auth::user()->id;
 		$user = User::find($id);
 		$input = Input::all();
-		$pwLenght = 5;
+		$pwConfig = ['lenght' => DB::table('security_settings')->lists('min_pw_lenght')];
 		/**
 		 * Updating the password, if the test passes
 		 */
@@ -248,9 +248,10 @@ class UserController extends \BaseController {
 
 			/**
 			 * Let's check the password's lenght
+			 * Minimum password lenght is extracted from database
 			 */
-			if(mb_strlen($input['new']) < $pwLenght){
-			    $lang_resource = Lang::get('notifications.changePass.lenght', array('lenght' => $pwLenght));
+			if(mb_strlen($input['new']) < $pwConfig['lenght'][0]){
+			    $lang_resource = Lang::get('notifications.changePass.lenght', array('lenght' => $pwConfig['lenght'][0]));
 			    $notification['red'] = $lang_resource;
 			    return Redirect::route('user.settings')->with('notification', $notification);
 			}
