@@ -34,5 +34,9 @@ return array(
 
 	'changeIcon.danger' => 'You can not upload nothing! The upload form was empty!',
 
-	'generalSecuritySettingsChange.success' => 'Thank you for updating security settings :name!'
+	'generalSecuritySettingsChange.success' => 'Thank you for updating security settings :name!',
+
+	'sendInvitation.success' => 'Thank you :name! In short time, :email will receive an email to join as a/an :rank!',
+
+	'sendInvitation.danger' => 'Something went wrong :name! Please try again!'
 );

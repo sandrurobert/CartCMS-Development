@@ -16,6 +16,8 @@ return array(
 
 	'your_profile' => 'Your Profile, :name!',
 
-	'security.general_settings' => 'General Security Settings'
+	'security.general_settings' => 'General Security Settings',
+
+	'user_create' => 'Create a new user by invitation'
 
 );
