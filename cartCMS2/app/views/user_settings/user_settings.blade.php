@@ -54,7 +54,7 @@
 
 		{{ Form::close()}}
 	</div>
-	
+
 	<div class="col-md-12">
 		{{ Form::open(array('route' => 'update.icon', 'method' => 'post', 'class' => 'form', 'files' => 'true')) }}
 		<div id="boxInputs_Inline">
