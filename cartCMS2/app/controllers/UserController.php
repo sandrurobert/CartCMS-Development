@@ -36,9 +36,49 @@ class UserController extends \BaseController {
 	 *
 	 * @return Response
 	 */
-	public function create()
+	public function createUser()
 	{
-		return View::make('user.create');
+		return View::make('user_settings/user_create');
+	}
+
+	/**
+	 * Sends an email with a token
+	 * Used for inviting staff
+	 * PUT /user/create
+	 *
+	 * @return Response
+	 */
+	public function inviteUser()
+	{
+		$input = Input::All();
+
+		$data['email'] = $input['email'];
+		$data['subject'] = "You we're invited to join CartCMS!";
+		$data['etoken'] = md5($input['email']);
+		$data['rtoken'] = md5($input['rank']);
+
+
+
+
+		if($input['email'] != ''){
+			$message['welcome'] = "tiganiii";
+			Mail::send('emails.welcome', $data, function($message) use ($data)
+			{
+			    $message->to($data['email'])->subject($data['subject']);
+			});
+
+			$lang_resource = Lang::get('notifications.sendInvitation.success', array('name' => Auth::user()->first_name, 'email' => $input['email'], 'rank' => $input['rank']) );
+			$notification['green'] = $lang_resource;
+			return Redirect::route('user.create')->with('notification', $notification);
+		}
+
+
+
+
+
+		$lang_resource = Lang::get('notifications.sendInvitation.danger', array('name' => Auth::user()->first_name) );
+		$notification['red'] = $lang_resource;
+		return Redirect::route('user.create')->with('notification', $notification);
 	}
 
 	/**

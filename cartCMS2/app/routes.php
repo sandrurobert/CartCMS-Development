@@ -20,6 +20,8 @@ Route::post('user/login', array('uses' => 'UserController@login', 'as' => 'user.
 Route::get('user/recover', array('uses' => 'UserController@recoverPassword', 'as' => 'user.recover'));
 Route::get('user/logout', array('uses' => 'UserController@logout', 'as' => 'user.logout'));
 
+Route::get('user/create', array('uses' => 'UserController@createUser', 'as' => 'user.create'));
+Route::put('user/create', array('uses' => 'UserController@inviteUser', 'as' => 'user.create'));
 
 Route::get('dashboard', array('uses' => 'UserController@dashboard', 'as' => 'user.dashboard'));
 Route::get('site/settings', array('uses' => 'SiteSettingsController@edit', 'as' => 'site.settings'));

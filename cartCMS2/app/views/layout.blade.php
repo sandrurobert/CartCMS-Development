@@ -11,7 +11,7 @@
 	<body>
 		<div class="row">
 			<div id="dashNavTop" class="col-md-12">
-				{{Auth::user()->email}}
+				{{Auth::user()->email}} - {{Auth::user()->roles->first()->name}}
 			</div>
 		</div><!-- top bar navigation row -->
 
@@ -36,7 +36,7 @@
 						</li>
 						<li class="parentLi"><a href="#">User Settings</a>
 							<ul>
-								<li><a href="#">Create a new user</a></li>
+								<li><a href="{{route('user.create')}}">Create a new user</a></li>
 								<li><a href="#">Edit an user</a></li>
 								<li><a href="{{route('user.settings')}}">Your Profile, {{Auth::user()->first_name;}}</a></li>
 								<li><a href="{{route('change.rank')}}">User permissions</a></li>

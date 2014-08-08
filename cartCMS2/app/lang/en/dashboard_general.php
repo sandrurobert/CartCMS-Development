@@ -31,6 +31,16 @@ return array(
 
 	'default_avatar' => 'Get default avatar instead',
 
-	'min_pw_lenght' => 'Minimum password lenght'
+	'min_pw_lenght' => 'Minimum password lenght',
+
+	'inviteEmail'	=> 'Users Email',
+
+	'email'	=> 'Email',
+
+	'invite' => 'Invite',
+
+	'rank' => 'Rank',
+
+	'users_rank' => 'Users Rank'
 
 );
