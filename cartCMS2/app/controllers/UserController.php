@@ -239,15 +239,39 @@ class UserController extends \BaseController {
 		$id = Auth::user()->id;
 		$user = User::find($id);
 		$input = Input::all();
+		$pwLenght = 5;
+		/**
+		 * Updating the password, if the test passes
+		 */
 		if (Hash::check($input['old_pass'], $user->password) && $input['new'] == $input['new2'])
 		{
+
+			/**
+			 * Let's check the password's lenght
+			 */
+			if(mb_strlen($input['new']) < $pwLenght){
+			    $lang_resource = Lang::get('notifications.changePass.lenght', array('lenght' => $pwLenght));
+			    $notification['red'] = $lang_resource;
+			    return Redirect::route('user.settings')->with('notification', $notification);
+			}
 		    $user->password = Hash::make($input['new']);
 		    $user->update();
 
-		    return Redirect::route('user.settings');
+		    $lang_resource = Lang::get('notifications.changePass.success', array('name' => Auth::user()->first_name));
+		    $notification['green'] = $lang_resource;
+		    return Redirect::route('user.settings')->with('notification', $notification);
 		}
 
-		return Redirect::route('user.dashboard');
+		/**
+		 * In case of fail, it should return the following message:
+		 *
+		 * ---
+		 * :name, something went wrong! Maybe the passwords did not match! Try again or ask for support at contact center!
+		 * ---
+		 */
+		$lang_resource = Lang::get('notifications.changePass.danger', array('name' => Auth::user()->first_name));
+		$notification['red'] = $lang_resource;
+		return Redirect::route('user.settings')->with('notification', $notification);
 	}
 
 	public function updateName() {

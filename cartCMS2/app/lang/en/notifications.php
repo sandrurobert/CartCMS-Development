@@ -20,5 +20,7 @@ return array(
 
 	'changePass.danger' => ':name, something went wrong! Maybe the passwords did not match! Try again or ask for support at contact center!',
 
+	'changePass.lenght' => 'Your password is too short! Minimum lenght: :lenght!',
+
 	'changeUserRank.success' => 'Rank change for :email to :rank'
 );
