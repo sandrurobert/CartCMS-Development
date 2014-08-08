@@ -34,4 +34,25 @@
 		{{ Form::close()}}
 	</div>
 
+	<div class="col-md-12">
+
+		{{ Form::open(array('route' => array('update.name'), 'method' => 'put', 'class' => 'form-inline')) }}
+
+		<div id="boxInputs_Inline">
+			{{ Form::label('first_name', Lang::get('dashboard_general.first_name'))}}
+			{{ Form::text('first_name', Auth::user()->first_name, array('class' => 'basicInput form-control'))}}
+		</div>
+
+		<div id="boxInputs_Inline">
+			{{ Form::label('last_name', Lang::get('dashboard_general.last_name'))}}
+			{{ Form::text('last_name', Auth::user()->last_name, array('class' => 'basicInput form-control'))}}
+		</div>
+
+		<div id="boxInputs_Inline" class="no-padding">
+			{{Form::submit(Lang::get('dashboard_general.update'), array('class' => 'redBtn width-20 right'))}}
+		</div>
+
+		{{ Form::close()}}
+	</div>
+
 @stop

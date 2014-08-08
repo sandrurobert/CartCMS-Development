@@ -23,6 +23,10 @@ return array(
 
 	'new.password' => 'New password',
 
-	'new.password.again' => 'New password again'
+	'new.password.again' => 'New password again',
+
+	'first_name' => 'First Name',
+
+	'last_name' => 'Last Name'
 
 );
