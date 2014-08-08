@@ -22,5 +22,15 @@ return array(
 
 	'changePass.lenght' => 'Your password is too short! Minimum lenght: :lenght!',
 
-	'changeUserRank.success' => 'Rank change for :email to :rank'
+	'changeUserRank.success' => 'Rank change for :email to :rank',
+
+	'changeName.success' => 'Your name was changed to : :name!',
+
+	'changeName.danger' => 'Something went wrong! Your name wasn&#39;t changed! Tip: you&#39;re not allowed to leave name inputs empty!',
+
+	'changeIcon.default' => ':name, you just changed your avatar to the default one!',
+
+	'changeIcon.success' => 'You just changed your profile picture with success!',
+
+	'changeIcon.danger' => 'You can not upload nothing! The upload form was empty!'
 );

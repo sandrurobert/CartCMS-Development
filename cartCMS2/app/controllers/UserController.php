@@ -286,15 +286,13 @@ class UserController extends \BaseController {
 			$user->last_name = $input['last_name'];
 			$user->update();
 
-			return Redirect::route('user.settings');
-
-		    $lang_resource = Lang::get('notifications.changePass.success', array('name' => Auth::user()->first_name));
+		    $lang_resource = Lang::get('notifications.changeName.success', array('name' => $input['first_name'].' '.$input['last_name']));
 		    $notification['green'] = $lang_resource;
 		    return Redirect::route('user.settings', Auth::user()->id)->with('notification', $notification);
 
 		}
 
-		$lang_resource = Lang::get('notifications.changePass.danger', array('name' => Auth::user()->first_name));
+		$lang_resource = Lang::get('notifications.changeName.danger', array('name' => Auth::user()->first_name));
 		$notification['red'] = $lang_resource;
 		return Redirect::route('user.settings', Auth::user()->id)->with('notification', $notification);
 	}
@@ -309,7 +307,9 @@ class UserController extends \BaseController {
 		$avatar->icon_url = 'avt/default.jpg';
 		$avatar->update();
 
-		return Redirect::route('user.settings');
+		$lang_resource = Lang::get('notifications.changeIcon.default', array('name' => Auth::user()->first_name));
+		$notification['green'] = $lang_resource;
+		return Redirect::route('user.settings', Auth::user()->id)->with('notification', $notification);
 
 	}
 
@@ -319,6 +319,12 @@ class UserController extends \BaseController {
 		$icon = Input::file('icon');
 		$icon_id = $user->icon->id;
 
+		if(empty($icon)){
+			$lang_resource = Lang::get('notifications.changeIcon.danger', array('name' => Auth::user()->first_name));
+			$notification['red'] = $lang_resource;
+			return Redirect::route('user.settings', Auth::user()->id)->with('notification', $notification);
+		}
+
 		if($user->isImage($icon)){
 			$path = $user->uploadIcon($icon);
 
@@ -326,9 +332,12 @@ class UserController extends \BaseController {
 			$old_avatar = $avatar;
 			$avatar->icon_url = $path;
 			$avatar->update();
+
+			$lang_resource = Lang::get('notifications.changeIcon.success', array('name' => Auth::user()->first_name));
+			$notification['green'] = $lang_resource;
+			return Redirect::route('user.settings', Auth::user()->id)->with('notification', $notification);
 		}
 
-		return Redirect::route('user.settings');
 	}
 
 
