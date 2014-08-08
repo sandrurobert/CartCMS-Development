@@ -91,9 +91,93 @@ class UserController extends \BaseController {
 	 */
 
 	public function userInvited($token){
-		$user = PendingUser::where('register_token', '=', $token)->first()->email;
+		$userP = new PendingUser;
+		$userM = new User;
+		$response = $userP->verifyToken($token); // Boolean variable
 
-		dd($user);
+		if($response){
+			$user = $userP->getAllPendingData($token);
+			$invitedBy = $userM->getUserFullname($user->creator_user_id);
+
+			$lang_resource = Lang::get('notifications.registration.arrival', array('name' => $invitedBy));
+			$notification['green'] = $lang_resource;
+			return View::make('user_settings/user_registration')->with('user', $user)->with('notification', $notification);
+		}
+
+		else{
+			echo "nu-i ok";
+		}
+	}
+
+	/**
+	 * Finally, when the token verifying is over,
+	 * the user will be able to register
+	 */
+
+	public function userRegistration(){
+		$input = Input::all();
+		$userP = new PendingUser;
+		$response = $userP->verifyToken($input['token']); // Boolean variable
+
+
+		if(!$response){return "Something went wrong with the token code!";}
+
+
+		$userPendingData = $userP->getAllPendingData($input['token']);
+
+		$user['email']				= $userPendingData->email;
+		$user['rank']				= $userPendingData->account_rank;
+		$user['first_name'] 		= $input['first_name'];
+		$user['last_name'] 			= $input['last_name'];
+		$user['newpass'] 			= $input['newpass'];
+		$user['newpassagain']		= $input['newpassagain'];
+
+		if(empty($user['email']) ||
+			empty($user['first_name']) ||
+			 empty($user['last_name']) ||
+			  empty($user['newpass']) ||
+			   empty($user['newpassagain']) ||
+			    empty($user['rank']) ){
+
+				$lang_resource = Lang::get('notifications.all_fields_are_important');
+				$notification['red'] = $lang_resource;
+				return Redirect::route('user.invited', $userPendingData->register_token)->with('user', $userPendingData)->with('notification', $notification);
+		}
+
+		if($user['newpass'] != $user['newpassagain']){
+			$lang_resource = Lang::get('notifications.regPass.danger');
+			$notification['red'] = $lang_resource;
+			return Redirect::route('user.invited', $userPendingData->register_token)->with('user', $userPendingData)->with('notification', $notification);
+		}
+
+		$pwConfig = new SecuritySettings;
+		$lenght = $pwConfig->find(1);
+
+		if(mb_strlen($user['newpass']) < $lenght->min_pw_lenght){
+			$lang_resource = Lang::get('notifications.changePass.lenght', array('lenght' => $lenght->min_pw_lenght));
+			$notification['red'] = $lang_resource;
+			return Redirect::route('user.invited', $userPendingData->register_token)->with('user', $userPendingData)->with('notification', $notification);
+		}
+
+
+		$new_user = new User;
+		$new_user->email 			= $user['email'];
+		$new_user->password 		= Hash::make($user['newpass']);
+		$new_user->first_name 	    = $user['first_name'];
+		$new_user->last_name 	    = $user['last_name'];
+		$new_user->save();
+
+
+		PendingUser::where('register_token', '=', $userPendingData->register_token)->first()->delete();
+
+		$new_role_asign = new AssignedRoles;
+		$new_role_asign->user_id = $new_user->id;
+		$new_role_asign->role_id = $user['rank'];
+		$new_role_asign->save();
+
+		$lang_resource = Lang::get('notifications.regSuccess', array('name' => $user['first_name'], 'email' => $user['email']));
+		$notification['green'] = $lang_resource;
+		return Redirect::route('login.page')->with('notification', $notification);
 	}
 
 	/**

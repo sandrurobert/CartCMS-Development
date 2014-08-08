@@ -38,5 +38,13 @@ return array(
 
 	'sendInvitation.success' => 'Thank you :name! In short time, :email will receive an email to join as a/an :rank!',
 
-	'sendInvitation.danger' => 'Something went wrong :name! Please try again!'
+	'sendInvitation.danger' => 'Something went wrong :name! Please try again!',
+
+	'registration.arrival' => 'Hi there! You have been added to the staff by :name! Please complete the forms below!',
+
+	'all_fields_are_important' => 'All fields are important!',
+
+	'regPass.danger' => 'Something went wrong! Maybe the passwords mismatch!',
+
+	'regSuccess' => 'Thank you for registering :name! Now you are able to login using :email and the password you set while registering!'
 );

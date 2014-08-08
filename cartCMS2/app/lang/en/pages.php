@@ -18,6 +18,8 @@ return array(
 
 	'security.general_settings' => 'General Security Settings',
 
-	'user_create' => 'Create a new user by invitation'
+	'user_create' => 'Create a new user by invitation',
+
+	'user_registration'	=> 'You&#39;re almost ready!'
 
 );

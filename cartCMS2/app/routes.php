@@ -24,6 +24,8 @@ Route::get('user/create', array('uses' => 'UserController@createUser', 'as' => '
 Route::put('user/create', array('uses' => 'UserController@inviteUser', 'as' => 'user.create'));
 Route::get('user/invited/{token}', array('uses' => 'UserController@userInvited', 'as' => 'user.invited'));
 
+Route::post('user/registration', array('uses' => 'UserController@userRegistration', 'as' => 'user.registration'));
+
 Route::get('dashboard', array('uses' => 'UserController@dashboard', 'as' => 'user.dashboard'));
 Route::get('site/settings', array('uses' => 'SiteSettingsController@edit', 'as' => 'site.settings'));
 Route::post('site/settings', array('uses' => 'SiteSettingsController@update', 'as' => 'site.settings'));

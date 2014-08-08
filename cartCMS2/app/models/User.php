@@ -81,5 +81,20 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 
 	}
 
+	public function getUserFullname($id){
+
+		$user = User::find($id);
+
+		$fullname = $user->first_name.' '.$user->last_name;
+
+		return $fullname;
+	}
+
+	public function getUserID($var){
+		$user = User::find($var);
+
+		dd($user->id);
+	}
+
 
 }

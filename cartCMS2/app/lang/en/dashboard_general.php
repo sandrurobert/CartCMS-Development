@@ -41,6 +41,8 @@ return array(
 
 	'rank' => 'Rank',
 
-	'users_rank' => 'Users Rank'
+	'users_rank' => 'Users Rank',
+
+	'submit' => 'Submit'
 
 );
