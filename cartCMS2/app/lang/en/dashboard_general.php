@@ -27,6 +27,8 @@ return array(
 
 	'first_name' => 'First Name',
 
-	'last_name' => 'Last Name'
+	'last_name' => 'Last Name',
+
+	'default_avatar' => 'Get default avatar instead'
 
 );
