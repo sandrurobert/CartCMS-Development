@@ -35,3 +35,5 @@ Route::put('update/name', array('uses' => 'UserController@updateName', 'as' => '
 Route::post('change/icon', ['uses' => 'UserController@changeIcon', 'as' => 'update.icon']);
 Route::get('get/default/icon', ['uses' => 'UserController@defaultIcon', 'as' => 'default.icon']);
 
+Route::get('security/general', array('uses' => 'SecuritySettingsController@generalEdit', 'as' => 'security.general'));
+Route::post('security/general', array('uses' => 'SecuritySettingsController@generalUpdate', 'as' => 'security.general'));

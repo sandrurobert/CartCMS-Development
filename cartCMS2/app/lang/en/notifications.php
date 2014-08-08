@@ -32,5 +32,7 @@ return array(
 
 	'changeIcon.success' => 'You just changed your profile picture with success!',
 
-	'changeIcon.danger' => 'You can not upload nothing! The upload form was empty!'
+	'changeIcon.danger' => 'You can not upload nothing! The upload form was empty!',
+
+	'generalSecuritySettingsChange.success' => 'Thank you for updating security settings :name!'
 );

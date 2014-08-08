@@ -29,6 +29,8 @@ return array(
 
 	'last_name' => 'Last Name',
 
-	'default_avatar' => 'Get default avatar instead'
+	'default_avatar' => 'Get default avatar instead',
+
+	'min_pw_lenght' => 'Minimum password lenght'
 
 );

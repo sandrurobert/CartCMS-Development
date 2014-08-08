@@ -14,6 +14,8 @@ return array(
 
 	'site_settings' => 'Site Settings',
 
-	'your_profile' => 'Your Profile, :name!'
+	'your_profile' => 'Your Profile, :name!',
+
+	'security.general_settings' => 'General Security Settings'
 
 );
