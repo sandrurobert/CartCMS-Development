@@ -39,13 +39,13 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 	public function uploadIcon($file)
 	{
 		$id = Auth::user()->id;
-		$upload_dir = 'avt/'; 
+		$upload_dir = 'avt/';
     	$ext = $file->getClientOriginalExtension();
     	$name = 'icon.';
     	if(!File::isDirectory($upload_dir . $id)) {
 		     File::makeDirectory($upload_dir . $id);
 		}
-		$file->move($upload_dir. $id .'/', $name . $ext); 
+		$file->move($upload_dir. $id .'/', $name . $ext);
 		$path = $upload_dir . $id . '/' . $name . $ext;
 
 		return $path;
@@ -73,7 +73,7 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 		return $rank;
 	}
 
-	public function getRankName($id) 
+	public function getRankName($id)
 	{
 		$rank = Role::find($id);
 

@@ -51,7 +51,7 @@ class UserController extends \BaseController {
 	public function inviteUser()
 	{
 		$input = Input::All();
-		
+
 		$data['email'] = $input['email'];
 		$data['subject'] = "You we're invited to join CartCMS!";
 
@@ -60,21 +60,26 @@ class UserController extends \BaseController {
 
 
 		if($input['email'] != ''){
+			$message['email'] = $data['email'];
 			$message['welcome'] = "tiganiii";
+			$message['rank'] = $rankName;
 			$message['token'] = str_random(40);
 			Mail::send('emails.welcome', $message, function($message) use ($data)
 			{
 			    $message->to($data['email'])->subject($data['subject']);
 			});
 
+			$PendingUser = new PendingUser;
+			$PendingUser->email = $data['email'];
+			$PendingUser->register_token = $message['token'];
+			$PendingUser->account_rank = $input['rank'];
+			$PendingUser->creator_user_id = Auth::user()->id;
+			$PendingUser->save();
+
 			$lang_resource = Lang::get('notifications.sendInvitation.success', array('name' => Auth::user()->first_name, 'email' => $input['email'], 'rank' => $rankName) );
 			$notification['green'] = $lang_resource;
 			return Redirect::route('user.create')->with('notification', $notification);
 		}
-
-
-
-
 
 		$lang_resource = Lang::get('notifications.sendInvitation.danger', array('name' => Auth::user()->first_name) );
 		$notification['red'] = $lang_resource;
@@ -86,7 +91,9 @@ class UserController extends \BaseController {
 	 */
 
 	public function userInvited($token){
-		
+		$user = PendingUser::where('register_token', '=', $token)->first()->email;
+
+		dd($user);
 	}
 
 	/**
@@ -236,8 +243,6 @@ class UserController extends \BaseController {
 		$rank_id = Input::get('rank_id');
 		$user = User::find($id);
 		$user->roles->first()->role_id = $rank_id;
-
-		$rank = 
 
 		DB::table('assigned_roles')
             ->where('user_id', $id)

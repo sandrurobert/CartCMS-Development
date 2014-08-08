@@ -6,9 +6,10 @@
 	</head>
 
 	<body>
-		 Hi there! Please follow this link to register on Cart CMS!
-		 {{$welcome}}
+		 Hi there {{ $email }}! You we're invited by an owner to join CartCMS as a/an {{ $rank }}!
 
-		 <a href="{{route('user.invited', $token)}}">Follow this link</a>
+		 Please follow the link below to register on Cart CMS!
+
+		 <a href="{{route('user.invited', $token)}}">Follow this link to continue your registration! >></a>
 	</body>
-</html>
+</html>s
