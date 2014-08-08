@@ -73,5 +73,13 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 		return $rank;
 	}
 
+	public function getRankName($id) 
+	{
+		$rank = Role::find($id);
+
+		return $rank->name;
+
+	}
+
 
 }

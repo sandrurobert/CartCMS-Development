@@ -16,7 +16,6 @@ class DatabaseSeeder extends Seeder {
 		$this->call('SiteSettingsTableSeeder');
 		$this->call('SecuritySettingsTableSeeder');
 		$this->call('IconsTableSeeder');
-		$this->call('SecuritySettingsTableSeeder');
 	}
 
 }
