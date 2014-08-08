@@ -3,6 +3,7 @@
 
 
 	<h1>Change user rank</h1>
+	@include('notifications')
 	@foreach($users as $user)
 		<div class="col-md-12">
 			<div class="col-md-6">

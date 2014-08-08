@@ -10,7 +10,9 @@ class SiteSettingsTableSeeder extends Seeder {
 		$settings =array(
             'title' => 'Site title',
             'keywords' => 'keywords',
-            'description' => 'description');
+            'description' => 'description',
+            'updated_by' => '2'
+            );
 
 		// Uncomment the below to run the seeder
 		DB::table('site_settings')->insert($settings);

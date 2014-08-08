@@ -189,11 +189,19 @@ class UserController extends \BaseController {
 		$user = User::find($id);
 		$user->roles->first()->role_id = $rank_id;
 
+		$rank = 
+
 		DB::table('assigned_roles')
             ->where('user_id', $id)
             ->update(array('role_id' => $rank_id));
 
-		return Redirect::route('change.rank');
+        $rank = $user->rankName($user->id);
+        $email = $user->email;
+
+        $lang_resource = Lang::get('notifications.changeUserRank.success', array('email' => $email, 'rank' => $rank) );
+		$notification['green'] = $lang_resource;
+
+		return Redirect::route('change.rank')->with('notification', $notification);
 
 	}
 
