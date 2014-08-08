@@ -54,8 +54,6 @@ class UserController extends \BaseController {
 		
 		$data['email'] = $input['email'];
 		$data['subject'] = "You we're invited to join CartCMS!";
-		$data['etoken'] = md5($input['email']);
-		$data['rtoken'] = md5($input['rank']);
 
 		$user = Auth::user();
 		$rankName = $user->getRankName($input['rank']);
@@ -63,7 +61,8 @@ class UserController extends \BaseController {
 
 		if($input['email'] != ''){
 			$message['welcome'] = "tiganiii";
-			Mail::send('emails.welcome', array('welcome' => $message['welcome']), function($message) use ($data)
+			$message['token'] = str_random(40);
+			Mail::send('emails.welcome', $message, function($message) use ($data)
 			{
 			    $message->to($data['email'])->subject($data['subject']);
 			});
@@ -80,6 +79,14 @@ class UserController extends \BaseController {
 		$lang_resource = Lang::get('notifications.sendInvitation.danger', array('name' => Auth::user()->first_name) );
 		$notification['red'] = $lang_resource;
 		return Redirect::route('user.create')->with('notification', $notification);
+	}
+
+	/**
+	 * Verifying the token
+	 */
+
+	public function userInvited($token){
+		
 	}
 
 	/**
