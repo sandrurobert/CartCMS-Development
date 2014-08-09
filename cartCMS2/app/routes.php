@@ -30,8 +30,8 @@ Route::get('dashboard', array('uses' => 'UserController@dashboard', 'as' => 'use
 Route::get('site/settings', array('uses' => 'SiteSettingsController@edit', 'as' => 'site.settings'));
 Route::post('site/settings', array('uses' => 'SiteSettingsController@update', 'as' => 'site.settings'));
 
-Route::get('change/user/rank', array('uses' => 'UserController@changeUserRankView', 'as' => 'change.rank'));
-Route::put('change/rank/user/id/{id}', array('uses' => 'UserController@changeUserRank', 'as' => 'update.rank'));
+Route::get('change/user/rank', array('before' => 'owner' , 'uses' => 'UserController@changeUserRankView', 'as' => 'change.rank'));
+Route::put('change/rank/user/id/{id}', array('before' => 'owner', 'uses' => 'UserController@changeUserRank', 'as' => 'update.rank'));
 
 Route::get('user/settings', array('uses' => 'UserController@userSettings', 'as' => 'user.settings'));
 Route::put('update/password', array('uses' => 'UserController@updatePassword', 'as' => 'update.password'));
@@ -40,5 +40,5 @@ Route::put('update/name', array('uses' => 'UserController@updateName', 'as' => '
 Route::post('change/icon', ['uses' => 'UserController@changeIcon', 'as' => 'update.icon']);
 Route::get('get/default/icon', ['uses' => 'UserController@defaultIcon', 'as' => 'default.icon']);
 
-Route::get('security/general', array('uses' => 'SecuritySettingsController@generalEdit', 'as' => 'security.general'));
-Route::post('security/general', array('uses' => 'SecuritySettingsController@generalUpdate', 'as' => 'security.general'));
+Route::get('security/general', array('before' => 'owner', 'uses' => 'SecuritySettingsController@generalEdit', 'as' => 'security.general'));
+Route::post('security/general', array('before' => 'owner', 'uses' => 'SecuritySettingsController@generalUpdate', 'as' => 'security.general'));
