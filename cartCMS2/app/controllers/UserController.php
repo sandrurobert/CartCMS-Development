@@ -167,6 +167,10 @@ class UserController extends \BaseController {
 		$new_user->last_name 	    = $user['last_name'];
 		$new_user->save();
 
+		$avatar = new Icon;
+		$avatar->user_id = $new_user->id;
+		$avatar->save();
+
 
 		PendingUser::where('register_token', '=', $userPendingData->register_token)->first()->delete();
 

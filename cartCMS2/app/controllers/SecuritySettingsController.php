@@ -4,7 +4,7 @@ class SecuritySettingsController extends \BaseController {
 
 	public function __construct()
 	{
-		$this->beforeFilter('role.owner');
+		$this->beforeFilter('owner');
 	}
 
 
