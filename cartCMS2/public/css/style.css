@@ -148,12 +148,49 @@ body{background: #f5f5f5;}
 #slideCarousel{
 	display: none;
 	background: #2a2a2a;
+	position: relative;
+}
+#slideCarouselIcon{padding-bottom: 1%}
+#slideCarouselIcon img{
+	width: 50px;
+}
+#slideCarouselTitle {
+	text-align: center;
+}
+#slideCarouselTitle h1{
+	text-decoration: none;
+	font-family: arial;
+	font-size: 14px;
+	font-weight: bold;
+	color: #fff;
+	transition: 0.2s;
+}
+#slideCarouselList {padding-bottom: 1%}
+#slideCarouselList ul{
+	text-align: center;
+}
+#slideCarouselList ul li{}
+#slideCarouselList ul li a{
+	padding: 5px 0px 5px 0px;
+	display: block;
+	text-decoration: none;
+	font-family: arial;
+	font-size: 12px;
+	font-weight: bold;
+	color: #fff;
+	transition: 0.2s;
+}
+#slideCarouselList ul li a:hover{
+	background: #171717;
 }
 
-#notificationsCarousel{display: none;}
-#taskCarousel{display: none;}
-#usersCarousel{display: none;}
-.divParent{min-height: 500px;color: #fff;}
+#notificationsCarousel{display: none;padding-top: 1%;float: left;width: 100%;}
+#tasksCarousel{display: none;padding-top: 1%;}
+#usersCarousel{display: none;padding-top: 1%;}
+.divParent{
+	min-height: 250px;
+	padding: 1% 0% 1% 0%;
+}
 
 /**
  * Dashboard Content

@@ -79,6 +79,8 @@ $(document).ready(function(){
 		afftected = $(".divParent > :nth-child("+current+")").attr("id");
 		afftectedid = "#"+afftected+"";
 
+
+
 		if($(afftectedid).css("display") != "block"){
 			$(".slideTopBar").removeAttr("style");
 			$("#slideCarousel").hide();
@@ -91,6 +93,7 @@ $(document).ready(function(){
 		else{
 			$("#slideCarousel").slideUp("fast");
 			$(afftectedid).hide("fast");
+			$(afftectedid, ".divParent").hide("fast");
 
 			$(this).removeAttr("style");
 		}

@@ -24,13 +24,38 @@
 		<div id="slideCarousel" class="row">
 			<div class="col-md-6 col-md-offset-3 divParent">
 				<div id="notificationsCarousel" class="slidable">
-					notifications
+					<div id="slideCarouselIcon" class="col-md-12">
+						<img src="{{asset('img/icons/bell.png')}}" alt="Bell" class="img-responsive centerize" />
+					</div>
+					<div id="slideCarouselTitle" class="col-md-12">
+						<h1>NOTIFICATIONS</h1>
+					</div>
+					<div id="slideCarouselList" class="col-md-12">
+						<ul>
+							<li><a href="#">&#9679; Robert Sandru deleted 18 products from Pet Food category. Reason: 'Old Cat food'</a></li>
+							<li><a href="#">&#9679; Alex Radoi added 182 products in Vehicle Components category. Mention: '150 wheels and 32 engines'</a></li>
+							<li><a href="#">&#9679; Arba Alexandru finished a dispute with a customer. Mention: 'Da-l ma in gatu ma-sii ca ne baga firma in faliment!!!'</a></li>
+							<li><a href="#">&#9679; The customer Banyacskay Wener bought: 'A full of Tutorials Truck (pid: #666)'. Please process the order!</a></li>
+							<li><a href="#">&#9679; The customer Barbuceanu Lucica bought: 'Porc 150kg (pid: #667)'. Please process the order!</a></li>
+						</ul>
+					</div>
 				</div>
 				<div id="tasksCarousel" class="slidable">
-					tasks
+					<div id="slideCarouselIcon" class="col-md-12">
+						<img src="{{asset('img/icons/flag.png')}}" alt="Bell" class="img-responsive centerize" />
+					</div>
+					<div id="slideCarouselTitle" class="col-md-12">
+						<h1>TASKS</h1>
+					</div>
+					<div id="slideCarouselList" class="col-md-12">
+						<ul>
+							<li><a href="#">&#9679; Add 149 mobile phones. ( +50$ )</a></li>
+							<li><a href="#">&#9679; Edit the computers preview images. ( +20$ )</a></li>
+						</ul>
+					</div>
 				</div>
 				<div id="usersCarousel" class="slidable">
-					users
+					userssadsadsadsad
 				</div>
 			</div>
 		</div>
