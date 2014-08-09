@@ -123,7 +123,11 @@ class UserController extends \BaseController {
 		$response = $userP->verifyToken($input['token']); // Boolean variable
 
 
-		if(!$response){return "Something went wrong with the token code!";}
+		if(!$response){
+			$lang_resource = Lang::get('notifications.token.danger');
+			$notification['red'] = $lang_resource;
+			return View::make('error')->with('notification', $notification);
+		}
 
 
 		$userPendingData = $userP->getAllPendingData($input['token']);
