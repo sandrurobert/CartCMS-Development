@@ -11,9 +11,30 @@
 	<body>
 		<div class="row">
 			<div id="dashNavTop" class="col-md-12">
-				{{Auth::user()->email}} - {{Auth::user()->roles->first()->name}}
+				<div id="dashNavTopLeft" class="col-md-6 col-md-offset-3">
+					<ul>
+						<li id="1" class="slideTopBar"><img src="{{asset('img/icons/bell_black.png')}}" alt="Bell"/></li>
+						<li id="2" class="slideTopBar"><img src="{{asset('img/icons/flag_black.png')}}" alt="Flag"/></li>
+						<li id="3" class="slideTopBar"><img src="{{asset('img/icons/user_black.png')}}" alt="Man"/></li>
+					</ul>
+				</div>
 			</div>
 		</div><!-- top bar navigation row -->
+
+		<div id="slideCarousel" class="row">
+			<div class="col-md-6 col-md-offset-3 divParent">
+				<div id="notificationsCarousel" class="slidable">
+					notifications
+				</div>
+				<div id="tasksCarousel" class="slidable">
+					tasks
+				</div>
+				<div id="usersCarousel" class="slidable">
+					users
+				</div>
+			</div>
+		</div>
+
 
 		<div id="dashLogoHolder" class="row">
 			<div class="col-md-2 col-md-offset-5">
