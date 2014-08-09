@@ -46,5 +46,7 @@ return array(
 
 	'regPass.danger' => 'Something went wrong! Maybe the passwords mismatch!',
 
-	'regSuccess' => 'Thank you for registering :name! Now you are able to login using :email and the password you set while registering!'
+	'regSuccess' => 'Thank you for registering :name! Now you are able to login using :email and the password you set while registering!',
+
+	'token.danger' => 'Something is wrong with this token code! Please try again!'
 );

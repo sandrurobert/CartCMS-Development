@@ -20,24 +20,11 @@
 
 		<div id="dashContentHolder" class="row">
 			<div id="dashContent" class="col-md-10 col-md-offset-1 no-padding">
-				@include('layout_left_menu')
-
-				@if (Auth::check())
-					<div class="col-md-10 no-padding">
-						@yield('content')
-					</div>
-				@endif
-
-				@if (!Auth::check())
-					<div class="col-md-12 no-padding">
-						@yield('content')
-					</div>
-				@endif
+				<div class="col-md-12 no-padding">
+					<h1 id="errorTitle">ERROR</h1>
+				</div>
+				<div class="col-md-12 no-padding" style="text-align: center;">
+					@include('notifications')
+				</div>
 			</div><!-- dashContent -->
 		</div><!-- dashContentHolder -->
-
-
-		@include('footer')
-	</body>
-</html>
-

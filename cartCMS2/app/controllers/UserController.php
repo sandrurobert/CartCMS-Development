@@ -27,6 +27,7 @@ class UserController extends \BaseController {
 	 */
 	public function loginPage()
 	{
+		if(Auth::check()){return Redirect::route('user.dashboard');}
 		return View::make('login');
 	}
 
@@ -105,7 +106,9 @@ class UserController extends \BaseController {
 		}
 
 		else{
-			echo "nu-i ok";
+			$lang_resource = Lang::get('notifications.token.danger');
+			$notification['red'] = $lang_resource;
+			return View::make('error')->with('notification', $notification);
 		}
 	}
 

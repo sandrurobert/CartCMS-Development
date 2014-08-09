@@ -241,3 +241,12 @@ body{background: #f5f5f5;}
 #dashFooterContainer{
 	min-height: 300px;
 }
+
+#errorTitle{
+	padding: 2% 0% 2% 0%;
+	font-family: arial;
+	font-size: 72px;
+	font-weight: bold;
+	color: #c0392b;
+	text-align: center;
+}
