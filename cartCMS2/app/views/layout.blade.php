@@ -59,7 +59,8 @@
 						{{ HTML::image(Auth::user()->icon->icon_url, '', array('class' =>'img-responsive img-rounded centerize' )) }}
 					</div>
 					<div id="slideCarouselTitle" class="col-md-12">
-						<h1>{{ Auth::user()->first_name }} {{Auth::user()->last_name}}</h1>
+						<h1 style="margin-bottom: 0px;">{{ Auth::user()->first_name }} {{Auth::user()->last_name}}</h1>
+						<h2 style="margin-bottom: 9px;">{{ Auth::user()->roles->first()->name }}</h2>
 					</div>
 					<div id="slideCarouselList" class="col-md-12">
 						<ul>
