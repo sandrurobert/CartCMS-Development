@@ -55,7 +55,20 @@
 					</div>
 				</div>
 				<div id="usersCarousel" class="slidable">
-					userssadsadsadsad
+					<div id="slideCarouselIcon" class="col-md-12">
+						{{ HTML::image(Auth::user()->icon->icon_url, '', array('class' =>'img-responsive img-rounded centerize' )) }}
+					</div>
+					<div id="slideCarouselTitle" class="col-md-12">
+						<h1>{{ Auth::user()->first_name }} {{Auth::user()->last_name}}</h1>
+					</div>
+					<div id="slideCarouselList" class="col-md-12">
+						<ul>
+							<li><a href="{{ route('user.settings') }}">&#9679; Edit your profile</a></li>
+							<li><a href="#">&#9679; Historic</a></li>
+							<li><a href="#">&#9679; My top added products</a></li>
+							<li><a href="{{ route('user.logout') }}">&#9679; Sign out</a></li>
+						</ul>
+					</div>
 				</div>
 			</div>
 		</div>
