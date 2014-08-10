@@ -60,12 +60,12 @@
 			{{Form::text('pretend', $settings['pretend'], array('class' => 'basicInput form-control importantInput'))}}
 		</div>
 
-		<div id="boxInputs_Inline" class="no-padding">
+		<div id="boxInputs_Inline">
 			{{Form::submit(Lang::get('mail_settings.update'), array('class' => 'redBtn width-20 right'))}}
 		</div>
 		{{ Form::close()}}
-
-		<a href="{{route('mail.config.default.values')}}">Restore to default values</a>
-
+		<div id="boxInputs_Inline" class="no-padding">
+			<a href="{{route('mail.config.default.values')}}">Restore to default values</a>
+		</div>
 	</div>
 @stop
