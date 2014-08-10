@@ -24,6 +24,8 @@ return array(
 
 	'mail_settings' => 'Here you can change mail settings of the CartCMS',
 
-	'user_view_users' => 'User tables (:nr users)'
+	'user_view_users' => 'User tables (:nr users)',
+
+	'his_profile' => 'You&#39;re editing :name&#39;s profile!'
 
 );

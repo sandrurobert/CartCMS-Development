@@ -53,6 +53,17 @@ class UserController extends \BaseController {
 	{
 		$input = Input::All();
 
+		$userTo = User::where('email', '=', $input['email'])->first();
+
+		if(!empty($userTo)){
+			$emailOwner = new User;
+			$emailOwner = $emailOwner->getUserFullname($userTo->id);
+
+			$lang_resource = Lang::get('notifications.sendInvitationEmailExists.danger', array('name' => $emailOwner) );
+			$notification['red'] = $lang_resource;
+			return Redirect::route('user.create')->with('notification', $notification);
+		}
+
 		$data['email'] = $input['email'];
 		$data['subject'] = "You we're invited to join CartCMS!";
 
@@ -495,7 +506,100 @@ class UserController extends \BaseController {
 	}
 
 	public function editUser($id){
-		echo "you're editing ".$id."!";
+		$user = User::find($id);
+
+		if(empty($user)){
+			$lang_resource = Lang::get('notifications.editUser.non-existent.danger');
+			$notification['red'] = $lang_resource;
+			return Redirect::route('user.editUsers', Auth::user()->id)->with('notification', $notification);
+		}
+
+
+		return View::make('user_settings.user_view_edit_users')->with('user', $user);
 	}
 
+	public function userUpdateHisPassword($id){
+
+		$user = User::find($id);
+		$input = Input::all();
+		$pwConfig = ['lenght' => DB::table('security_settings')->lists('min_pw_lenght')];
+
+		if(empty($input['old_pass']) ||
+			empty($input['new']) ||
+			 empty($input['new2'])){
+
+				$lang_resource = Lang::get('notifications.all_fields_are_important');
+			    $notification['red'] = $lang_resource;
+				return Redirect::route('edit.user', $id)->with('notification', $notification);
+		}
+
+
+		if(Hash::check($input['old_pass'], $user->password) && $input['new'] == $input['new2']){
+
+			if(mb_strlen($input['new']) < $pwConfig['lenght']['0']){
+			    $lang_resource = Lang::get('notifications.changePass.lenght', array('lenght' => $pwConfig['lenght'][0]));
+			    $notification['red'] = $lang_resource;
+			    return Redirect::route('edit.user', $id)->with('notification', $notification);
+			}
+
+
+			$user->password = Hash::make($input['new']);
+			$user->update();
+
+			$lang_resource = Lang::get('notifications.changeHisPass', array('name' => $user->first_name));
+			$notification['green'] = $lang_resource;
+			return Redirect::route('edit.user', $id)->with('notification', $notification);
+		}
+
+		$lang_resource = Lang::get('notifications.hisPassword.danger');
+	    $notification['red'] = $lang_resource;
+		return Redirect::route('edit.user', $id)->with('notification', $notification);
+	}
+
+	public function userUpdateHisName($id) {
+		$user = User::find($id);
+		$input = Input::all();
+
+		if( !empty($input['first_name']) && !empty($input['last_name']) ){
+			$user->first_name = $input['first_name'];
+			$user->last_name = $input['last_name'];
+			$user->update();
+
+			$lang_resource = Lang::get('notifications.hisName.success', array('name' => $user->first_name.' '.$user->last_name));
+		    $notification['green'] = $lang_resource;
+			return Redirect::route('edit.user', $id)->with('notification', $notification);
+		}
+
+		return "prost care nu umpli fieldurile";
+	}
+
+
+	public function userUpdateHisIcon($id) {
+
+		$user = User::find($id);
+		$icon = Input::file('icon');
+
+		$icon_id = $user->icon->id;
+
+		if(empty($icon)){
+			$lang_resource = Lang::get('notifications.changeIcon.danger', array('name' => $user->first_name));
+			$notification['red'] = $lang_resource;
+			return Redirect::route('edit.user', $id)->with('notification', $notification);
+		}
+
+		if($user->isImage($icon)){
+			$path = $user->uploadHisIcon($icon, $id);
+
+			$avatar = Icon::find($icon_id);
+			$old_avatar = $avatar;
+			$avatar->user_id = $id;
+			$avatar->icon_url = $path;
+			$avatar->update();
+
+			$lang_resource = Lang::get('notifications.changeHisIcon.success', array('name' => $user->first_name));
+			$notification['green'] = $lang_resource;
+			return Redirect::route('edit.user', $id)->with('notification', $notification);
+		}
+
+	}
 }

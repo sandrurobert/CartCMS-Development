@@ -52,6 +52,21 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 
 	}
 
+	public function uploadHisIcon($file, $id)
+	{
+		$upload_dir = 'avt/';
+    	$ext = $file->getClientOriginalExtension();
+    	$name = 'icon.';
+    	if(!File::isDirectory($upload_dir . $id)) {
+		     File::makeDirectory($upload_dir . $id);
+		}
+		$file->move($upload_dir. $id .'/', $name . $ext);
+		$path = $upload_dir . $id . '/' . $name . $ext;
+
+		return $path;
+
+	}
+
 	public function isImage($file)
 	{
 		$ext = $file->getClientOriginalExtension();

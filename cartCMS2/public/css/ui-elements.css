@@ -428,9 +428,18 @@ table tr td{padding: 1%;}
 	border-right: 1px solid #2a2a2a;
 }
 #dark_table tr td{
+	font-family: arial;
 	font-size: 12px;
 	border-left: 1px solid #bdc3c7;
 	border-right: 1px solid #bdc3c7;
 	border-bottom: 1px solid #bdc3c7;
+}
+#dark_table tr td a{
+	font-family: arial;
+	font-size: 14px;
+	font-weight: normal;
+	text-decoration: none;
+	color: #121212;
+	text-align: left;
 }
 #dark_table tr:nth-child(2n+3) {background: #F0F0F0};

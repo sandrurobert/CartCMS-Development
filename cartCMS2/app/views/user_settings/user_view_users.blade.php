@@ -10,7 +10,7 @@
 		@include('notifications')
 	</div>
 
-	<div class="col-md-12">
+	<div class="col-md-12" style="padding-top: 1%;padding-bottom: 1%;">
 		<table id="dark_table">
 			<tr>
 				<th>ID</th>

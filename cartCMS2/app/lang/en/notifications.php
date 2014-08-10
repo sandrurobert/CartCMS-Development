@@ -32,6 +32,10 @@ return array(
 
 	'changeIcon.success' => 'You just changed your profile picture with success!',
 
+	'changeHisIcon.success' => 'You just changed :name&#39;s profile picture!',
+
+	'changeHisIconDefault.success' => ':name&#39;s profile picture is now the default avatar!',
+
 	'changeIcon.danger' => 'You can not upload nothing! The upload form was empty!',
 
 	'generalSecuritySettingsChange.success' => 'Thank you for updating security settings :name!',
@@ -39,6 +43,8 @@ return array(
 	'sendInvitation.success' => 'Thank you :name! In short time, :email will receive an email to join as a/an :rank!',
 
 	'sendInvitation.danger' => 'Something went wrong :name! Please try again!',
+
+	'sendInvitationEmailExists.danger' => 'This email already exists! It belongs to :name!',
 
 	'registration.arrival' => 'Hi there! You have been added to the staff by :name! Please complete the forms below!',
 
@@ -48,5 +54,13 @@ return array(
 
 	'regSuccess' => 'Thank you for registering :name! Now you are able to login using :email and the password you set while registering!',
 
-	'token.danger' => 'Something is wrong with this token code! Please try again!'
+	'token.danger' => 'Something is wrong with this token code! Please try again!',
+
+	'editUser.non-existent.danger' => 'This user is not found in our database! Please try again or ask for support!',
+
+	'changeHisPass' => 'You successfully changed :name&#39;s password!',
+
+	'hisPassword.danger' => 'There might be a password problem! Please try again and write his password again!',
+
+	'hisName.success' => 'You just changed this user&#39;s name to :name!'
 );
