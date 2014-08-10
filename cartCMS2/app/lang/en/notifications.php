@@ -50,5 +50,11 @@ return array(
 
 	'regSuccess' => 'Thank you for registering :name! Now you are able to login using :email and the password you set while registering!',
 
-	'token.danger' => 'Something is wrong with this token code! Please try again!'
+	'token.danger' => 'Something is wrong with this token code! Please try again!',
+
+	'editUser.non-existent.danger' => 'This user is not found in our database! Please try again or ask for support!',
+
+	'changeHisPass' => 'You successfully changed :name&#39;s password!',
+
+	'hisPassword.danger' => 'There might be a password problem! Please try again and write his password again!'
 );
