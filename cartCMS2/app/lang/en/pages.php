@@ -20,6 +20,8 @@ return array(
 
 	'user_create' => 'Create a new user by invitation',
 
-	'user_registration'	=> 'You&#39;re almost ready!'
+	'user_registration'	=> 'You&#39;re almost ready!',
+
+	'mail_settings' => 'Here you can change mail settings of the CartCMS'
 
 );
