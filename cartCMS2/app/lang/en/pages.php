@@ -22,6 +22,8 @@ return array(
 
 	'user_registration'	=> 'You&#39;re almost ready!',
 
-	'mail_settings' => 'Here you can change mail settings of the CartCMS'
+	'mail_settings' => 'Here you can change mail settings of the CartCMS',
+
+	'user_view_users' => 'User tables (:nr users)'
 
 );

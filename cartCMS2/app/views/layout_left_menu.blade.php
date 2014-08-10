@@ -13,7 +13,7 @@
 						<li class="parentLi"><a href="#">User Settings</a>
 							<ul>
 								<li><a href="{{route('user.create')}}">Create a new user</a></li>
-								<li><a href="#">Edit an user</a></li>
+								<li><a href="{{route('user.editUsers')}}">Edit an user</a></li>
 								<li><a href="{{route('user.settings')}}">Your Profile, {{Auth::user()->first_name;}}</a></li>
 								<li><a href="{{route('change.rank')}}">User permissions</a></li>
 							</ul>

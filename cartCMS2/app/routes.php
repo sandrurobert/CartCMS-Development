@@ -26,6 +26,9 @@ Route::get('user/invited/{token}', array('uses' => 'UserController@userInvited',
 
 Route::post('user/registration', array('uses' => 'UserController@userRegistration', 'as' => 'user.registration'));
 
+Route::get('user/edit', array('uses' => 'UserController@editUsers', 'as' => 'user.editUsers'));
+Route::get('user/edit/{id}', array('uses' => 'UserController@editUser', 'as' => 'edit.user'));
+
 Route::get('dashboard', array('uses' => 'UserController@dashboard', 'as' => 'user.dashboard'));
 Route::get('site/settings', array('uses' => 'SiteSettingsController@edit', 'as' => 'site.settings'));
 Route::post('site/settings', array('uses' => 'SiteSettingsController@update', 'as' => 'site.settings'));

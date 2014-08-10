@@ -403,3 +403,34 @@ button{
  	float: left;
  	width: 60%;
  }
+
+ /**
+  * Tables
+  */
+
+table{width: 100%;padding: 1% 0% 1% 0%;}
+table tr th{padding: 1%;}
+table tr td{padding: 1%;}
+
+#dark_table tr th{
+	background: #2a2a2a;
+
+	font-family: arial;
+	font-size: 14px;
+	font-weight: bold;
+	color: #fff;
+	text-align: left;
+}
+#dark_table tr th:first-child{
+	border-left: 1px solid #2a2a2a;
+}
+#dark_table tr th:last-child{
+	border-right: 1px solid #2a2a2a;
+}
+#dark_table tr td{
+	font-size: 12px;
+	border-left: 1px solid #bdc3c7;
+	border-right: 1px solid #bdc3c7;
+	border-bottom: 1px solid #bdc3c7;
+}
+#dark_table tr:nth-child(2n+3) {background: #F0F0F0};
