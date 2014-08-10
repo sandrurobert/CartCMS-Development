@@ -14,7 +14,9 @@ class DatabaseSeeder extends Seeder {
 		$this->call('UsersTableSeeder');
 		$this->call('RolesTableSeeder');
 		$this->call('SiteSettingsTableSeeder');
+		$this->call('SecuritySettingsTableSeeder');
 		$this->call('IconsTableSeeder');
+		$this->call('MailSettingsTableSeeder');
 	}
 
 }

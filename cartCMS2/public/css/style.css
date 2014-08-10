@@ -71,6 +71,7 @@ body{background: #f5f5f5;}
 	background: #2a2a2a;
 	min-height: 500px;
 }
+#dashNavLeft a{cursor: pointer;}
 
 /**
  * ---
@@ -121,6 +122,33 @@ body{background: #f5f5f5;}
 }
 
 /**
+ * ---
+ * Third Level
+ * ---
+ */
+
+#dashNavLeft ul li ul li ul{
+	padding: 5% 0% 5% 0%;
+	display: none;
+}
+#dashNavLeft ul li ul li ul li a{
+	display: block;
+
+	padding: 1% 0% 1% 15%;
+	text-decoration: none;
+	font-family: arial;
+	font-size: 12px;
+	font-weight: normal;
+	color: #fff;
+	transition: 0.2s;
+}
+#dashNavLeft ul li ul li ul li a:hover{
+	background: #F0F0F0;
+	color: #000;
+}
+
+
+/**
  * Top Bar Navigation
  */
 #dashNavTop{
@@ -128,11 +156,84 @@ body{background: #f5f5f5;}
 	border-bottom: 1px solid #ecf0f1;
 	box-shadow: 0px 0px 15px #bdc3c7;
 }
+#dashNavTop ul{
+	width: 100%;
+	text-align: center;
+}
+#dashNavTop ul li{
+	display: inline-block;
+	padding: 5px 1% 5px 1%;
+	transition: 0.2s;
+	cursor: pointer;
+}
+#dashNavTop ul li:hover{
+	background: #F0F0F0;
+}
+#dashNavTop ul li img{
+	height: 20px;
+}
+
+#slideCarousel{
+	display: none;
+	background: #2a2a2a;
+	position: relative;
+}
+#slideCarouselIcon{padding-bottom: 1%}
+#slideCarouselIcon img{
+	height: 50px;
+}
+#slideCarouselTitle {
+	text-align: center;
+}
+#slideCarouselTitle h1{
+	text-decoration: none;
+	font-family: arial;
+	font-size: 14px;
+	font-weight: bold;
+	color: #fff;
+	transition: 0.2s;
+	text-transform: uppercase;
+}
+#slideCarouselTitle h2{
+	text-decoration: none;
+	font-family: arial;
+	font-size: 10px;
+	font-weight: bold;
+	color: #f5f5f5;
+	transition: 0.2s;
+	text-transform: uppercase;
+}
+#slideCarouselList {padding: 1% 0% 1% 0%;}
+#slideCarouselList ul{
+	text-align: center;
+}
+#slideCarouselList ul li{}
+#slideCarouselList ul li a{
+	padding: 5px 0px 5px 0px;
+	display: block;
+	text-decoration: none;
+	font-family: arial;
+	font-size: 12px;
+	font-weight: bold;
+	color: #fff;
+	transition: 0.2s;
+}
+#slideCarouselList ul li a:hover{
+	background: #171717;
+}
+
+#notificationsCarousel{display: none;padding-top: 1%;float: left;width: 100%;}
+#tasksCarousel{display: none;padding-top: 1%;}
+#usersCarousel{display: none;padding-top: 1%;}
+.divParent{
+	min-height: 250px;
+	padding: 1% 0% 1% 0%;
+}
 
 /**
  * Dashboard Content
  */
-#dashContentHolder{padding-top: 5%;}
+#dashContentHolder{padding-top: 5%;padding-bottom: 5%;}
 #dashLogoHolder{padding-top: 5%;}
 
 #dashContent{
@@ -155,4 +256,25 @@ body{background: #f5f5f5;}
 
 	transition: 0.2s;
 	border-bottom: 1px dotted #bdc3c7;
+}
+
+/**
+ * Dashboard Footer
+ */
+
+#dashFooterHolder{
+	background: #171717;
+}
+
+#dashFooterContainer{
+	min-height: 300px;
+}
+
+#errorTitle{
+	padding: 2% 0% 2% 0%;
+	font-family: arial;
+	font-size: 72px;
+	font-weight: bold;
+	color: #c0392b;
+	text-align: center;
 }

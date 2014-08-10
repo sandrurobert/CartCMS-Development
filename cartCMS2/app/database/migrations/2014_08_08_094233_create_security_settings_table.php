@@ -1,9 +1,9 @@
 <?php
 
-use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Migrations\Migration;
 
-class CreateSiteSettingsTable extends Migration {
+class CreateSecuritySettingsTable extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -12,17 +12,15 @@ class CreateSiteSettingsTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('site_settings', function(Blueprint $table)
+		Schema::create('security_settings', function(Blueprint $table)
 		{
 			$table->increments('id')->unsigned();
-			$table->string('title')->nullable();
-			$table->string('keywords')->nullable();
-			$table->string('description')->nullable();
+			$table->integer('min_pw_lenght')->unsigned();
 			$table->integer('updated_by')->unsigned();
 			$table->timestamps();
 
 			$table->foreign('updated_by')->references('id')->on('users')->onDelete('cascade');
-			
+
 		});
 	}
 
@@ -34,7 +32,7 @@ class CreateSiteSettingsTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('site_settings');
+		Schema::drop('security_settings');
 	}
 
 }

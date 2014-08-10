@@ -39,13 +39,28 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 	public function uploadIcon($file)
 	{
 		$id = Auth::user()->id;
-		$upload_dir = 'avt/'; 
+		$upload_dir = 'avt/';
     	$ext = $file->getClientOriginalExtension();
     	$name = 'icon.';
     	if(!File::isDirectory($upload_dir . $id)) {
 		     File::makeDirectory($upload_dir . $id);
 		}
-		$file->move($upload_dir. $id .'/', $name . $ext); 
+		$file->move($upload_dir. $id .'/', $name . $ext);
+		$path = $upload_dir . $id . '/' . $name . $ext;
+
+		return $path;
+
+	}
+
+	public function uploadHisIcon($file, $id)
+	{
+		$upload_dir = 'avt/';
+    	$ext = $file->getClientOriginalExtension();
+    	$name = 'icon.';
+    	if(!File::isDirectory($upload_dir . $id)) {
+		     File::makeDirectory($upload_dir . $id);
+		}
+		$file->move($upload_dir. $id .'/', $name . $ext);
 		$path = $upload_dir . $id . '/' . $name . $ext;
 
 		return $path;
@@ -59,6 +74,36 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
   			return 1;
   		}
   		else return 0;
+	}
+
+	/**
+	 * Retrieve rank Name of a user by User ID
+	 * param INT $id
+	 */
+	public function rankName($id)
+	{
+		$user = User::find($id);
+		$rank = $user->roles->first()->name;
+
+		return $rank;
+	}
+
+	public function getRankName($id)
+	{
+		$rank = Role::find($id);
+
+		return $rank->name;
+
+	}
+
+	public function getUserFullname($id)
+	{
+
+		$user = User::find($id);
+
+		$fullname = $user->first_name.' '.$user->last_name;
+
+		return $fullname;
 	}
 
 

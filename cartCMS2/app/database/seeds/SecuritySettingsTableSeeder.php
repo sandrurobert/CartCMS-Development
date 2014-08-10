@@ -1,6 +1,6 @@
 <?php
 
-class SiteSettingsTableSeeder extends Seeder {
+class SecuritySettingsTableSeeder extends Seeder {
 
 	public function run()
 	{
@@ -8,14 +8,12 @@ class SiteSettingsTableSeeder extends Seeder {
 		// DB::table('site_settings')->truncate();
 
 		$settings =array(
-            'title' => 'Site title',
-            'keywords' => 'keywords',
-            'description' => 'description',
+            'min_pw_lenght' => '5',
             'updated_by' => '2'
             );
 
 		// Uncomment the below to run the seeder
-		DB::table('site_settings')->insert($settings);
+		DB::table('security_settings')->insert($settings);
 	}
 
 }

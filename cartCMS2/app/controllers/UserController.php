@@ -5,7 +5,7 @@ class UserController extends \BaseController {
 
 	public function __construct()
 	{
-		$this->beforeFilter('auth', array("except" => array("loginPage", "recoverPassword", "login")));
+		$this->beforeFilter('auth', array("except" => array("loginPage", "recoverPassword", "login", "userInvited", "userRegistration")));
 	}
 
 	/**
@@ -27,6 +27,7 @@ class UserController extends \BaseController {
 	 */
 	public function loginPage()
 	{
+		if(Auth::check()){return Redirect::route('user.dashboard');}
 		return View::make('login');
 	}
 
@@ -36,9 +37,169 @@ class UserController extends \BaseController {
 	 *
 	 * @return Response
 	 */
-	public function create()
+	public function createUser()
 	{
-		return View::make('user.create');
+		return View::make('user_settings/user_create');
+	}
+
+	/**
+	 * Sends an email with a token
+	 * Used for inviting staff
+	 * PUT /user/create
+	 *
+	 * @return Response
+	 */
+	public function inviteUser()
+	{
+		$input = Input::All();
+
+		$userTo = User::where('email', '=', $input['email'])->first();
+
+		if(!empty($userTo)){
+			$emailOwner = new User;
+			$emailOwner = $emailOwner->getUserFullname($userTo->id);
+
+			$lang_resource = Lang::get('notifications.sendInvitationEmailExists.danger', array('name' => $emailOwner) );
+			$notification['red'] = $lang_resource;
+			return Redirect::route('user.create')->with('notification', $notification);
+		}
+
+		$data['email'] = $input['email'];
+		$data['subject'] = "You we're invited to join CartCMS!";
+
+		$user = Auth::user();
+		$rankName = $user->getRankName($input['rank']);
+
+
+		if($input['email'] != ''){
+			$message['email'] = $data['email'];
+			$message['welcome'] = "tiganiii";
+			$message['rank'] = $rankName;
+			$message['token'] = str_random(40);
+			Mail::send('emails.welcome', $message, function($message) use ($data)
+			{
+			    $message->to($data['email'])->subject($data['subject']);
+			});
+
+			$PendingUser = new PendingUser;
+			$PendingUser->email = $data['email'];
+			$PendingUser->register_token = $message['token'];
+			$PendingUser->account_rank = $input['rank'];
+			$PendingUser->creator_user_id = Auth::user()->id;
+			$PendingUser->save();
+
+			$lang_resource = Lang::get('notifications.sendInvitation.success', array('name' => Auth::user()->first_name, 'email' => $input['email'], 'rank' => $rankName) );
+			$notification['green'] = $lang_resource;
+			return Redirect::route('user.create')->with('notification', $notification);
+		}
+
+		$lang_resource = Lang::get('notifications.sendInvitation.danger', array('name' => Auth::user()->first_name) );
+		$notification['red'] = $lang_resource;
+		return Redirect::route('user.create')->with('notification', $notification);
+	}
+
+	/**
+	 * Verifying the token
+	 */
+
+	public function userInvited($token){
+		$userP = new PendingUser;
+		$userM = new User;
+		$response = $userP->verifyToken($token); // Boolean variable
+
+		if($response){
+			$user = $userP->getAllPendingData($token);
+			$invitedBy = $userM->getUserFullname($user->creator_user_id);
+
+			$lang_resource = Lang::get('notifications.registration.arrival', array('name' => $invitedBy));
+			$notification['green'] = $lang_resource;
+			return View::make('user_settings/user_registration')->with('user', $user)->with('notification', $notification);
+		}
+
+		else{
+			$lang_resource = Lang::get('notifications.token.danger');
+			$notification['red'] = $lang_resource;
+			return View::make('error')->with('notification', $notification);
+		}
+	}
+
+	/**
+	 * Finally, when the token verifying is over,
+	 * the user will be able to register
+	 */
+
+	public function userRegistration(){
+		$input = Input::all();
+		$userP = new PendingUser;
+		$response = $userP->verifyToken($input['token']); // Boolean variable
+
+
+		if(!$response){
+			$lang_resource = Lang::get('notifications.token.danger');
+			$notification['red'] = $lang_resource;
+			return View::make('error')->with('notification', $notification);
+		}
+
+
+		$userPendingData = $userP->getAllPendingData($input['token']);
+
+		$user['email']				= $userPendingData->email;
+		$user['rank']				= $userPendingData->account_rank;
+		$user['first_name'] 		= $input['first_name'];
+		$user['last_name'] 			= $input['last_name'];
+		$user['newpass'] 			= $input['newpass'];
+		$user['newpassagain']		= $input['newpassagain'];
+
+		if(empty($user['email']) ||
+			empty($user['first_name']) ||
+			 empty($user['last_name']) ||
+			  empty($user['newpass']) ||
+			   empty($user['newpassagain']) ||
+			    empty($user['rank']) ){
+
+				$lang_resource = Lang::get('notifications.all_fields_are_important');
+				$notification['red'] = $lang_resource;
+				return Redirect::route('user.invited', $userPendingData->register_token)->with('user', $userPendingData)->with('notification', $notification);
+		}
+
+		if($user['newpass'] != $user['newpassagain']){
+			$lang_resource = Lang::get('notifications.regPass.danger');
+			$notification['red'] = $lang_resource;
+			return Redirect::route('user.invited', $userPendingData->register_token)->with('user', $userPendingData)->with('notification', $notification);
+		}
+
+		$pwConfig = new SecuritySettings;
+		$lenght = $pwConfig->find(1);
+
+		if(mb_strlen($user['newpass']) < $lenght->min_pw_lenght){
+			$lang_resource = Lang::get('notifications.changePass.lenght', array('lenght' => $lenght->min_pw_lenght));
+			$notification['red'] = $lang_resource;
+			return Redirect::route('user.invited', $userPendingData->register_token)->with('user', $userPendingData)->with('notification', $notification);
+		}
+
+
+		$new_user = new User;
+		$new_user->email 			= $user['email'];
+		$new_user->password 		= Hash::make($user['newpass']);
+		$new_user->first_name 	    = $user['first_name'];
+		$new_user->last_name 	    = $user['last_name'];
+		$new_user->save();
+
+		$avatar = new Icon;
+		$avatar->user_id = $new_user->id;
+		$avatar->save();
+
+
+		PendingUser::where('register_token', '=', $userPendingData->register_token)->first()->delete();
+
+		$new_role_asign = new AssignedRoles;
+		$new_role_asign->user_id = $new_user->id;
+		$new_role_asign->role_id = $user['rank'];
+		$new_role_asign->save();
+
+		$lang_resource = Lang::get('notifications.regSuccess', array('name' => $user['first_name'], 'email' => $user['email']));
+		$notification['green'] = $lang_resource;
+		return Redirect::route('login.page')->with('notification', $notification);
 	}
 
 	/**
@@ -193,7 +354,13 @@ class UserController extends \BaseController {
             ->where('user_id', $id)
             ->update(array('role_id' => $rank_id));
 
-		return Redirect::route('change.rank');
+        $rank = $user->rankName($user->id);
+        $email = $user->email;
+
+        $lang_resource = Lang::get('notifications.changeUserRank.success', array('email' => $email, 'rank' => $rank) );
+		$notification['green'] = $lang_resource;
+
+		return Redirect::route('change.rank')->with('notification', $notification);
 
 	}
 
@@ -214,7 +381,7 @@ class UserController extends \BaseController {
 	 */
 
 	public function userSettings() {
-		
+
 		$id = Auth::user()->id;
 		$user = User::find($id);
 		return View::make('user_settings.user_settings')->with('user', $user);
@@ -231,15 +398,40 @@ class UserController extends \BaseController {
 		$id = Auth::user()->id;
 		$user = User::find($id);
 		$input = Input::all();
+		$pwConfig = ['lenght' => DB::table('security_settings')->lists('min_pw_lenght')];
+		/**
+		 * Updating the password, if the test passes
+		 */
 		if (Hash::check($input['old_pass'], $user->password) && $input['new'] == $input['new2'])
 		{
+
+			/**
+			 * Let's check the password's lenght
+			 * Minimum password lenght is extracted from database
+			 */
+			if(mb_strlen($input['new']) < $pwConfig['lenght'][0]){
+			    $lang_resource = Lang::get('notifications.changePass.lenght', array('lenght' => $pwConfig['lenght'][0]));
+			    $notification['red'] = $lang_resource;
+			    return Redirect::route('user.settings')->with('notification', $notification);
+			}
 		    $user->password = Hash::make($input['new']);
 		    $user->update();
 
-		    return Redirect::route('user.settings');
+		    $lang_resource = Lang::get('notifications.changePass.success', array('name' => Auth::user()->first_name));
+		    $notification['green'] = $lang_resource;
+		    return Redirect::route('user.settings')->with('notification', $notification);
 		}
 
-		return Redirect::route('user.dashboard');
+		/**
+		 * In case of fail, it should return the following message:
+		 *
+		 * ---
+		 * :name, something went wrong! Maybe the passwords did not match! Try again or ask for support at contact center!
+		 * ---
+		 */
+		$lang_resource = Lang::get('notifications.changePass.danger', array('name' => Auth::user()->first_name));
+		$notification['red'] = $lang_resource;
+		return Redirect::route('user.settings')->with('notification', $notification);
 	}
 
 	public function updateName() {
@@ -253,15 +445,13 @@ class UserController extends \BaseController {
 			$user->last_name = $input['last_name'];
 			$user->update();
 
-			return Redirect::route('user.settings');
-
-		    $lang_resource = Lang::get('notifications.changePass.success', array('name' => Auth::user()->first_name));
+		    $lang_resource = Lang::get('notifications.changeName.success', array('name' => $input['first_name'].' '.$input['last_name']));
 		    $notification['green'] = $lang_resource;
 		    return Redirect::route('user.settings', Auth::user()->id)->with('notification', $notification);
 
 		}
 
-		$lang_resource = Lang::get('notifications.changePass.danger', array('name' => Auth::user()->first_name));
+		$lang_resource = Lang::get('notifications.changeName.danger', array('name' => Auth::user()->first_name));
 		$notification['red'] = $lang_resource;
 		return Redirect::route('user.settings', Auth::user()->id)->with('notification', $notification);
 	}
@@ -276,7 +466,9 @@ class UserController extends \BaseController {
 		$avatar->icon_url = 'avt/default.jpg';
 		$avatar->update();
 
-		return Redirect::route('user.settings');
+		$lang_resource = Lang::get('notifications.changeIcon.default', array('name' => Auth::user()->first_name));
+		$notification['green'] = $lang_resource;
+		return Redirect::route('user.settings', Auth::user()->id)->with('notification', $notification);
 
 	}
 
@@ -286,6 +478,12 @@ class UserController extends \BaseController {
 		$icon = Input::file('icon');
 		$icon_id = $user->icon->id;
 
+		if(empty($icon)){
+			$lang_resource = Lang::get('notifications.changeIcon.danger', array('name' => Auth::user()->first_name));
+			$notification['red'] = $lang_resource;
+			return Redirect::route('user.settings', Auth::user()->id)->with('notification', $notification);
+		}
+
 		if($user->isImage($icon)){
 			$path = $user->uploadIcon($icon);
 
@@ -293,10 +491,115 @@ class UserController extends \BaseController {
 			$old_avatar = $avatar;
 			$avatar->icon_url = $path;
 			$avatar->update();
+
+			$lang_resource = Lang::get('notifications.changeIcon.success', array('name' => Auth::user()->first_name));
+			$notification['green'] = $lang_resource;
+			return Redirect::route('user.settings', Auth::user()->id)->with('notification', $notification);
 		}
 
-		return Redirect::route('user.settings');
+	}
+
+	public function editUsers(){
+		$users = User::all();
+		$users->nr = count($users);
+		return View::make('user_settings.user_view_users')->with('users', $users);
+	}
+
+	public function editUser($id){
+		$user = User::find($id);
+
+		if(empty($user)){
+			$lang_resource = Lang::get('notifications.editUser.non-existent.danger');
+			$notification['red'] = $lang_resource;
+			return Redirect::route('user.editUsers', Auth::user()->id)->with('notification', $notification);
+		}
+
+
+		return View::make('user_settings.user_view_edit_users')->with('user', $user);
+	}
+
+	public function userUpdateHisPassword($id){
+
+		$user = User::find($id);
+		$input = Input::all();
+		$pwConfig = ['lenght' => DB::table('security_settings')->lists('min_pw_lenght')];
+
+		if(empty($input['old_pass']) ||
+			empty($input['new']) ||
+			 empty($input['new2'])){
+
+				$lang_resource = Lang::get('notifications.all_fields_are_important');
+			    $notification['red'] = $lang_resource;
+				return Redirect::route('edit.user', $id)->with('notification', $notification);
+		}
+
+
+		if(Hash::check($input['old_pass'], $user->password) && $input['new'] == $input['new2']){
+
+			if(mb_strlen($input['new']) < $pwConfig['lenght']['0']){
+			    $lang_resource = Lang::get('notifications.changePass.lenght', array('lenght' => $pwConfig['lenght'][0]));
+			    $notification['red'] = $lang_resource;
+			    return Redirect::route('edit.user', $id)->with('notification', $notification);
+			}
+
+
+			$user->password = Hash::make($input['new']);
+			$user->update();
+
+			$lang_resource = Lang::get('notifications.changeHisPass', array('name' => $user->first_name));
+			$notification['green'] = $lang_resource;
+			return Redirect::route('edit.user', $id)->with('notification', $notification);
+		}
+
+		$lang_resource = Lang::get('notifications.hisPassword.danger');
+	    $notification['red'] = $lang_resource;
+		return Redirect::route('edit.user', $id)->with('notification', $notification);
+	}
+
+	public function userUpdateHisName($id) {
+		$user = User::find($id);
+		$input = Input::all();
+
+		if( !empty($input['first_name']) && !empty($input['last_name']) ){
+			$user->first_name = $input['first_name'];
+			$user->last_name = $input['last_name'];
+			$user->update();
+
+			$lang_resource = Lang::get('notifications.hisName.success', array('name' => $user->first_name.' '.$user->last_name));
+		    $notification['green'] = $lang_resource;
+			return Redirect::route('edit.user', $id)->with('notification', $notification);
+		}
+
+		return "prost care nu umpli fieldurile";
 	}
 
 
+	public function userUpdateHisIcon($id) {
+
+		$user = User::find($id);
+		$icon = Input::file('icon');
+
+		$icon_id = $user->icon->id;
+
+		if(empty($icon)){
+			$lang_resource = Lang::get('notifications.changeIcon.danger', array('name' => $user->first_name));
+			$notification['red'] = $lang_resource;
+			return Redirect::route('edit.user', $id)->with('notification', $notification);
+		}
+
+		if($user->isImage($icon)){
+			$path = $user->uploadHisIcon($icon, $id);
+
+			$avatar = Icon::find($icon_id);
+			$old_avatar = $avatar;
+			$avatar->user_id = $id;
+			$avatar->icon_url = $path;
+			$avatar->update();
+
+			$lang_resource = Lang::get('notifications.changeHisIcon.success', array('name' => $user->first_name));
+			$notification['green'] = $lang_resource;
+			return Redirect::route('edit.user', $id)->with('notification', $notification);
+		}
+
+	}
 }

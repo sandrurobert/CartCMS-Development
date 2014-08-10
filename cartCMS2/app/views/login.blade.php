@@ -1,3 +1,7 @@
+@if (Auth::check())
+	Redirect::route('user.dashboard')
+@endif
+
 <!DOCTYPE html>
 <html lang="en-US">
 	<head>

@@ -91,9 +91,7 @@ Route::filter('csrf', function()
 
 
 
-Route::filter('role.owner', function()
+Route::filter('owner', function()
 {
-	if(!Auth::user()->hasRole('Owner') && !Auth::user()->hasRole('Admin')){
-		return Redirect::route('user.dashboard');
-	}
+  if (Auth::user()->hasRole('Worker')) return Redirect::guest('dashboard');
 });

@@ -364,21 +364,82 @@ button{
  	width: 100%;
  	padding: 1% 0% 1% 0%;
  	float: left;
+ 	border-bottom: 1px dotted #bdc3c7;
  }
 
- #boxInputs_Inline{
+ .boxInputs_Inline{
  	width: 100%;
  	padding: 0% 0% 1% 0%;
  	float: left;
  }
 
- .form-inline #boxInputs_Inline label{
+ .form-inline .boxInputs_Inline label{
  	float: left;
  	line-height: 40px;
- 	width: 50%;
+ 	width: 40%;
  }
 
- .form-inline #boxInputs_Inline input{
- 	float: left;
- 	width: 50%;
+ .form-inline .boxInputs_Inline select{
+ 	width: 30%;
+ 	height: 40px;
+
+	border: 1px solid #d8dde5;
+	outline: none;
+	text-indent: 5px;
+	transition: 0.1s;
+	font-family: arial;
+	color: #7e7e7e;
  }
+
+ .form-inline .boxInputs_Inline select:hover{
+	border: 1px solid #c1c5cb;
+ }
+
+ .form-inline .boxInputs_Inline select:focus{
+	border: 1px solid #adb1b6;
+ }
+
+ .form-inline .boxInputs_Inline input{
+ 	float: left;
+ 	width: 60%;
+ }
+
+ /**
+  * Tables
+  */
+
+table{width: 100%;padding: 1% 0% 1% 0%;}
+table tr th{padding: 1%;}
+table tr td{padding: 1%;}
+
+#dark_table tr th{
+	background: #2a2a2a;
+
+	font-family: arial;
+	font-size: 14px;
+	font-weight: bold;
+	color: #fff;
+	text-align: left;
+}
+#dark_table tr th:first-child{
+	border-left: 1px solid #2a2a2a;
+}
+#dark_table tr th:last-child{
+	border-right: 1px solid #2a2a2a;
+}
+#dark_table tr td{
+	font-family: arial;
+	font-size: 12px;
+	border-left: 1px solid #bdc3c7;
+	border-right: 1px solid #bdc3c7;
+	border-bottom: 1px solid #bdc3c7;
+}
+#dark_table tr td a{
+	font-family: arial;
+	font-size: 14px;
+	font-weight: normal;
+	text-decoration: none;
+	color: #121212;
+	text-align: left;
+}
+#dark_table tr:nth-child(2n+3) {background: #F0F0F0};
