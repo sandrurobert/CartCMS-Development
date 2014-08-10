@@ -7,7 +7,12 @@
 							<ul class="childUl">
 								<li><a href="{{route('site.settings')}}">Site Settings</a></li>
 								<li><a href="{{route('mail.config')}}">Mail Settings</a></li>
-								<li><a href="{{route('security.general')}}">Security Settings</a></li>
+								<li class="parentLi2"><a href="#">Security Settings</a>
+									<ul class="childUl2">
+										<li><a href="{{route('security.general')}}">General Security</a></li>
+										<li><a href="#">Captcha's and antispam</a></li>
+									</ul>
+								</li>
 								<li class="parentLi2"><a href="#">User Settings</a>
 									<ul class="childUl2">
 										<li><a href="{{route('user.create')}}">Create a new user</a></li>
