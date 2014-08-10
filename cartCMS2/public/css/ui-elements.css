@@ -367,19 +367,19 @@ button{
  	border-bottom: 1px dotted #bdc3c7;
  }
 
- #boxInputs_Inline{
+ .boxInputs_Inline{
  	width: 100%;
  	padding: 0% 0% 1% 0%;
  	float: left;
  }
 
- .form-inline #boxInputs_Inline label{
+ .form-inline .boxInputs_Inline label{
  	float: left;
  	line-height: 40px;
  	width: 40%;
  }
 
- .form-inline #boxInputs_Inline select{
+ .form-inline .boxInputs_Inline select{
  	width: 30%;
  	height: 40px;
 
@@ -391,15 +391,15 @@ button{
 	color: #7e7e7e;
  }
 
- .form-inline #boxInputs_Inline select:hover{
+ .form-inline .boxInputs_Inline select:hover{
 	border: 1px solid #c1c5cb;
  }
 
- .form-inline #boxInputs_Inline select:focus{
+ .form-inline .boxInputs_Inline select:focus{
 	border: 1px solid #adb1b6;
  }
 
- .form-inline #boxInputs_Inline input{
+ .form-inline .boxInputs_Inline input{
  	float: left;
  	width: 60%;
  }

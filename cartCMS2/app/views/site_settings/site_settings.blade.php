@@ -10,22 +10,22 @@
 		@include('notifications')
 		{{ Form::open(array('route' => 'site.settings', 'method' => 'post', 'class' => 'form-inline')) }}
 
-		<div id="boxInputs_Inline">
+		<div class="boxInputs_Inline">
 			{{Form::label('title', Lang::get('dashboard_general.title'))}}
 			{{Form::text('title', $settings['title'], array('class' => 'basicInput form-control importantInput', 'placeholder' => Lang::get('dashboard_general.title')))}}
 		</div>
 
-		<div id="boxInputs_Inline">
+		<div class="boxInputs_Inline">
 			{{Form::label('keywords', Lang::get('dashboard_general.keywords'))}}
 			{{Form::text('keywords', $settings['keywords'], array('class' => 'basicInput form-control importantInput', 'placeholder' => Lang::get('dashboard_general.keywords')))}}
 		</div>
 
-		<div id="boxInputs_Inline">
+		<div class="boxInputs_Inline">
 			{{Form::label('description', Lang::get('dashboard_general.description'))}}
 			{{Form::text('description', $settings['description'], array('class' => 'basicInput form-control importantInput', 'placeholder' => Lang::get('dashboard_general.description')))}}
 		</div>
 
-		<div id="boxInputs_Inline" class="no-padding">
+		<div class="boxInputs_Inline no-padding">
 			{{Form::submit(Lang::get('dashboard_general.update'), array('class' => 'redBtn width-20 right'))}}
 		</div>
 		{{ Form::close()}}

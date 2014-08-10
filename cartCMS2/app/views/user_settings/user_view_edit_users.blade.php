@@ -14,22 +14,22 @@
 
 		{{ Form::open(array('route' => array('user.updateHisPassword', $user->id), 'method' => 'put', 'class' => 'form-inline')) }}
 
-		<div id="boxInputs_Inline">
+		<div class="boxInputs_Inline">
 			{{ Form::label('old_pass', Lang::get('dashboard_general.old.password'))}}
 			{{ Form::password('old_pass', array('class' => 'basicInput form-control', 'placeholder' => Lang::get('dashboard_general.old.password')))}}
 		</div>
 
-		<div id="boxInputs_Inline">
+		<div class="boxInputs_Inline">
 			{{ Form::label('new', Lang::get('dashboard_general.new.password'))}}
 			{{ Form::password('new', array('class' => 'basicInput form-control', 'placeholder' => Lang::get('dashboard_general.new.password')))}}
 		</div>
 
-		<div id="boxInputs_Inline">
+		<div class="boxInputs_Inline">
 			{{ Form::label('new2', Lang::get('dashboard_general.new.password.again'))}}
 			{{ Form::password('new2', array('class' => 'basicInput form-control', 'placeholder' => Lang::get('dashboard_general.new.password.again')))}}
 		</div>
 
-		<div id="boxInputs_Inline" class="no-padding">
+		<div class="boxInputs_Inline no-padding">
 			{{Form::submit(Lang::get('dashboard_general.update'), array('class' => 'redBtn width-20 right'))}}
 		</div>
 
@@ -40,17 +40,17 @@
 
 		{{ Form::open(array('route' => array('user.updateHisName', $user->id), 'method' => 'put', 'class' => 'form-inline')) }}
 
-		<div id="boxInputs_Inline">
+		<div class="boxInputs_Inline">
 			{{ Form::label('first_name', Lang::get('dashboard_general.first_name'))}}
 			{{ Form::text('first_name', $user->first_name, array('class' => 'basicInput form-control'))}}
 		</div>
 
-		<div id="boxInputs_Inline">
+		<div class="boxInputs_Inline">
 			{{ Form::label('last_name', Lang::get('dashboard_general.last_name'))}}
 			{{ Form::text('last_name', $user->last_name, array('class' => 'basicInput form-control'))}}
 		</div>
 
-		<div id="boxInputs_Inline" class="no-padding">
+		<div class="boxInputs_Inline no-padding">
 			{{Form::submit(Lang::get('dashboard_general.update'), array('class' => 'redBtn width-20 right'))}}
 		</div>
 
