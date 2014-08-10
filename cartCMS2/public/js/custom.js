@@ -60,32 +60,18 @@ $(document).ready(function(){
 	$(".parentLi a").click(function(){
 
 		var parent = $(this).parent();
-		var display = $(".childUl", parent).css("display");
+		var display = $("ul", parent).css("display");
 
 		if(display == "none"){
 			$(parent).css({"background":"#171717"});
-			$(".childUl",parent).slideDown("fast");
+			$("ul",parent).slideDown("fast");
 		}
 		else{
 			$(parent).removeAttr("style");
-			$(".childUl",parent).slideUp("fast");
+			$("ul",parent).slideUp("fast");
 		}
 	});
 
-	$(".parentLi2 a").click(function(){
-
-		var parent = $(this).parent();
-		var display = $(".childUl2", parent).css("display");
-
-		if(display == "none"){
-			$(parent).css({"background":"#000"});
-			$(".childUl2",parent).slideDown("fast");
-		}
-		else{
-			$(parent).removeAttr("style");
-			$(".childUl2",parent).slideUp("fast");
-		}
-	});
 
 	$(".slideTopBar").click(function(){
 

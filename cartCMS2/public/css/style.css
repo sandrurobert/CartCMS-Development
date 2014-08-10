@@ -121,33 +121,6 @@ body{background: #f5f5f5;}
 }
 
 /**
- * ---
- * Third Level
- * ---
- */
-
-#dashNavLeft ul li ul li ul{
-	padding: 5% 0% 5% 0%;
-	display: none;
-}
-#dashNavLeft ul li ul li ul li a{
-	display: block;
-
-	padding: 1% 0% 1% 15%;
-	text-decoration: none;
-	font-family: arial;
-	font-size: 12px;
-	font-weight: normal;
-	color: #fff;
-	transition: 0.2s;
-}
-#dashNavLeft ul li ul li ul li a:hover{
-	background: #F0F0F0;
-	color: #000;
-}
-
-
-/**
  * Top Bar Navigation
  */
 #dashNavTop{
