@@ -4,6 +4,7 @@
 					<ul class="col-md-12">
 						<li><a href="{{route('user.dashboard')}}">Dashboard</a></li>
 						<li><a href="{{route('site.settings')}}">Site Settings</a></li>
+						<li><a href="{{route('mail.config')}}">Mail Settings</a></li>
 						<li class="parentLi"><a href="#">Security Settings</a>
 							<ul>
 								<li><a href="{{route('security.general')}}">General settings</a></li>
