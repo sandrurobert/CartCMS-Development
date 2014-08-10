@@ -2,50 +2,7 @@
 
 class MailSettingsController extends \BaseController {
 
-	/**
-	 * Display a listing of the resource.
-	 * GET /mailsettings
-	 *
-	 * @return Response
-	 */
-	public function index()
-	{
-		//
-	}
 
-	/**
-	 * Show the form for creating a new resource.
-	 * GET /mailsettings/create
-	 *
-	 * @return Response
-	 */
-	public function create()
-	{
-		//
-	}
-
-	/**
-	 * Store a newly created resource in storage.
-	 * POST /mailsettings
-	 *
-	 * @return Response
-	 */
-	public function store()
-	{
-		//
-	}
-
-	/**
-	 * Display the specified resource.
-	 * GET /mailsettings/{id}
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function show($id)
-	{
-		//
-	}
 
 	/**
 	 * Show the form for editing the specified resource.
@@ -78,16 +35,27 @@ class MailSettingsController extends \BaseController {
 		return Redirect::route('mail.config');
 	}
 
-	/**
-	 * Remove the specified resource from storage.
-	 * DELETE /mailsettings/{id}
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function destroy($id)
+	public function defaultValues()
 	{
-		//
+		$default['driver'] = 'smtp';
+		$default['host'] = 'smtp.mandrillapp.com';
+		$default['port'] = 587;
+		$default['address'] = 'address@your-site.com';
+		$default['name'] = 'Site Name';
+		$default['encryption'] = 'tls';
+		$default['username'] = 'username';
+		$default['password'] = '*******';
+		$default['sendmail'] = '/usr/sbin/sendmail -bs';
+		$default['pretend'] = 'false';
+		$default['last_update_by'] = 1;
+
+		$settings = MailSettings::find(1);
+
+		$settings->update($default);
+
+		return Redirect::route('mail.config'); 
 	}
+
+
 
 }

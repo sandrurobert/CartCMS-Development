@@ -45,3 +45,4 @@ Route::post('security/general', array('before' => 'owner', 'uses' => 'SecuritySe
 
 Route::get('mail/config', array('before' => 'owner', 'uses' => 'MailSettingsController@edit', 'as' => 'mail.config'));
 Route::put('mail/config', array('before' => 'owner', 'uses' => 'MailSettingsController@update', 'as' => 'mail.config'));
+Route::get('mail/config/default/values', array('before' => 'owner', 'uses' => 'MailSettingsController@defaultValues', 'as' => 'mail.config.default.values'));

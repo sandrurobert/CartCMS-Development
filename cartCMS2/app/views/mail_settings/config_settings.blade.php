@@ -65,5 +65,7 @@
 		</div>
 		{{ Form::close()}}
 
+		<a href="{{route('mail.config.default.values')}}">Restore to default values</a>
+
 	</div>
 @stop
