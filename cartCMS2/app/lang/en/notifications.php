@@ -40,6 +40,8 @@ return array(
 
 	'sendInvitation.danger' => 'Something went wrong :name! Please try again!',
 
+	'sendInvitationEmailExists.danger' => 'This email already exists! It belongs to :name!',
+
 	'registration.arrival' => 'Hi there! You have been added to the staff by :name! Please complete the forms below!',
 
 	'all_fields_are_important' => 'All fields are important!',

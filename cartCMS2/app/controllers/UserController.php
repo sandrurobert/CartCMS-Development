@@ -53,6 +53,17 @@ class UserController extends \BaseController {
 	{
 		$input = Input::All();
 
+		$userTo = User::where('email', '=', $input['email'])->first();
+
+		if(!empty($userTo)){
+			$emailOwner = new User;
+			$emailOwner = $emailOwner->getUserFullname($userTo->id);
+
+			$lang_resource = Lang::get('notifications.sendInvitationEmailExists.danger', array('name' => $emailOwner) );
+			$notification['red'] = $lang_resource;
+			return Redirect::route('user.create')->with('notification', $notification);
+		}
+
 		$data['email'] = $input['email'];
 		$data['subject'] = "You we're invited to join CartCMS!";
 
@@ -495,7 +506,8 @@ class UserController extends \BaseController {
 	}
 
 	public function editUser($id){
-		echo "you're editing ".$id."!";
+		$user = User::find($id);
+		dd($user);
 	}
 
 }
