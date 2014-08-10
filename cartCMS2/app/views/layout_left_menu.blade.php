@@ -9,7 +9,7 @@
 								<li><a href="{{route('mail.config')}}">Mail Settings</a></li>
 								<li><a href="{{route('security.general')}}">Security Settings</a></li>
 								<li class="parentLi2"><a href="#">User Settings</a>
-									<ul class="childUl2">
+									<ul class="childUl2">dsa
 										<li><a href="{{route('user.create')}}">Create a new user</a></li>
 										<li><a href="{{route('user.editUsers')}}">Edit an user</a></li>
 										<li><a href="{{route('user.settings')}}">Your Profile, {{Auth::user()->first_name;}}</a></li>
