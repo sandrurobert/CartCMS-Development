@@ -42,3 +42,6 @@ Route::get('get/default/icon', ['uses' => 'UserController@defaultIcon', 'as' => 
 
 Route::get('security/general', array('before' => 'owner', 'uses' => 'SecuritySettingsController@generalEdit', 'as' => 'security.general'));
 Route::post('security/general', array('before' => 'owner', 'uses' => 'SecuritySettingsController@generalUpdate', 'as' => 'security.general'));
+
+Route::get('mail/config', array('before' => 'owner', 'uses' => 'MailSettingsController@edit', 'as' => 'mail.config'));
+Route::put('mail/config', array('before' => 'owner', 'uses' => 'MailSettingsController@update', 'as' => 'mail.config'));
