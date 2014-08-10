@@ -71,6 +71,7 @@ body{background: #f5f5f5;}
 	background: #2a2a2a;
 	min-height: 500px;
 }
+#dashNavLeft a{cursor: pointer;}
 
 /**
  * ---
