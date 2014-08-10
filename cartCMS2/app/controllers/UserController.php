@@ -488,5 +488,14 @@ class UserController extends \BaseController {
 
 	}
 
+	public function editUsers(){
+		$users = User::all();
+		$users->nr = count($users);
+		return View::make('user_settings.user_view_users')->with('users', $users);
+	}
+
+	public function editUser($id){
+		echo "you're editing ".$id."!";
+	}
 
 }
