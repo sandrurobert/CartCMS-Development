@@ -30,6 +30,8 @@ Route::get('user/edit', array('uses' => 'UserController@editUsers', 'as' => 'use
 Route::get('user/edit/{id}', array('uses' => 'UserController@editUser', 'as' => 'edit.user'));
 
 Route::put('update/users/password/{id}', array('uses' => 'UserController@userUpdateHisPassword', 'as' => 'user.updateHisPassword'));
+Route::put('update/users/name/{id}', array('uses' => 'UserController@userUpdateHisName', 'as' => 'user.updateHisName'));
+Route::post('update/users/icon/{id}', array('uses' => 'UserController@userUpdateHisIcon', 'as' => 'user.updateHisIcon'));
 
 Route::get('dashboard', array('uses' => 'UserController@dashboard', 'as' => 'user.dashboard'));
 Route::get('site/settings', array('uses' => 'SiteSettingsController@edit', 'as' => 'site.settings'));

@@ -32,6 +32,10 @@ return array(
 
 	'changeIcon.success' => 'You just changed your profile picture with success!',
 
+	'changeHisIcon.success' => 'You just changed :name&#39;s profile picture!',
+
+	'changeHisIconDefault.success' => ':name&#39;s profile picture is now the default avatar!',
+
 	'changeIcon.danger' => 'You can not upload nothing! The upload form was empty!',
 
 	'generalSecuritySettingsChange.success' => 'Thank you for updating security settings :name!',
@@ -56,5 +60,7 @@ return array(
 
 	'changeHisPass' => 'You successfully changed :name&#39;s password!',
 
-	'hisPassword.danger' => 'There might be a password problem! Please try again and write his password again!'
+	'hisPassword.danger' => 'There might be a password problem! Please try again and write his password again!',
+
+	'hisName.success' => 'You just changed this user&#39;s name to :name!'
 );

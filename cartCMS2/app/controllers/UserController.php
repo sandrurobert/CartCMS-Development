@@ -556,4 +556,50 @@ class UserController extends \BaseController {
 		return Redirect::route('edit.user', $id)->with('notification', $notification);
 	}
 
+	public function userUpdateHisName($id) {
+		$user = User::find($id);
+		$input = Input::all();
+
+		if( !empty($input['first_name']) && !empty($input['last_name']) ){
+			$user->first_name = $input['first_name'];
+			$user->last_name = $input['last_name'];
+			$user->update();
+
+			$lang_resource = Lang::get('notifications.hisName.success', array('name' => $user->first_name.' '.$user->last_name));
+		    $notification['green'] = $lang_resource;
+			return Redirect::route('edit.user', $id)->with('notification', $notification);
+		}
+
+		return "prost care nu umpli fieldurile";
+	}
+
+
+	public function userUpdateHisIcon($id) {
+
+		$user = User::find($id);
+		$icon = Input::file('icon');
+
+		$icon_id = $user->icon->id;
+
+		if(empty($icon)){
+			$lang_resource = Lang::get('notifications.changeIcon.danger', array('name' => $user->first_name));
+			$notification['red'] = $lang_resource;
+			return Redirect::route('edit.user', $id)->with('notification', $notification);
+		}
+
+		if($user->isImage($icon)){
+			$path = $user->uploadHisIcon($icon, $id);
+
+			$avatar = Icon::find($icon_id);
+			$old_avatar = $avatar;
+			$avatar->user_id = $id;
+			$avatar->icon_url = $path;
+			$avatar->update();
+
+			$lang_resource = Lang::get('notifications.changeHisIcon.success', array('name' => $user->first_name));
+			$notification['green'] = $lang_resource;
+			return Redirect::route('edit.user', $id)->with('notification', $notification);
+		}
+
+	}
 }
