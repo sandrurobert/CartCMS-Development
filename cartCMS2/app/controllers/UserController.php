@@ -59,8 +59,7 @@ class UserController extends \BaseController {
 			$emailOwner = new User;
 			$emailOwner = $emailOwner->getUserFullname($userTo->id);
 
-			$lang_resource = Lang::get('notifications.sendInvitationEmailExists.danger', array('name' => $emailOwner) );
-			$notification['red'] = $lang_resource;
+			$notification['red'] = INot::not('notifications.sendInvitationEmailExists.danger', ['name' => $emailOwner]);
 			return Redirect::route('user.create')->with('notification', $notification);
 		}
 
@@ -88,13 +87,11 @@ class UserController extends \BaseController {
 			$PendingUser->creator_user_id = Auth::user()->id;
 			$PendingUser->save();
 
-			$lang_resource = Lang::get('notifications.sendInvitation.success', array('name' => Auth::user()->first_name, 'email' => $input['email'], 'rank' => $rankName) );
-			$notification['green'] = $lang_resource;
+			$notification['green'] = INot::not('notifications.sendInvitationEmailExists.danger', ['name' => Auth::user()->first_name, 'email' => $input['email'], 'rank' => $rankName]);
 			return Redirect::route('user.create')->with('notification', $notification);
 		}
 
-		$lang_resource = Lang::get('notifications.sendInvitation.danger', array('name' => Auth::user()->first_name) );
-		$notification['red'] = $lang_resource;
+		$notification['red'] = INot::not('notifications.sendInvitationEmailExists.danger', ['name' => Auth::user()->first_name]);
 		return Redirect::route('user.create')->with('notification', $notification);
 	}
 
@@ -111,14 +108,12 @@ class UserController extends \BaseController {
 			$user = $userP->getAllPendingData($token);
 			$invitedBy = $userM->getUserFullname($user->creator_user_id);
 
-			$lang_resource = Lang::get('notifications.registration.arrival', array('name' => $invitedBy));
-			$notification['green'] = $lang_resource;
+			$notification['green'] = INot::not('notifications.registration.arrival', ['name' => $invitedBy]);
 			return View::make('user_settings/user_registration')->with('user', $user)->with('notification', $notification);
 		}
 
 		else{
-			$lang_resource = Lang::get('notifications.token.danger');
-			$notification['red'] = $lang_resource;
+			$notification['red'] = INot::not('notifications.token.danger');
 			return View::make('error')->with('notification', $notification);
 		}
 	}
@@ -135,8 +130,7 @@ class UserController extends \BaseController {
 
 
 		if(!$response){
-			$lang_resource = Lang::get('notifications.token.danger');
-			$notification['red'] = $lang_resource;
+			$notification['red'] = INot::not('notifications.token.danger');
 			return View::make('error')->with('notification', $notification);
 		}
 
@@ -163,8 +157,7 @@ class UserController extends \BaseController {
 		}
 
 		if($user['newpass'] != $user['newpassagain']){
-			$lang_resource = Lang::get('notifications.regPass.danger');
-			$notification['red'] = $lang_resource;
+			$notification['red'] = INot::not('notifications.regPass.danger');
 			return Redirect::route('user.invited', $userPendingData->register_token)->with('user', $userPendingData)->with('notification', $notification);
 		}
 
@@ -172,8 +165,7 @@ class UserController extends \BaseController {
 		$lenght = $pwConfig->find(1);
 
 		if(mb_strlen($user['newpass']) < $lenght->min_pw_lenght){
-			$lang_resource = Lang::get('notifications.changePass.lenght', array('lenght' => $lenght->min_pw_lenght));
-			$notification['red'] = $lang_resource;
+			$notification['red'] = INot::not('notifications.changePass.lenght', ['lenght' => $lenght->min_pw_lenght]);
 			return Redirect::route('user.invited', $userPendingData->register_token)->with('user', $userPendingData)->with('notification', $notification);
 		}
 
@@ -197,8 +189,7 @@ class UserController extends \BaseController {
 		$new_role_asign->role_id = $user['rank'];
 		$new_role_asign->save();
 
-		$lang_resource = Lang::get('notifications.regSuccess', array('name' => $user['first_name'], 'email' => $user['email']));
-		$notification['green'] = $lang_resource;
+		$notification['green'] = INot::not('notifications.regSuccess', ['name' => $user['first_name'], 'email' => $user['email']]);
 		return Redirect::route('login.page')->with('notification', $notification);
 	}
 
@@ -287,12 +278,10 @@ class UserController extends \BaseController {
 	{	$input = Input::all();
 		if(!Auth::attempt(array('email' => $input['username'], 'password' => $input['password'])))
 		{
-			$lang_resource = Lang::get('notifications.login.danger');
-			$notification['red'] = $lang_resource;
+			$notification['red'] = INot::not('notifications.login.danger');
 			return View::make('login')->with('notification', $notification);
 		}
-			$lang_resource = Lang::get('notifications.login.success', array('name' => Auth::user()->first_name) );
-			$notification['green'] = $lang_resource;
+			$notification['green'] = INot::not('notifications.login.success', ['name' => Auth::user()->first_name]);
 			return Redirect::route('user.dashboard')->with('notification', $notification);
 	}
 
@@ -357,8 +346,7 @@ class UserController extends \BaseController {
         $rank = $user->rankName($user->id);
         $email = $user->email;
 
-        $lang_resource = Lang::get('notifications.changeUserRank.success', array('email' => $email, 'rank' => $rank) );
-		$notification['green'] = $lang_resource;
+		$notification['green'] = INot::not('notifications.changeUserRank.success', ['email' => $email, 'rank' => $rank]);
 
 		return Redirect::route('change.rank')->with('notification', $notification);
 
@@ -410,15 +398,13 @@ class UserController extends \BaseController {
 			 * Minimum password lenght is extracted from database
 			 */
 			if(mb_strlen($input['new']) < $pwConfig['lenght'][0]){
-			    $lang_resource = Lang::get('notifications.changePass.lenght', array('lenght' => $pwConfig['lenght'][0]));
-			    $notification['red'] = $lang_resource;
+				$notification['red'] = INot::not('notifications.changePass.lenght', ['lenght' => $pwConfig['lenght'][0]]);
 			    return Redirect::route('user.settings')->with('notification', $notification);
 			}
 		    $user->password = Hash::make($input['new']);
 		    $user->update();
 
-		    $lang_resource = Lang::get('notifications.changePass.success', array('name' => Auth::user()->first_name));
-		    $notification['green'] = $lang_resource;
+			$notification['green'] = INot::not('notifications.changePass.success', ['name' => Auth::user()->first_name]);
 		    return Redirect::route('user.settings')->with('notification', $notification);
 		}
 
@@ -429,8 +415,7 @@ class UserController extends \BaseController {
 		 * :name, something went wrong! Maybe the passwords did not match! Try again or ask for support at contact center!
 		 * ---
 		 */
-		$lang_resource = Lang::get('notifications.changePass.danger', array('name' => Auth::user()->first_name));
-		$notification['red'] = $lang_resource;
+		$notification['red'] = INot::not('notifications.changePass.danger', ['name' => Auth::user()->first_name]);
 		return Redirect::route('user.settings')->with('notification', $notification);
 	}
 
@@ -445,14 +430,12 @@ class UserController extends \BaseController {
 			$user->last_name = $input['last_name'];
 			$user->update();
 
-		    $lang_resource = Lang::get('notifications.changeName.success', array('name' => $input['first_name'].' '.$input['last_name']));
-		    $notification['green'] = $lang_resource;
+		    $notification['green'] = INot::not('notifications.changeName.success', ['name' => $input['first_name'].' '.$input['last_name']]);
 		    return Redirect::route('user.settings', Auth::user()->id)->with('notification', $notification);
 
 		}
 
-		$lang_resource = Lang::get('notifications.changeName.danger', array('name' => Auth::user()->first_name));
-		$notification['red'] = $lang_resource;
+		$notification['red'] = INot::not('notifications.changeName.danger', ['name' => Auth::user()->first_name]);
 		return Redirect::route('user.settings', Auth::user()->id)->with('notification', $notification);
 	}
 
@@ -466,8 +449,7 @@ class UserController extends \BaseController {
 		$avatar->icon_url = 'avt/default.jpg';
 		$avatar->update();
 
-		$lang_resource = Lang::get('notifications.changeIcon.default', array('name' => Auth::user()->first_name));
-		$notification['green'] = $lang_resource;
+		$notification['green'] = INot::not('notifications.changeIcon.default', ['name' => Auth::user()->first_name]);
 		return Redirect::route('user.settings', Auth::user()->id)->with('notification', $notification);
 
 	}
@@ -479,8 +461,7 @@ class UserController extends \BaseController {
 		$icon_id = $user->icon->id;
 
 		if(empty($icon)){
-			$lang_resource = Lang::get('notifications.changeIcon.danger', array('name' => Auth::user()->first_name));
-			$notification['red'] = $lang_resource;
+			$notification['red'] = INot::not('notifications.changeIcon.danger', ['name' => Auth::user()->first_name]);
 			return Redirect::route('user.settings', Auth::user()->id)->with('notification', $notification);
 		}
 
@@ -492,8 +473,7 @@ class UserController extends \BaseController {
 			$avatar->icon_url = $path;
 			$avatar->update();
 
-			$lang_resource = Lang::get('notifications.changeIcon.success', array('name' => Auth::user()->first_name));
-			$notification['green'] = $lang_resource;
+			$notification['green'] = INot::not('notifications.changeIcon.success', ['name' => Auth::user()->first_name]);
 			return Redirect::route('user.settings', Auth::user()->id)->with('notification', $notification);
 		}
 
@@ -509,8 +489,7 @@ class UserController extends \BaseController {
 		$user = User::find($id);
 
 		if(empty($user)){
-			$lang_resource = Lang::get('notifications.editUser.non-existent.danger');
-			$notification['red'] = $lang_resource;
+			$notification['red'] = INot::not('notifications.editUser.non-existent.danger');
 			return Redirect::route('user.editUsers', Auth::user()->id)->with('notification', $notification);
 		}
 
@@ -528,8 +507,7 @@ class UserController extends \BaseController {
 			empty($input['new']) ||
 			 empty($input['new2'])){
 
-				$lang_resource = Lang::get('notifications.all_fields_are_important');
-			    $notification['red'] = $lang_resource;
+			    $notification['red'] = INot::not('notifications.all_fields_are_important');
 				return Redirect::route('edit.user', $id)->with('notification', $notification);
 		}
 
@@ -537,8 +515,7 @@ class UserController extends \BaseController {
 		if(Hash::check($input['old_pass'], $user->password) && $input['new'] == $input['new2']){
 
 			if(mb_strlen($input['new']) < $pwConfig['lenght']['0']){
-			    $lang_resource = Lang::get('notifications.changePass.lenght', array('lenght' => $pwConfig['lenght'][0]));
-			    $notification['red'] = $lang_resource;
+			    $notification['red'] = INot::not('notifications.changePass.lenght', ['lenght' => $pwConfig['lenght'][0]]);
 			    return Redirect::route('edit.user', $id)->with('notification', $notification);
 			}
 
@@ -546,13 +523,11 @@ class UserController extends \BaseController {
 			$user->password = Hash::make($input['new']);
 			$user->update();
 
-			$lang_resource = Lang::get('notifications.changeHisPass', array('name' => $user->first_name));
-			$notification['green'] = $lang_resource;
+			$notification['green'] = INot::not('notifications.changeHisPass', ['name' => $user->first_name]);
 			return Redirect::route('edit.user', $id)->with('notification', $notification);
 		}
 
-		$lang_resource = Lang::get('notifications.hisPassword.danger');
-	    $notification['red'] = $lang_resource;
+	    $notification['red'] = INot::not('notifications.hisPassword.danger');
 		return Redirect::route('edit.user', $id)->with('notification', $notification);
 	}
 
@@ -565,12 +540,12 @@ class UserController extends \BaseController {
 			$user->last_name = $input['last_name'];
 			$user->update();
 
-			$lang_resource = Lang::get('notifications.hisName.success', array('name' => $user->first_name.' '.$user->last_name));
-		    $notification['green'] = $lang_resource;
+		    $notification['green'] = INot::not('notifications.hisName.success', ['name' => $user->first_name.' '.$user->last_name]);
 			return Redirect::route('edit.user', $id)->with('notification', $notification);
 		}
 
-		return "prost care nu umpli fieldurile";
+		$notification['red'] = INot::not('notifications.all_fields_are_important');
+		return Redirect::route('edit.user', $id)->with('notification', $notification);
 	}
 
 
@@ -582,8 +557,7 @@ class UserController extends \BaseController {
 		$icon_id = $user->icon->id;
 
 		if(empty($icon)){
-			$lang_resource = Lang::get('notifications.changeIcon.danger', array('name' => $user->first_name));
-			$notification['red'] = $lang_resource;
+		    $notification['red'] = INot::not('notifications.changeIcon.danger', ['name' => $user->first_name]);
 			return Redirect::route('edit.user', $id)->with('notification', $notification);
 		}
 
@@ -596,8 +570,7 @@ class UserController extends \BaseController {
 			$avatar->icon_url = $path;
 			$avatar->update();
 
-			$lang_resource = Lang::get('notifications.changeHisIcon.success', array('name' => $user->first_name));
-			$notification['green'] = $lang_resource;
+			$notification['green'] = INot::not('notifications.changeHisIcon.success', ['name' => $user->first_name]);
 			return Redirect::route('edit.user', $id)->with('notification', $notification);
 		}
 

@@ -32,7 +32,8 @@ class MailSettingsController extends \BaseController {
 		$settings->last_update_by = Auth::user()->id;
 		$settings->update($input);
 
-		return Redirect::route('mail.config');
+		$notification['green'] = INot::not('notifications.mail_settings_update.success', ['name' => Auth::user()->first_name]);
+		return Redirect::route('mail.config')->with('notification', $notification);
 	}
 
 	public function defaultValues()
@@ -53,7 +54,8 @@ class MailSettingsController extends \BaseController {
 
 		$settings->update($default);
 
-		return Redirect::route('mail.config'); 
+		$notification['green'] = INot::not('notifications.mail_settings_restore.success', ['name' => Auth::user()->first_name]);
+		return Redirect::route('mail.config')->with('notification', $notification);
 	}
 
 

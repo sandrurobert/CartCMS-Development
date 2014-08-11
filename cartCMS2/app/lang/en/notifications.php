@@ -62,5 +62,9 @@ return array(
 
 	'hisPassword.danger' => 'There might be a password problem! Please try again and write his password again!',
 
-	'hisName.success' => 'You just changed this user&#39;s name to :name!'
+	'hisName.success' => 'You just changed this user&#39;s name to :name!',
+
+	'mail_settings_update.success' => 'Thank you :name for updating mail settings!',
+
+	'mail_settings_restore.success' => ':name, you just restored the default mail settings!'
 );
