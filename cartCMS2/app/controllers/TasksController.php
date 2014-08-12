@@ -10,7 +10,8 @@ class TasksController extends \BaseController {
 	 */
 	public function index()
 	{
-		//
+		$tasks = Task::paginate(3);
+		return View::make('tasks.index')->with('tasks', $tasks);
 	}
 
 	/**
@@ -63,7 +64,9 @@ class TasksController extends \BaseController {
 	 */
 	public function show($id)
 	{
-		//
+		$task = Task::find($id);
+
+		return View::make('tasks.show')->with('task', $task);
 	}
 
 	/**
@@ -119,7 +122,13 @@ class TasksController extends \BaseController {
 	 */
 	public function destroy($id)
 	{
-		//
+
+		$task = Task::find($id);
+		$task->delete();
+
+		$notification['green'] = INot::not('notifications.task.delete', ['name' => Auth::user()->first_name]);
+		return Redirect::route('task.index')->with('notification', $notification); 
+
 	}
 
 }

@@ -58,3 +58,6 @@ Route::get('task/create', array('before' => 'owner', 'uses' => 'TasksController@
 Route::post('task/create', array('before' => 'owner', 'uses' => 'TasksController@store', 'as' => 'task.store'));
 Route::get('task/{id}/edit', array('before' => 'owner', 'uses' => 'TasksController@edit', 'as' => 'task.edit'));
 Route::put('task/{id}/edit', array('before' => 'owner', 'uses' => 'TasksController@update', 'as' => 'task.update'));
+Route::get('task/all', array('before' => 'owner', 'uses' => 'TasksController@index', 'as' => 'task.index'));
+Route::get('task/show/{id}', array('before' => 'auth', 'uses' => 'TasksController@show', 'as' => 'task.show'));
+Route::get('task/delete/{id}', array('before' => 'owner','uses' => 'TasksController@destroy', 'as' => 'task.destroy'));

@@ -30,6 +30,10 @@ return array(
 
 	'edit_task' => 'Task edit',
 
-	'create_task' => 'Task create'
+	'create_task' => 'Task create',
+
+	'task_index' => 'All task are here',
+
+	'task_show' => 'Your notification'
 
 );

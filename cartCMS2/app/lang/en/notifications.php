@@ -72,5 +72,7 @@ return array(
 
 	'sentTask.success' => ':name, Task has been sent',
 
-	'sentTask.update' => ':name, Task has been updated'
+	'sentTask.update' => ':name, Task has been updated', 
+
+	'task.delete' => 'Notification deleted'
 );
