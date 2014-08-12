@@ -23,6 +23,16 @@
 								</li>
 							</ul>
 						</li>
+						@if(Auth::user()->hasRole('Owner') || Auth::user()->hasRole('Admin'))
+						<li class="parentLi"><a>Tasks</a>
+							<ul class="childUl">
+								<li><a href="{{route('task.index')}}">All tasks</a></li>
+								<li><a href="{{route('task.create')}}">Create Task</a></li>
+								<li><a href="#">Add Task Type</a></li>
+								<li><a href="#">Edit Task Types</a></li>
+							</ul>
+						</li>
+						@endif
 						<li class="parentLi"><a>Products</a>
 							<ul class="childUl">
 								<li><a href="#">Add a new product</a></li>
