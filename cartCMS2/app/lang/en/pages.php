@@ -26,6 +26,10 @@ return array(
 
 	'user_view_users' => 'User tables (:nr users)',
 
-	'his_profile' => 'You&#39;re editing :name&#39;s profile!'
+	'his_profile' => 'You&#39;re editing :name&#39;s profile!',
+
+	'edit_task' => 'Task edit',
+
+	'create_task' => 'Task create'
 
 );

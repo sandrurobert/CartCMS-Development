@@ -17,9 +17,12 @@ class CreateTasksTable extends Migration {
 			$table->increments('id')->unsigned();
 			$table->integer('sent_by_id')->unsigned();
 			$table->integer('sent_to_id')->unsigned();
+			$table->string('title');
+			$table->text('content');
 			$table->string('type')->nullable();
 			$table->string('deadline')->nullable();
-			$table->text('content');
+
+			
 			$table->string('status');
 			$table->timestamps();
 

@@ -53,3 +53,8 @@ Route::post('security/general', array('before' => 'owner', 'uses' => 'SecuritySe
 Route::get('mail/config', array('before' => 'owner', 'uses' => 'MailSettingsController@edit', 'as' => 'mail.config'));
 Route::put('mail/config', array('before' => 'owner', 'uses' => 'MailSettingsController@update', 'as' => 'mail.config'));
 Route::get('mail/config/default/values', array('before' => 'owner', 'uses' => 'MailSettingsController@defaultValues', 'as' => 'mail.config.default.values'));
+
+Route::get('task/create', array('before' => 'owner', 'uses' => 'TasksController@create', 'as' => 'task.create'));
+Route::post('task/create', array('before' => 'owner', 'uses' => 'TasksController@store', 'as' => 'task.store'));
+Route::get('task/{id}/edit', array('before' => 'owner', 'uses' => 'TasksController@edit', 'as' => 'task.edit'));
+Route::put('task/{id}/edit', array('before' => 'owner', 'uses' => 'TasksController@update', 'as' => 'task.update'));

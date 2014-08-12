@@ -66,5 +66,11 @@ return array(
 
 	'mail_settings_update.success' => 'Thank you :name for updating mail settings!',
 
-	'mail_settings_restore.success' => ':name, you just restored the default mail settings!'
+	'mail_settings_restore.success' => ':name, you just restored the default mail settings!',
+
+	'sentTask.empty' => ':name, All fields are important. Try again',
+
+	'sentTask.success' => ':name, Task has been sent',
+
+	'sentTask.update' => ':name, Task has been updated'
 );
