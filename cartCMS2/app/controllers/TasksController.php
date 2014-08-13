@@ -67,7 +67,16 @@ class TasksController extends \BaseController {
 	{
 		$task = Task::find($id);
 
-		return View::make('tasks.show')->with('task', $task);
+		if($task->sent_to_id == Auth::user()->id) {
+
+			$task->status = 'Seen';
+			$task->update();
+
+			return View::make('tasks.show')->with('task', $task);	
+		}
+
+		return Redirect::route('user.dashboard');
+		
 	}
 
 	/**
@@ -140,5 +149,18 @@ class TasksController extends \BaseController {
 
 		return Response::json(array($tasks));
 	}
+
+	public function userTasks()
+	{
+		$user_id = Auth::user()->id;
+		$tasks = Task::where('sent_to_id', '=', $user_id)->orderBy('id', 'DESC')->get();
+		$task = $tasks->lists('title', 'id');
+
+		//$tasks = json_encode($tasks);
+
+		return Response::json($tasks->lists('title', 'id'));
+
+	}
+
 
 }

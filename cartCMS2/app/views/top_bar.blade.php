@@ -4,8 +4,8 @@
 			<div id="dashNavTop" class="col-md-12">
 				<div id="dashNavTopLeft" class="col-md-6 col-md-offset-3">
 					<ul>
-						<li id="1" class="slideTopBar"><img src="{{asset('img/icons/bell_black.png')}}" alt="Bell"/> <span data-task-url="{{route('tasks.count')}}" id="task_counter"></span></li>
-						<li id="2" class="slideTopBar"><img src="{{asset('img/icons/flag_black.png')}}" alt="Flag"/></li>
+						<li id="1" class="slideTopBar"><img src="{{asset('img/icons/bell_black.png')}}" alt="Bell"/></li>
+						<li id="2" class="slideTopBar"><img src="{{asset('img/icons/flag_black.png')}}" alt="Flag"/><span data-task-url="{{route('tasks.count')}}" id="task_counter"></span></li>
 						<li id="3" class="slideTopBar"><img src="{{asset('img/icons/user_black.png')}}" alt="Man"/></li>
 					</ul>
 				</div>
@@ -38,10 +38,11 @@
 					<div id="slideCarouselTitle" class="col-md-12">
 						<h1>TASKS</h1>
 					</div>
-					<div id="slideCarouselList" class="col-md-12">
+					<div id="slideCarouselList task_display" class="col-md-12" data-get-tasks-url="{{route('user.tasks')}}">
 						<ul>
-							<li><a href="#">&#9679; Add 149 mobile phones. ( +50$ )</a></li>
-							<li><a href="#">&#9679; Edit the computers preview images. ( +20$ )</a></li>
+							{{--@foreach($tasks as $task)
+							<li><a href="{{route('task.show', $task->id)}}">&#9679; {{$task->title}}</a></li>
+							@endforeach--}}
 						</ul>
 					</div>
 				</div>

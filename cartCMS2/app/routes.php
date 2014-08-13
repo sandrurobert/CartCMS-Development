@@ -74,4 +74,5 @@ Route::get('task/type/all', array('before' => 'owner', 'uses' => 'TaskTypeContro
 
 //Tasks Count
 Route::get('user/tasks/counter', array('uses' => 'TasksController@countTasksForUser', 'as' => 'tasks.count'));
+Route::get('user/tasks', array('uses' => 'TasksController@userTasks', 'as' => 'user.tasks'));
 //

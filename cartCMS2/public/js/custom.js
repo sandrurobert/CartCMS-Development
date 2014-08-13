@@ -147,3 +147,15 @@ $(document).ready(setInterval(function() {
         });
     });
 },2000));
+
+$(document).ready(setInterval(function() {
+    var api_url_task = 'http://127.1.0.0/cartCMS2/public/user/tasks';
+    $.getJSON( api_url_task, function( data ) {
+    	
+        var items = [];
+        $.each( data, function( key, val ) {
+        	$("#task_display ul").val('<li><a href="">aaa</a></li>');
+	          
+        });
+    });
+},2000));
