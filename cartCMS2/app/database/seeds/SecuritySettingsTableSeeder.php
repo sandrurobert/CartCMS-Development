@@ -9,7 +9,8 @@ class SecuritySettingsTableSeeder extends Seeder {
 
 		$settings =array(
             'min_pw_lenght' => '5',
-            'updated_by' => '2'
+            'max_session_idle' => '300', // seconds // default: 300 (5 minutes)
+            'updated_by' => '1'
             );
 
 		// Uncomment the below to run the seeder

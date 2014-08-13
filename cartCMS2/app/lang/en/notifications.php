@@ -66,5 +66,7 @@ return array(
 
 	'mail_settings_update.success' => 'Thank you :name for updating mail settings!',
 
-	'mail_settings_restore.success' => ':name, you just restored the default mail settings!'
+	'mail_settings_restore.success' => ':name, you just restored the default mail settings!',
+
+	'logout_due_idle' => 'You we&#39;re logged out!'
 );
