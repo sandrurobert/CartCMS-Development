@@ -28,8 +28,8 @@
 							<ul class="childUl">
 								<li><a href="{{route('task.index')}}">All tasks</a></li>
 								<li><a href="{{route('task.create')}}">Create Task</a></li>
-								<li><a href="#">Add Task Type</a></li>
-								<li><a href="#">Edit Task Types</a></li>
+								<li><a href="{{route('task_type.create')}}">Add Task Type</a></li>
+								<li><a href="{{route('task_type.index')}}">View/Edit Task Types</a></li>
 							</ul>
 						</li>
 						@endif

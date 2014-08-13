@@ -67,3 +67,7 @@ Route::get('task/delete/{id}', array('before' => 'owner','uses' => 'TasksControl
 
 Route::get('task/type/create', array('before' => 'owner', 'uses' => 'TaskTypeController@create', 'as' => 'task_type.create'));
 Route::post('task/type/create', array('before' => 'owner', 'uses' => 'TaskTypeController@store', 'as' => 'task_type.store'));
+Route::get('task/type/{id}/edit', array('before' => 'owner', 'uses' => 'TaskTypeController@edit', 'as' => 'task_type.edit'));
+Route::put('task/type/{id}/edit', array('before' => 'owner', 'uses' => 'TaskTypeController@update', 'as' => 'task_type.update'));
+Route::get('task/type/delete/{id}', array('before' => 'owner', 'uses' => 'TaskTypeController@destroy', 'as' => 'task_type.destroy'));
+Route::get('task/type/all', array('before' => 'owner', 'uses' => 'TaskTypeController@index', 'as' => 'task_type.index'));

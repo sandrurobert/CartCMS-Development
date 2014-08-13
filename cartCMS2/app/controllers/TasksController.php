@@ -25,7 +25,8 @@ class TasksController extends \BaseController {
 		$users = User::all();
 		$users = $users->lists('email', 'id');
 
-		$type = array('inportant', 'trivial', 'feature', 'product', 'security');
+		$type = TaskType::all();
+		$type = $type->lists('name', 'id');
 
 		return View::make('tasks.create')->with('users', $users)->with('type', $type);
 	}
@@ -81,7 +82,8 @@ class TasksController extends \BaseController {
 		$users = User::all();
 		$users = $users->lists('email', 'id');
 
-		$type = array('inportant', 'trivial', 'feature', 'product', 'security');
+		$type = TaskType::all();
+		$type = $type->lists('name', 'id');
 
 		$task = Task::find($id);
 

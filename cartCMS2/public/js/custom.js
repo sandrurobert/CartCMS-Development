@@ -115,7 +115,12 @@ $(document).ready(function(){
 
 
 
-
+ $(function() {
+	$( "#datepicker" ).datepicker({
+		minDate: 0 // Minim day : Today
+	});
+	 $( "#datepicker" ).datepicker( "option", "dateFormat", "DD, d MM, yy" );
+ });
 
 
 

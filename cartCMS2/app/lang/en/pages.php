@@ -36,6 +36,10 @@ return array(
 
 	'task_show' => 'Your notification', 
 
-	'create_task_type' => 'Create task Type'
+	'create_task_type' => 'Create task Type',
+
+	'edit_task_type' => 'Edit task Type',
+
+	'task_type_index' => 'Here are all task types'
 
 );

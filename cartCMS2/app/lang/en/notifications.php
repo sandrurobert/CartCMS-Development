@@ -76,5 +76,13 @@ return array(
 
 	'task.delete' => 'Notification deleted',
 
-	'taskType.create' => 'Task Type added :name'
+	'taskType.create' => 'Task Type added, :name',
+
+	'taskType.update' => 'Uptade to task Type, :name',
+
+	'taskType.delete' => 'Task type deleted, :name',
+
+	'taskType.update.fail' => 'Field empty :name. Please try again', 
+
+	'taskType.create.fail' => 'Field empty :name. Please try again'
 );

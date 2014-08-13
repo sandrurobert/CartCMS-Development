@@ -10,7 +10,9 @@ class TaskTypeController extends \BaseController {
 	 */
 	public function index()
 	{
-		//
+		$types = TaskType::all();
+
+		return View::make('task_type.index')->with('types', $types);
 	}
 
 	/**
@@ -34,6 +36,11 @@ class TaskTypeController extends \BaseController {
 	{
 		$task_type['name'] = Input::get('name');
 		$task_type['added_by_id'] = Auth::user()->id;
+
+		if(empty($task_type['name'])){
+			$notification['green'] = INot::not('notifications.taskType.create.fail', ['name' => Auth::user()->first_name]);
+			return Redirect::route('task_type.create')->with('notification', $notification);
+		}
 
 		$type = new TaskType;
 		$type->create($task_type);
@@ -64,7 +71,9 @@ class TaskTypeController extends \BaseController {
 	 */
 	public function edit($id)
 	{
-		//
+		$type = TaskType::find($id);
+
+		return View::make('task_type.edit')->with('type', $type);
 	}
 
 	/**
@@ -76,7 +85,17 @@ class TaskTypeController extends \BaseController {
 	 */
 	public function update($id)
 	{
-		//
+		$type = TaskType::find($id);
+		if(Input::get('name') != ''){
+			$type->name = Input::get('name');
+			$type->update();
+
+			$notification['green'] = INot::not('notifications.taskType.update', ['name' => Auth::user()->first_name]);
+		} else {
+			$notification['red'] = INot::not('notifications.taskType.update.fail', ['name' => Auth::user()->first_name]);
+		}
+
+		return Redirect::route('task_type.edit', $id)->with('notification', $notification);
 	}
 
 	/**
@@ -88,7 +107,11 @@ class TaskTypeController extends \BaseController {
 	 */
 	public function destroy($id)
 	{
-		//
+		$type = TaskType::find($id);
+		$type->delete();
+
+		$notification['green'] = INot::not('notifications.taskType.delete', ['name' => Auth::user()->first_name]);
+		return Redirect::route('task_type.index')->with('notification', $notification);
 	}
 
 }

@@ -32,7 +32,7 @@
 
 		<div class="boxInputs_Inline">
 			{{Form::label('deadline', Lang::get('tasks.deadline'))}}
-			{{Form::text('deadline', null, array('class' => 'basicInput form-control importantInput', 'placeholder' => Lang::get('tasks.deadline')))}}
+			{{Form::text('deadline', null, array('class' => 'basicInput form-control importantInput', 'placeholder' => Lang::get('tasks.deadline'), 'id' => 'datepicker'))}}
 		</div>
 
 		{{Form::hidden('sent_by_id', null)}}
