@@ -136,3 +136,14 @@ $(document).ready(function(){
  * End of custom.js
  */
 });
+
+
+$(document).ready(setInterval(function() {
+    var api_url = $('#task_counter').attr('data-task-url');
+    $.getJSON( api_url, function( data ) {
+        var items = [];
+        $.each( data, function( key, val ) {
+          $('#task_counter').text(val);
+        });
+    });
+},2000));

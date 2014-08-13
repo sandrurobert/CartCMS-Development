@@ -133,4 +133,12 @@ class TasksController extends \BaseController {
 
 	}
 
+	public function countTasksForUser()
+	{
+		$user_id = Auth::user()->id;
+		$tasks = Task::where('sent_to_id', '=', $user_id)->where('status', '=', 'new')->count();
+
+		return Response::json(array($tasks));
+	}
+
 }

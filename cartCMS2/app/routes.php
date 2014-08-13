@@ -71,3 +71,7 @@ Route::get('task/type/{id}/edit', array('before' => 'owner', 'uses' => 'TaskType
 Route::put('task/type/{id}/edit', array('before' => 'owner', 'uses' => 'TaskTypeController@update', 'as' => 'task_type.update'));
 Route::get('task/type/delete/{id}', array('before' => 'owner', 'uses' => 'TaskTypeController@destroy', 'as' => 'task_type.destroy'));
 Route::get('task/type/all', array('before' => 'owner', 'uses' => 'TaskTypeController@index', 'as' => 'task_type.index'));
+
+//Tasks Count
+Route::get('user/tasks/counter', array('uses' => 'TasksController@countTasksForUser', 'as' => 'tasks.count'));
+//
