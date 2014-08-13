@@ -19,7 +19,9 @@ return array(
 	"to" => "Assigned to",
 	"deadline" => "Deadline",
 	"sent" => "Sent",
-	"update" => "Update"
+	"update" => "Update",
+	"name" => "Name",
+	"add" => "Add"
 
 
 );

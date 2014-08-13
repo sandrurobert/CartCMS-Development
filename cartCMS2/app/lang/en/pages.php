@@ -34,6 +34,8 @@ return array(
 
 	'task_index' => 'All task are here',
 
-	'task_show' => 'Your notification'
+	'task_show' => 'Your notification', 
+
+	'create_task_type' => 'Create task Type'
 
 );

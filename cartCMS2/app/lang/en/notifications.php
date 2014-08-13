@@ -74,5 +74,7 @@ return array(
 
 	'sentTask.update' => ':name, Task has been updated', 
 
-	'task.delete' => 'Notification deleted'
+	'task.delete' => 'Notification deleted',
+
+	'taskType.create' => 'Task Type added :name'
 );
