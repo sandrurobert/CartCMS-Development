@@ -16,6 +16,7 @@ class CreateSecuritySettingsTable extends Migration {
 		{
 			$table->increments('id')->unsigned();
 			$table->integer('min_pw_lenght')->unsigned();
+			$table->integer('max_session_idle')->unsigned();
 			$table->integer('updated_by')->unsigned();
 			$table->timestamps();
 

@@ -68,6 +68,7 @@ return array(
 
 	'mail_settings_restore.success' => ':name, you just restored the default mail settings!',
 
+
 	'sentTask.empty' => ':name, All fields are important. Try again',
 
 	'sentTask.success' => ':name, Task has been sent',
@@ -89,4 +90,7 @@ return array(
 	'task.complete' => 'Task status is now complete',
 
 	'task.complete.fail' => 'Access Denied'
+
+	'logout_due_idle' => 'You we&#39;re logged out!'
+
 );

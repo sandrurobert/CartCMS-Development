@@ -6,6 +6,8 @@ class UserController extends \BaseController {
 	public function __construct()
 	{
 		$this->beforeFilter('auth', array("except" => array("loginPage", "recoverPassword", "login", "userInvited", "userRegistration")));
+
+		Sessions::checkIdleUsers();
 	}
 
 	/**
@@ -281,6 +283,7 @@ class UserController extends \BaseController {
 			$notification['red'] = INot::not('notifications.login.danger');
 			return View::make('login')->with('notification', $notification);
 		}
+
 			$notification['green'] = INot::not('notifications.login.success', ['name' => Auth::user()->first_name]);
 			return Redirect::route('user.dashboard')->with('notification', $notification);
 	}
@@ -291,6 +294,8 @@ class UserController extends \BaseController {
 	 */
 	public function logout()
 	{
+		Sessions::deleteUser();
+
 		Auth::logout();
 		return Redirect::to('/');
 	}
@@ -306,6 +311,8 @@ class UserController extends \BaseController {
 	 * User Dashboard
 	 */
 	public function dashboard(){
+		Sessions::updateUser();
+
 		return View::make('dashboard');
 	}
 
@@ -356,7 +363,7 @@ class UserController extends \BaseController {
 	 * View for Change user rank
 	 */
 	public function changeUserRankView() {
-
+		Session::flush();
 		$users = User::all();
 		$ranks = Role::all();
 		$ranks = $ranks->lists('name', 'id');
