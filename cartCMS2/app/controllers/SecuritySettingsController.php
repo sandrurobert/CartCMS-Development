@@ -37,8 +37,7 @@ class SecuritySettingsController extends \BaseController {
 
 		$settings->update();
 
-		$lang_resource = Lang::get('notifications.generalSecuritySettingsChange.success', array('name' => Auth::user()->first_name) );
-		$notification['green'] = $lang_resource;
+		$notification['green'] = INot::not('notifications.generalSecuritySettingsChange.success', ['name' => Auth::user()->first_name]);
 		return Redirect::route('security.general')->with('notification', $notification);
 	}
 

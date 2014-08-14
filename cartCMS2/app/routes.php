@@ -53,3 +53,28 @@ Route::post('security/general', array('before' => 'owner', 'uses' => 'SecuritySe
 Route::get('mail/config', array('before' => 'owner', 'uses' => 'MailSettingsController@edit', 'as' => 'mail.config'));
 Route::put('mail/config', array('before' => 'owner', 'uses' => 'MailSettingsController@update', 'as' => 'mail.config'));
 Route::get('mail/config/default/values', array('before' => 'owner', 'uses' => 'MailSettingsController@defaultValues', 'as' => 'mail.config.default.values'));
+
+//Tasks
+Route::get('task/create', array('before' => 'owner', 'uses' => 'TasksController@create', 'as' => 'task.create'));
+Route::post('task/create', array('before' => 'owner', 'uses' => 'TasksController@store', 'as' => 'task.store'));
+Route::get('task/{id}/edit', array('before' => 'owner', 'uses' => 'TasksController@edit', 'as' => 'task.edit'));
+Route::put('task/{id}/edit', array('before' => 'owner', 'uses' => 'TasksController@update', 'as' => 'task.update'));
+Route::get('task/all', array('before' => 'owner', 'uses' => 'TasksController@index', 'as' => 'task.index'));
+Route::get('task/show/{id}', array('before' => 'auth', 'uses' => 'TasksController@show', 'as' => 'task.show'));
+Route::get('task/delete/{id}', array('before' => 'owner','uses' => 'TasksController@destroy', 'as' => 'task.destroy'));
+Route::get('my/tasks', array('before' => 'auth', 'uses' => 'TasksController@myTasks', 'as' => 'my.tasks'));
+Route::get('mark/task/complete/{id}', array('before' => 'auth', 'uses' => 'TasksController@completeTask', 'as' => 'task.complete'));
+
+//Task types
+
+Route::get('task/type/create', array('before' => 'owner', 'uses' => 'TaskTypeController@create', 'as' => 'task_type.create'));
+Route::post('task/type/create', array('before' => 'owner', 'uses' => 'TaskTypeController@store', 'as' => 'task_type.store'));
+Route::get('task/type/{id}/edit', array('before' => 'owner', 'uses' => 'TaskTypeController@edit', 'as' => 'task_type.edit'));
+Route::put('task/type/{id}/edit', array('before' => 'owner', 'uses' => 'TaskTypeController@update', 'as' => 'task_type.update'));
+Route::get('task/type/delete/{id}', array('before' => 'owner', 'uses' => 'TaskTypeController@destroy', 'as' => 'task_type.destroy'));
+Route::get('task/type/all', array('before' => 'owner', 'uses' => 'TaskTypeController@index', 'as' => 'task_type.index'));
+
+//Tasks Count
+Route::get('user/tasks/counter', array('uses' => 'TasksController@countTasksForUser', 'as' => 'tasks.count'));
+Route::get('user/tasks', array('uses' => 'TasksController@userTasks', 'as' => 'user.tasks'));
+//

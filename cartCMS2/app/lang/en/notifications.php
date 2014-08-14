@@ -62,5 +62,31 @@ return array(
 
 	'hisPassword.danger' => 'There might be a password problem! Please try again and write his password again!',
 
-	'hisName.success' => 'You just changed this user&#39;s name to :name!'
+	'hisName.success' => 'You just changed this user&#39;s name to :name!',
+
+	'mail_settings_update.success' => 'Thank you :name for updating mail settings!',
+
+	'mail_settings_restore.success' => ':name, you just restored the default mail settings!',
+
+	'sentTask.empty' => ':name, All fields are important. Try again',
+
+	'sentTask.success' => ':name, Task has been sent',
+
+	'sentTask.update' => ':name, Task has been updated', 
+
+	'task.delete' => 'Notification deleted',
+
+	'taskType.create' => 'Task Type added, :name',
+
+	'taskType.update' => 'Uptade to task Type, :name',
+
+	'taskType.delete' => 'Task type deleted, :name',
+
+	'taskType.update.fail' => 'Field empty :name. Please try again', 
+
+	'taskType.create.fail' => 'Field empty :name. Please try again',
+
+	'task.complete' => 'Task status is now complete',
+
+	'task.complete.fail' => 'Access Denied'
 );

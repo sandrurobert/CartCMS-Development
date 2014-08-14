@@ -115,7 +115,12 @@ $(document).ready(function(){
 
 
 
-
+ $(function() {
+	$( "#datepicker" ).datepicker({
+		minDate: 0 // Minim day : Today
+	});
+	 $( "#datepicker" ).datepicker( "option", "dateFormat", "DD, d MM, yy" );
+ });
 
 
 
@@ -131,3 +136,30 @@ $(document).ready(function(){
  * End of custom.js
  */
 });
+
+
+$(document).ready(setInterval(function() {
+    var api_url = $('#task_counter').attr('data-task-url');
+    $.getJSON( api_url, function( data ) {
+        var items = [];
+        $.each( data, function( key, val ) {
+          $('#task_counter').text(val);
+        });
+    });
+},2000));
+
+$(document).ready(setInterval(function() {
+    var api_url_task = 'http://127.1.0.0/cartCMS2/public/user/tasks';
+    var base_url = 'http://127.1.0.0/cartCMS2/public';
+    $.getJSON( api_url_task, function( data ) {
+    		$('.task-display ul').remove();
+        var items = [];
+        $.each( data, function( key, val ) {
+	  	items.push( "<li><a href='"+base_url+"/task/show/" +key+ "')}}>" +val+ "</a></li>");  
+        });
+         $( "<ul/>", {
+		"class": "jquery-tasks",
+		html: items.join( "" )
+		}).appendTo( ".task-display" );
+		    });
+},2000));
