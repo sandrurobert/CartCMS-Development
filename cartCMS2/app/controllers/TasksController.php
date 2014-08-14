@@ -10,7 +10,7 @@ class TasksController extends \BaseController {
 	 */
 	public function index()
 	{
-		$tasks = Task::paginate(3);
+		$tasks = Task::orderBy('id', 'DESC')->paginate(3);
 		return View::make('tasks.index')->with('tasks', $tasks);
 	}
 
