@@ -89,7 +89,7 @@ return array(
 
 	'task.complete' => 'Task status is now complete',
 
-	'task.complete.fail' => 'Access Denied'
+	'task.complete.fail' => 'Access Denied',
 
 	'logout_due_idle' => 'You we&#39;re logged out!'
 

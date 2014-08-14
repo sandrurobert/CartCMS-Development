@@ -42,7 +42,7 @@
 						<ul>
 							
 						</ul>
-						<h3><a href="{{route('my.tasks')}}">View all Tasks</h3>
+						<h3><a href="{{route('my.tasks')}}">View all Tasks</a></h3>
 					</div>
 				</div>
 				<div id="usersCarousel" class="slidable">
