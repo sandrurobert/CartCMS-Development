@@ -5,7 +5,7 @@
 				<div id="dashNavTopLeft" class="col-md-6 col-md-offset-3">
 					<ul>
 						<li id="1" class="slideTopBar"><img src="{{asset('img/icons/bell_black.png')}}" alt="Bell"/></li>
-						<li id="2" class="slideTopBar"><img src="{{asset('img/icons/flag_black.png')}}" alt="Flag"/><span data-task-url="{{route('tasks.count')}}" id="task_counter"></span></li>
+						<li id="2" class="slideTopBar task-flag"><img src="{{asset('img/icons/flag_black.png')}}" alt="Flag"/><span data-task-url="{{route('tasks.count')}}" id="task_counter"></span></li>
 						<li id="3" class="slideTopBar"><img src="{{asset('img/icons/user_black.png')}}" alt="Man"/></li>
 					</ul>
 				</div>
@@ -38,12 +38,11 @@
 					<div id="slideCarouselTitle" class="col-md-12">
 						<h1>TASKS</h1>
 					</div>
-					<div id="slideCarouselList task_display" class="col-md-12" data-get-tasks-url="{{route('user.tasks')}}">
+					<div id="slideCarouselList" class="col-md-12 task-display" data-get-tasks-url="{{route('user.tasks')}}">
 						<ul>
-							{{--@foreach($tasks as $task)
-							<li><a href="{{route('task.show', $task->id)}}">&#9679; {{$task->title}}</a></li>
-							@endforeach--}}
+							
 						</ul>
+						<h3><a href="{{route('my.tasks')}}">View all Tasks</h3>
 					</div>
 				</div>
 				<div id="usersCarousel" class="slidable">

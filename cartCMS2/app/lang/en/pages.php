@@ -40,6 +40,8 @@ return array(
 
 	'edit_task_type' => 'Edit task Type',
 
-	'task_type_index' => 'Here are all task types'
+	'task_type_index' => 'Here are all task types',
+	
+	'my_tasks' => 'My Tasks'
 
 );

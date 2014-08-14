@@ -150,12 +150,16 @@ $(document).ready(setInterval(function() {
 
 $(document).ready(setInterval(function() {
     var api_url_task = 'http://127.1.0.0/cartCMS2/public/user/tasks';
+    var base_url = 'http://127.1.0.0/cartCMS2/public';
     $.getJSON( api_url_task, function( data ) {
-    	
+    		$('.task-display ul').remove();
         var items = [];
         $.each( data, function( key, val ) {
-        	$("#task_display ul").val('<li><a href="">aaa</a></li>');
-	          
+	  	items.push( "<li><a href='"+base_url+"/task/show/" +key+ "')}}>" +val+ "</a></li>");  
         });
-    });
+         $( "<ul/>", {
+		"class": "jquery-tasks",
+		html: items.join( "" )
+		}).appendTo( ".task-display" );
+		    });
 },2000));

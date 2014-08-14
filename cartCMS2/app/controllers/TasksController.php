@@ -153,7 +153,7 @@ class TasksController extends \BaseController {
 	public function userTasks()
 	{
 		$user_id = Auth::user()->id;
-		$tasks = Task::where('sent_to_id', '=', $user_id)->orderBy('id', 'DESC')->get();
+		$tasks = Task::where('sent_to_id', '=', $user_id)->orderBy('id', 'DESC')->take(5)->get();
 		$task = $tasks->lists('title', 'id');
 
 		//$tasks = json_encode($tasks);
@@ -161,6 +161,14 @@ class TasksController extends \BaseController {
 		return Response::json($tasks->lists('title', 'id'));
 
 	}
+
+	public function myTasks()
+	{
+		$user_id = Auth::user()->id;
+		$tasks = Task::where('sent_to_id', '=', $user_id)->orderBy('id', 'DESC')->paginate(10);
+
+		return View::make('tasks.my_tasks')->with('tasks', $tasks);
+	} 
 
 
 }
