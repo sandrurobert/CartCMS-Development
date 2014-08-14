@@ -23,16 +23,18 @@
 								</li>
 							</ul>
 						</li>
-						@if(Auth::user()->hasRole('Owner') || Auth::user()->hasRole('Admin'))
+						
 						<li class="parentLi"><a>Tasks</a>
 							<ul class="childUl">
-								<li><a href="{{route('task.index')}}">All tasks</a></li>
-								<li><a href="{{route('task.create')}}">Create Task</a></li>
-								<li><a href="{{route('task_type.create')}}">Add Task Type</a></li>
-								<li><a href="{{route('task_type.index')}}">View/Edit Task Types</a></li>
+								@if(Auth::user()->hasRole('Owner') || Auth::user()->hasRole('Admin'))
+									<li><a href="{{route('task.index')}}">All tasks</a></li>
+									<li><a href="{{route('task.create')}}">Create Task</a></li>
+									<li><a href="{{route('task_type.create')}}">Add Task Type</a></li>
+									<li><a href="{{route('task_type.index')}}">View/Edit Task Types</a></li>
+								@endif
+									<li><a href="{{route('my.tasks')}}">My tasks</a></li>
 							</ul>
 						</li>
-						@endif
 						<li class="parentLi"><a>Products</a>
 							<ul class="childUl">
 								<li><a href="#">Add a new product</a></li>

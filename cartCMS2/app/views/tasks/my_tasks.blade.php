@@ -12,7 +12,9 @@
 		@foreach($tasks as $task)
 
 			<h1><a href="{{route('task.show', $task->id)}}">{{$task->title}}</a></h1>
-			<p>Assined by :{{$task->sent_by_id}} </p>
+			<p>Assined by : {{$task->findUser($task->sent_by_id)}} </p>
+			<p>Status : {{$task->status}}</p>
+			<p>Deadline : {{$task->deadline}} </p>
 		@endforeach
 	</div>
 

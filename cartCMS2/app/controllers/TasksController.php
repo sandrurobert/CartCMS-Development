@@ -68,9 +68,10 @@ class TasksController extends \BaseController {
 		$task = Task::find($id);
 
 		if($task->sent_to_id == Auth::user()->id) {
-
-			$task->status = 'Seen';
-			$task->update();
+			if($task->status == 'New') {
+				$task->status = 'Seen';
+				$task->update();
+			}
 
 			return View::make('tasks.show')->with('task', $task);	
 		}
@@ -153,7 +154,7 @@ class TasksController extends \BaseController {
 	public function userTasks()
 	{
 		$user_id = Auth::user()->id;
-		$tasks = Task::where('sent_to_id', '=', $user_id)->orderBy('id', 'DESC')->take(5)->get();
+		$tasks = Task::where('sent_to_id', '=', $user_id)->where('status', '!=', 'Complete')->orderBy('id', 'DESC')->take(5)->get();
 		$task = $tasks->lists('title', 'id');
 
 		//$tasks = json_encode($tasks);
@@ -165,10 +166,24 @@ class TasksController extends \BaseController {
 	public function myTasks()
 	{
 		$user_id = Auth::user()->id;
-		$tasks = Task::where('sent_to_id', '=', $user_id)->orderBy('id', 'DESC')->paginate(10);
+		$tasks = Task::where('sent_to_id', '=', $user_id)->where('status', '!=', 'Complete')->orderBy('id', 'DESC')->paginate(10);
 
 		return View::make('tasks.my_tasks')->with('tasks', $tasks);
 	} 
+
+	public function completeTask($id)
+	{
+		$task = Task::find($id);
+		if($task->sent_to_id == Auth::user()->id)
+		{
+			$task->status = 'Complete';
+			$task->update();
+			$notification['green'] = INot::not('notifications.task.complete', ['name' => Auth::user()->first_name]);
+		} else {
+			$notification['red'] = INot::not('notifications.task.complete.fail', ['name' => Auth::user()->first_name]);
+		}
+		return Redirect::route('task.show', $id)->with('notification', $notification);
+	}
 
 
 }

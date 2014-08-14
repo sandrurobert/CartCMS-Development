@@ -84,5 +84,9 @@ return array(
 
 	'taskType.update.fail' => 'Field empty :name. Please try again', 
 
-	'taskType.create.fail' => 'Field empty :name. Please try again'
+	'taskType.create.fail' => 'Field empty :name. Please try again',
+
+	'task.complete' => 'Task status is now complete',
+
+	'task.complete.fail' => 'Access Denied'
 );

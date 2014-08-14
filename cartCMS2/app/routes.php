@@ -63,6 +63,7 @@ Route::get('task/all', array('before' => 'owner', 'uses' => 'TasksController@ind
 Route::get('task/show/{id}', array('before' => 'auth', 'uses' => 'TasksController@show', 'as' => 'task.show'));
 Route::get('task/delete/{id}', array('before' => 'owner','uses' => 'TasksController@destroy', 'as' => 'task.destroy'));
 Route::get('my/tasks', array('before' => 'auth', 'uses' => 'TasksController@myTasks', 'as' => 'my.tasks'));
+Route::get('mark/task/complete/{id}', array('before' => 'auth', 'uses' => 'TasksController@completeTask', 'as' => 'task.complete'));
 
 //Task types
 

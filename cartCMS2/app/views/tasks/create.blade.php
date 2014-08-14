@@ -15,9 +15,8 @@
 			{{Form::text('title', null, array('class' => 'basicInput form-control importantInput', 'placeholder' => Lang::get('tasks.title')))}}
 		</div>
 
-		<div class="boxInputs_Inline">
-			{{Form::label('content', Lang::get('tasks.content'))}}
-			{{Form::textarea('content', null, array('class' => 'basicInput form-control importantInput', 'placeholder' => Lang::get('tasks.content')))}}
+		<div class="boxInputs_Inline ckeditor-arange">
+			 {{ Form::textarea('content', null, ['class' => 'form-control ckeditor', 'id' => 'ckeditor', 'rows' => '10'])}}
 		</div>
 
 		<div class="boxInputs_Inline">

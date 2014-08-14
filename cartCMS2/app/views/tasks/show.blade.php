@@ -12,11 +12,13 @@
 		
 
 			<h1>{{$task->title}}</h1>
-			<p>Assined to :{{$task->sent_to_id}} </p>
-			<p>Assined by :{{$task->sent_by_id}} </p>
+			<p>Assined to :{{$task->findUser($task->sent_to_id)}} </p>
+			<p>Assined by :{{$task->findUser($task->sent_by_id)}} </p>
 			<p>Deadline : {{$task->deadline}}</p>
-			<p>Type : {{$task->type}}</p>
+			<p>Type : {{$task->findType($task->type)}}</p>
 			<p>Status: {{$task->status}}</p>
+
+			<a href="{{route('task.complete', $task->id)}}">Mark as complete</a>
 
 	</div>
 

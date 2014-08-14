@@ -6,6 +6,7 @@
 		{{ HTML::style('css/style.css'); }}
 		{{ HTML::script('js/jquery-1.11.1.min.js'); }}
 		{{ HTML::script('js/custom.js'); }}
+		{{ HTML::script('ckeditor/ckeditor.js'); }}
 		 <script src="//code.jquery.com/ui/1.11.0/jquery-ui.js"></script>
 		 <link rel="stylesheet" href="//code.jquery.com/ui/1.11.0/themes/smoothness/jquery-ui.css">
 	</head>

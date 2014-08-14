@@ -8,4 +8,18 @@ class Task extends \Eloquent {
 	{
 		return $this->hasOne('TaskType');
 	}
+
+	public function findUser($id)
+	{
+		$user = User::find($id);
+		$full_name = $user->first_name . ' ' . $user->last_name;
+		return $full_name;
+	}
+
+	public function findType($id)
+	{
+		$type = TaskType::find($id);
+
+		return $type->name;
+	}
 }
