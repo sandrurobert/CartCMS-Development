@@ -155,11 +155,8 @@ class TasksController extends \BaseController {
 	{
 		$user_id = Auth::user()->id;
 		$tasks = Task::where('sent_to_id', '=', $user_id)->where('status', '!=', 'Complete')->orderBy('id', 'DESC')->take(5)->get();
-		$task = $tasks->lists('title', 'id');
 
-		//$tasks = json_encode($tasks);
-
-		return Response::json($tasks->lists('title', 'id'));
+		return Response::json($tasks->lists('title', 'id' ));
 
 	}
 

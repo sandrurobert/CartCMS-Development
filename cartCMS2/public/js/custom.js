@@ -143,7 +143,11 @@ $(document).ready(setInterval(function() {
     $.getJSON( api_url, function( data ) {
         var items = [];
         $.each( data, function( key, val ) {
-          $('#task_counter').text(val);
+          if(val > 0){
+          	$('.task-flag img').attr('src', 'http://127.1.0.0/cartCMS2/public/img/icons/flag.png');
+          } else {
+          	$('.task-flag img').attr('src', 'http://127.1.0.0/cartCMS2/public/img/icons/flag_black.png');
+          }
         });
     });
 },2000));
@@ -155,7 +159,8 @@ $(document).ready(setInterval(function() {
     		$('.task-display ul').remove();
         var items = [];
         $.each( data, function( key, val ) {
-	  	items.push( "<li><a href='"+base_url+"/task/show/" +key+ "')}}>" +val+ "</a></li>");  
+	  	items.push( "<li><a href='"+base_url+"/task/show/" +key+ "'>" +val+ "</a></li>"); 
+	  	
         });
          $( "<ul/>", {
 		"class": "jquery-tasks",
