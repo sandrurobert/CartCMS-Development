@@ -42,6 +42,8 @@ return array(
 
 	'task_type_index' => 'Here are all task types',
 	
-	'my_tasks' => 'My Tasks'
+	'my_tasks' => 'My Tasks',
+
+	'lost_password' => 'Lost Password ? You can reset password from here'
 
 );

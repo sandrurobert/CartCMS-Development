@@ -106,5 +106,13 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 		return $fullname;
 	}
 
+	public function sendResetPassword($message, $data)
+	{
+		Mail::send('emails.sent_reset_password', $message, function($message) use ($data)
+			{
+			    $message->to($data['email'])->subject('New Password');
+			});
+	}
+
 
 }

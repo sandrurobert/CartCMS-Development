@@ -78,3 +78,7 @@ Route::get('task/type/all', array('before' => 'owner', 'uses' => 'TaskTypeContro
 Route::get('user/tasks/counter', array('uses' => 'TasksController@countTasksForUser', 'as' => 'tasks.count'));
 Route::get('user/tasks', array('uses' => 'TasksController@userTasks', 'as' => 'user.tasks'));
 //
+
+Route::get('lost/password', array('uses' => 'UserController@lostPasswordView', 'as' => 'lost.password'));
+Route::post('lost/password', array('uses' => 'UserController@lostPassword', 'as' => 'lost.password'));
+Route::get('lost/password/token/{token}', array('uses' => 'UserController@verifyLostPassToken', 'as' => 'password.check.token'));
