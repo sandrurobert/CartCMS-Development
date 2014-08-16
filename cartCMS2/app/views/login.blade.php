@@ -48,7 +48,7 @@
 	          		@include('notifications')
 	        	</div><!-- blueBox -->
 	        	<div class="col-md-6 col-md-offset-6 no-padding">
-	          		{{ HTML::linkRoute('user.recover', Lang::get('login.lostPassword'), array(), array('id' => 'lostPassword')); }}
+	          		{{ HTML::linkRoute('lost.password', Lang::get('login.lostPassword'), array(), array('id' => 'lostPassword')); }}
 	        	</div>
 	      	</div><!--  col-md-4  -->
 	    </div>

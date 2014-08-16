@@ -43,6 +43,8 @@ return array(
 
 	'users_rank' => 'Users Rank',
 
-	'submit' => 'Submit'
+	'submit' => 'Submit',
+
+	'reset' => 'Reset'
 
 );

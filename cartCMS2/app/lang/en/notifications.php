@@ -91,6 +91,14 @@ return array(
 
 	'task.complete.fail' => 'Access Denied',
 
-	'logout_due_idle' => 'You we&#39;re logged out!'
+	'logout_due_idle' => 'You we&#39;re logged out!',
+
+	'lostPasswordReset.fail' => 'Invalid token',
+
+	'lostPasswordReset.success' => 'Please check email again to find the new password',
+
+	'lostPassword.success' => 'Please check your mail to reset your password', 
+
+	'lostPassword.fail' => 'Email not registered or Reset Mail has been sent'
 
 );
