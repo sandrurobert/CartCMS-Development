@@ -5,7 +5,7 @@ class UserController extends \BaseController {
 
 	public function __construct()
 	{
-		$this->beforeFilter('auth', array("except" => array("loginPage", "lostPassword", "lostPasswordView", "login", "userInvited", "userRegistration", "verifyLostPassToken")));
+		$this->beforeFilter('auth', array("except" => array("loginPage", "lostPassword", "lostPasswordView", "login", "userInvited", "userRegistration", "verifyLostPassToken", 'changeUserRank')));
 
 		Sessions::checkIdleUsers();
 	}
@@ -349,7 +349,7 @@ class UserController extends \BaseController {
 
 		$notification['green'] = INot::not('notifications.changeUserRank.success', ['email' => $email, 'rank' => $rank]);
 
-		return Redirect::route('change.rank')->with('notification', $notification);
+		return Redirect::route('user.dashboard')->with('notification', $notification);
 
 	}
 

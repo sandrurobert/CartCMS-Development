@@ -38,7 +38,7 @@ Route::get('site/settings', array('uses' => 'SiteSettingsController@edit', 'as' 
 Route::post('site/settings', array('uses' => 'SiteSettingsController@update', 'as' => 'site.settings'));
 
 Route::get('change/user/rank', array('before' => 'owner' , 'uses' => 'UserController@changeUserRankView', 'as' => 'change.rank'));
-Route::put('change/rank/user/id/{id}', array('before' => 'owner', 'uses' => 'UserController@changeUserRank', 'as' => 'update.rank'));
+Route::put('change/rank/user/id/{id}', array('uses' => 'UserController@changeUserRank', 'as' => 'update.rank'));
 
 Route::get('user/settings', array('uses' => 'UserController@userSettings', 'as' => 'user.settings'));
 Route::put('update/password', array('uses' => 'UserController@updatePassword', 'as' => 'update.password'));
