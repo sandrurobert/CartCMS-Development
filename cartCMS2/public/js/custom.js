@@ -144,7 +144,7 @@ $(document).ready(setInterval(function() {
         var items = [];
         $.each( data, function( key, val ) {
           if(val > 0){
-          	$('.task-flag img').attr('src', 'http://127.1.0.0/cartCMS2/public/img/icons/flag.png');
+          	$('.task-flag img').attr('src', 'http://127.1.0.0/cartCMS2/public/img/icons/flag_red.png');
           } else {
           	$('.task-flag img').attr('src', 'http://127.1.0.0/cartCMS2/public/img/icons/flag_black.png');
           }

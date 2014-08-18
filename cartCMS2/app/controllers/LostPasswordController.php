@@ -5,14 +5,14 @@ class LostPasswordController extends \BaseController {
 	/**
 	 * Checks token and generate new password in case of lost Password
 	 *
-	 * @param  
+	 * @param
 	 * @return Response
 	 */
 	public function verifyLostPassToken($token)
 	{
 		$token = LostPassword::where('token', '=', $token)->get();
-		
-		
+
+
 		if(!empty($token['0']->token)) {
 			$message['newPass'] = str_random(10);
 			$message['email'] = $token['0']->email;
@@ -43,7 +43,7 @@ class LostPasswordController extends \BaseController {
 	/**
 	 * Generate token and sent Email for lost password
 	 *
-	 * @param  
+	 * @param
 	 * @return Response
 	 */
 	public function lostPassword()
@@ -81,7 +81,7 @@ class LostPasswordController extends \BaseController {
 	/**
 	 * Lost Password View
 	 *
-	 * @param  
+	 * @param
 	 * @return View
 	 */
 	public function lostPasswordView()
