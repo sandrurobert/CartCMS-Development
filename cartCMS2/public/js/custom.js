@@ -10,6 +10,7 @@
  */
 
 $(document).ready(function(){
+
 	/**
 	 * If an element has .fadeIn class,
 	 * it will fade in with a delay of
@@ -159,8 +160,8 @@ $(document).ready(setInterval(function() {
     		$('.task-display ul').remove();
         var items = [];
         $.each( data, function( key, val ) {
-	  	items.push( "<li><a href='"+base_url+"/task/show/" +key+ "'>" +val+ "</a></li>"); 
-	  	
+	  	items.push( "<li><a href='"+base_url+"/task/show/" +key+ "'>" +val+ "</a></li>");
+
         });
          $( "<ul/>", {
 		"class": "jquery-tasks",

@@ -271,7 +271,7 @@ class UserController extends \BaseController {
 	 */
 	public function dashboard(){
 		Sessions::updateUser();
-
+		Files::createUrlsFile();
 		return View::make('dashboard');
 	}
 
