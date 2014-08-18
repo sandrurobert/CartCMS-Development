@@ -143,6 +143,12 @@ class TasksController extends \BaseController {
 
 	}
 
+	/**
+	 * Return count form user Tasks
+	 *
+	 * @param  
+	 * @return Response Json
+	 */
 	public function countTasksForUser()
 	{
 		$user_id = Auth::user()->id;
@@ -151,6 +157,12 @@ class TasksController extends \BaseController {
 		return Response::json(array($tasks));
 	}
 
+	/**
+	 * Return title and id for user Tasks appended on task Panel
+	 *
+	 * @param  
+	 * @return Response Json
+	 */
 	public function userTasks()
 	{
 		$user_id = Auth::user()->id;
@@ -160,6 +172,12 @@ class TasksController extends \BaseController {
 
 	}
 
+	/**
+	 * Auth::user tasks
+	 *
+	 * @param  
+	 * @return View
+	 */
 	public function myTasks()
 	{
 		$user_id = Auth::user()->id;
@@ -168,6 +186,12 @@ class TasksController extends \BaseController {
 		return View::make('tasks.my_tasks')->with('tasks', $tasks);
 	} 
 
+	/**
+	 * FUnction for compliting a task
+	 *
+	 * @param  
+	 * @return Response
+	 */
 	public function completeTask($id)
 	{
 		$task = Task::find($id);

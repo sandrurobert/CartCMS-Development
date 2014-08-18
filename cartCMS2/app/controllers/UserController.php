@@ -16,17 +16,6 @@ class UserController extends \BaseController {
 	 *
 	 * @return Response
 	 */
-	public function index()
-	{
-		//
-	}
-
-	/**
-	 * Display a listing of the resource.
-	 * GET /user
-	 *
-	 * @return Response
-	 */
 	public function loginPage()
 	{
 		if(Auth::check()){return Redirect::route('user.dashboard');}
@@ -246,30 +235,6 @@ class UserController extends \BaseController {
 	}
 
 	/**
-	 * Update the specified resource in storage.
-	 * PUT /user/{id}
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function update($id)
-	{
-		//
-	}
-
-	/**
-	 * Remove the specified resource from storage.
-	 * DELETE /user/{id}
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function destroy($id)
-	{
-		//
-	}
-
-	/**
 	 * Login procces
 	 * Check email and password
 	 *
@@ -440,52 +405,25 @@ class UserController extends \BaseController {
 		return Redirect::route('user.settings', Auth::user()->id)->with('notification', $notification);
 	}
 
-	public function defaultIcon() {
-
-		$user = User::find(Auth::user()->id);
-		$icon = Input::file('icon');
-		$icon_id = $user->icon->id;
-
-		$avatar = Icon::find($icon_id);
-		$avatar->icon_url = 'avt/default.jpg';
-		$avatar->update();
-
-		$notification['green'] = INot::not('notifications.changeIcon.default', ['name' => Auth::user()->first_name]);
-		return Redirect::route('user.settings', Auth::user()->id)->with('notification', $notification);
-
-	}
-
-	public function changeIcon() {
-
-		$user = User::find(Auth::user()->id);
-		$icon = Input::file('icon');
-		$icon_id = $user->icon->id;
-
-		if(empty($icon)){
-			$notification['red'] = INot::not('notifications.changeIcon.danger', ['name' => Auth::user()->first_name]);
-			return Redirect::route('user.settings', Auth::user()->id)->with('notification', $notification);
-		}
-
-		if($user->isImage($icon)){
-			$path = $user->uploadIcon($icon);
-
-			$avatar = Icon::find($icon_id);
-			$old_avatar = $avatar;
-			$avatar->icon_url = $path;
-			$avatar->update();
-
-			$notification['green'] = INot::not('notifications.changeIcon.success', ['name' => Auth::user()->first_name]);
-			return Redirect::route('user.settings', Auth::user()->id)->with('notification', $notification);
-		}
-
-	}
-
+	/**
+	 * View for Owner , edit Users
+	 *
+	 * @param  
+	 * @return View
+	 */
 	public function editUsers(){
 		$users = User::all();
 		$users->nr = count($users);
 		return View::make('user_settings.user_view_users')->with('users', $users);
 	}
 
+
+	/**
+	 * View for User edit
+	 *
+	 * @param  int $id
+	 * @return View
+	 */
 	public function editUser($id){
 		$user = User::find($id);
 
@@ -498,6 +436,13 @@ class UserController extends \BaseController {
 		return View::make('user_settings.user_view_edit_users')->with('user', $user);
 	}
 
+
+	/**
+	 * User password change function
+	 *
+	 * @param  int $id
+	 * @return Response
+	 */
 	public function userUpdateHisPassword($id){
 
 		$user = User::find($id);
@@ -532,6 +477,12 @@ class UserController extends \BaseController {
 		return Redirect::route('edit.user', $id)->with('notification', $notification);
 	}
 
+	/**
+	 * User change Name function
+	 *
+	 * @param  int $id
+	 * @return Response
+	 */
 	public function userUpdateHisName($id) {
 		$user = User::find($id);
 		$input = Input::all();
@@ -548,102 +499,7 @@ class UserController extends \BaseController {
 		$notification['red'] = INot::not('notifications.all_fields_are_important');
 		return Redirect::route('edit.user', $id)->with('notification', $notification);
 	}
-
-
-	public function userUpdateHisIcon($id) {
-
-		$user = User::find($id);
-		$icon = Input::file('icon');
-
-		$icon_id = $user->icon->id;
-
-		if(empty($icon)){
-		    $notification['red'] = INot::not('notifications.changeIcon.danger', ['name' => $user->first_name]);
-			return Redirect::route('edit.user', $id)->with('notification', $notification);
-		}
-
-		if($user->isImage($icon)){
-			$path = $user->uploadHisIcon($icon, $id);
-
-			$avatar = Icon::find($icon_id);
-			$old_avatar = $avatar;
-			$avatar->user_id = $id;
-			$avatar->icon_url = $path;
-			$avatar->update();
-
-			$notification['green'] = INot::not('notifications.changeHisIcon.success', ['name' => $user->first_name]);
-			return Redirect::route('edit.user', $id)->with('notification', $notification);
-		}
-
-	}
-
-	public function lostPasswordView()
-	{
-		return View::make('user_settings.lost_password');
-	}
-
-	public function lostPassword()
-	{
-		$email = Input::get('email');
-
-		$checkEmail = User::where('email', '=', $email)->first();
-
-		$checkIfLost = LostPassword::where('email', '=', $email)->first();
-
-		if(!empty($checkEmail->email) && empty($checkIfLost->email)) {
-			$token = str_random(40);
-			$lostPassword = new LostPassword;
-			$lostPassword->email = $email;
-			$lostPassword->token = $token;
-
-			$lostPassword->save();
-			$data['email'] = $email;
-
-			$message['email'] = $email;
-			$message['token'] = $token;
-
-
-			$lostPassword->sentMail($data, $message);
-
-			$notification['green'] = INot::not('notifications.lostPassword.success');
-
-			return Redirect::route('login.page')->with('notification', $notification);
-		}
-		$notification['red'] = INot::not('notifications.lostPassword.fail');
-
-		return Redirect::route('login.page')->with('notification', $notification);
-	}
-
-	public function verifyLostPassToken($token)
-	{
-		$token = LostPassword::where('token', '=', $token)->get();
-		
-		
-		if(!empty($token['0']->token)) {
-			$message['newPass'] = str_random(10);
-			$message['email'] = $token['0']->email;
-			$data['email'] = $token['0']->email;
-
- 			$hashPass = Hash::make($message['newPass']);
- 			$user = User::where('email', '=', $data['email'])->get();
- 			$user['0']->password = $hashPass;
- 			$user['0']->update();
-
- 			$userFunction = new User;
- 			$userFunction->sendResetPassword($message, $data);
-
- 			$delete = LostPassword::find($token['0']->id);
- 			$delete->delete();
-
- 			$notification['green'] = INot::not('notifications.lostPasswordReset.success');
-
-			return Redirect::route('login.page')->with('notification', $notification);
-		}
-
-		$notification['red'] = INot::not('notifications.lostPasswordReset.fail');
-
-		return Redirect::route('login.page')->with('notification', $notification);
-	}
+	
 
 
 }
