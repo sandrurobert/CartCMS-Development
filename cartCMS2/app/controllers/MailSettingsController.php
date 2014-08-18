@@ -36,6 +36,12 @@ class MailSettingsController extends \BaseController {
 		return Redirect::route('mail.config')->with('notification', $notification);
 	}
 
+	/**
+	 * Mail settings default values 
+	 *
+	 * @param  
+	 * @return Response
+	 */
 	public function defaultValues()
 	{
 		$default['driver'] = 'smtp';
