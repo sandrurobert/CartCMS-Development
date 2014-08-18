@@ -405,14 +405,25 @@ class UserController extends \BaseController {
 		return Redirect::route('user.settings', Auth::user()->id)->with('notification', $notification);
 	}
 
-	
-
+	/**
+	 * View for Owner , edit Users
+	 *
+	 * @param  
+	 * @return View
+	 */
 	public function editUsers(){
 		$users = User::all();
 		$users->nr = count($users);
 		return View::make('user_settings.user_view_users')->with('users', $users);
 	}
 
+
+	/**
+	 * View for User edit
+	 *
+	 * @param  int $id
+	 * @return View
+	 */
 	public function editUser($id){
 		$user = User::find($id);
 
@@ -425,6 +436,13 @@ class UserController extends \BaseController {
 		return View::make('user_settings.user_view_edit_users')->with('user', $user);
 	}
 
+
+	/**
+	 * User password change function
+	 *
+	 * @param  int $id
+	 * @return Response
+	 */
 	public function userUpdateHisPassword($id){
 
 		$user = User::find($id);
@@ -459,6 +477,12 @@ class UserController extends \BaseController {
 		return Redirect::route('edit.user', $id)->with('notification', $notification);
 	}
 
+	/**
+	 * User change Name function
+	 *
+	 * @param  int $id
+	 * @return Response
+	 */
 	public function userUpdateHisName($id) {
 		$user = User::find($id);
 		$input = Input::all();

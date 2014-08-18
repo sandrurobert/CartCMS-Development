@@ -2,6 +2,12 @@
 
 class LostPasswordController extends \BaseController {
 
+	/**
+	 * Checks token and generate new password in case of lost Password
+	 *
+	 * @param  
+	 * @return Response
+	 */
 	public function verifyLostPassToken($token)
 	{
 		$token = LostPassword::where('token', '=', $token)->get();
@@ -34,6 +40,12 @@ class LostPasswordController extends \BaseController {
 	}
 
 
+	/**
+	 * Generate token and sent Email for lost password
+	 *
+	 * @param  
+	 * @return Response
+	 */
 	public function lostPassword()
 	{
 		$email = Input::get('email');
@@ -66,7 +78,12 @@ class LostPasswordController extends \BaseController {
 		return Redirect::route('login.page')->with('notification', $notification);
 	}
 
-
+	/**
+	 * Lost Password View
+	 *
+	 * @param  
+	 * @return View
+	 */
 	public function lostPasswordView()
 	{
 		return View::make('user_settings.lost_password');

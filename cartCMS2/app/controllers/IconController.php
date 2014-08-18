@@ -2,6 +2,13 @@
 
 class IconController extends \BaseController {
 
+
+	/**
+	 * Change Auth::user Icon to the default 
+	 *
+	 * @param  
+	 * @return Response
+	 */
 	public function defaultIcon() {
 
 		$user = User::find(Auth::user()->id);
@@ -17,6 +24,12 @@ class IconController extends \BaseController {
 
 	}
 
+	/**
+	 * Change Auth::user Icon to choosen Icon
+	 *
+	 * @param  
+	 * @return Response
+	 */
 	public function changeIcon() {
 
 		$user = User::find(Auth::user()->id);
@@ -42,6 +55,12 @@ class IconController extends \BaseController {
 
 	}
 
+	/**
+	 * Change Auth::user Icon to choosen Icon, action done by Owner or Admin
+	 *
+	 * @param  
+	 * @return Response
+	 */
 	public function userUpdateHisIcon($id) {
 
 		$user = User::find($id);
