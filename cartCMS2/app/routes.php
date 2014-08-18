@@ -31,7 +31,8 @@ Route::get('user/edit/{id}', array('uses' => 'UserController@editUser', 'as' => 
 
 Route::put('update/users/password/{id}', array('uses' => 'UserController@userUpdateHisPassword', 'as' => 'user.updateHisPassword'));
 Route::put('update/users/name/{id}', array('uses' => 'UserController@userUpdateHisName', 'as' => 'user.updateHisName'));
-Route::post('update/users/icon/{id}', array('uses' => 'UserController@userUpdateHisIcon', 'as' => 'user.updateHisIcon'));
+
+Route::post('update/users/icon/{id}', array('uses' => 'IconController@userUpdateHisIcon', 'as' => 'user.updateHisIcon'));
 
 Route::get('dashboard', array('uses' => 'UserController@dashboard', 'as' => 'user.dashboard'));
 Route::get('site/settings', array('uses' => 'SiteSettingsController@edit', 'as' => 'site.settings'));
@@ -44,8 +45,8 @@ Route::get('user/settings', array('uses' => 'UserController@userSettings', 'as' 
 Route::put('update/password', array('uses' => 'UserController@updatePassword', 'as' => 'update.password'));
 Route::put('update/name', array('uses' => 'UserController@updateName', 'as' => 'update.name'));
 
-Route::post('change/icon', ['uses' => 'UserController@changeIcon', 'as' => 'update.icon']);
-Route::get('get/default/icon', ['uses' => 'UserController@defaultIcon', 'as' => 'default.icon']);
+Route::post('change/icon', ['uses' => 'IconController@changeIcon', 'as' => 'update.icon']);
+Route::get('get/default/icon', ['uses' => 'IconController@defaultIcon', 'as' => 'default.icon']);
 
 Route::get('security/general', array('before' => 'owner', 'uses' => 'SecuritySettingsController@generalEdit', 'as' => 'security.general'));
 Route::post('security/general', array('before' => 'owner', 'uses' => 'SecuritySettingsController@generalUpdate', 'as' => 'security.general'));
@@ -79,6 +80,6 @@ Route::get('user/tasks/counter', array('uses' => 'TasksController@countTasksForU
 Route::get('user/tasks', array('uses' => 'TasksController@userTasks', 'as' => 'user.tasks'));
 //
 
-Route::get('lost/password', array('uses' => 'UserController@lostPasswordView', 'as' => 'lost.password'));
-Route::post('lost/password', array('uses' => 'UserController@lostPassword', 'as' => 'lost.password'));
-Route::get('lost/password/token/{token}', array('uses' => 'UserController@verifyLostPassToken', 'as' => 'password.check.token'));
+Route::get('lost/password', array('uses' => 'LostPasswordController@lostPasswordView', 'as' => 'lost.password'));
+Route::post('lost/password', array('uses' => 'LostPasswordController@lostPassword', 'as' => 'lost.password'));
+Route::get('lost/password/token/{token}', array('uses' => 'LostPasswordController@verifyLostPassToken', 'as' => 'password.check.token'));
